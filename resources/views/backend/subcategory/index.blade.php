@@ -1,5 +1,5 @@
 @extends('layouts.main.app')
-@section('title','Category')
+@section('title','Subcategory')
 @section('content')
 <main>
     <!-- ========== start show message ================== -->
@@ -23,9 +23,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>View All Category</h1>
+                <h1>View All Subcategory</h1>
                 <div class="top-right-button-container">
-                    <a href="{{route('category.create')}}"><button type="button" class="btn btn-primary btn-sm mb-1 mr-4">Add Category</button></a>
+                    <a href="{{route('subcategory.create')}}"><button type="button" class="btn btn-primary btn-sm mb-1 mr-4">Add Subcategory</button></a>
                     <div class="btn-group">
                         <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             EXPORT
@@ -43,7 +43,7 @@
                         <li class="breadcrumb-item">
                             <a href="{{route('/')}}"><i class="fas fa-house" aria-hidden="true"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">View All Category</li>
+                        <li class="breadcrumb-item active" aria-current="page">View All Subcategory</li>
                     </ol>
                 </nav>
                 <div class="mb-2">
@@ -79,6 +79,7 @@
                     <thead>
                         <tr>
                             <th>Sno</th>
+                            <th>Category</th>
                             <th>Name</th>
                             <th>Image</th>
                             <th>Sequence</th>
@@ -89,9 +90,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($category as $data)
+                        @foreach($subcategory as $data)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            <td>
+                                @php
+                                $category= App\Models\Backend\Category::where(array('id'=> $data->category_id))->first();
+                                if(!empty($category)){
+                                echo $category->name;
+                                }else{
+                                echo "No Data Found";
+                                }
+                                @endphp
+                            </td>
                             <td>{{$data->name }} </td>
 
 
@@ -112,7 +123,7 @@
                                     <!-- <label class="col-12 col-form-label">{{$data->is_active==1?'Active':'Inactive'}}</label> -->
                                     <div class="col-12">
                                         <div class="custom-switch custom-switch-primary mb-2 custom-switch-small" data-toggle="tooltip" data-placement="left" title="" data-original-title="{{$data->is_active==1?'Inactive':'Active'}}">
-                                            <input name="status" class="custom-switch-input" id="status{{$data->id}}" data-id="{{ $data->id }}" data-url="category/update/" type="checkbox" @if($data->is_active)checked="checked" @endif>
+                                            <input name="status" class="custom-switch-input" id="status{{$data->id}}" data-id="{{ $data->id }}" data-url="subcategory/update/" type="checkbox" @if($data->is_active)checked="checked" @endif>
                                             <label class="custom-switch-btn" for="status{{$data->id}}"></label>
                                         </div>
                                     </div>
@@ -129,9 +140,9 @@
 
                                     <div class="dropdown-menu px-3" aria-labelledby="dropdownMenuLink">
 
-                                        @if (Auth::user()->power == 1) <li class="li"><a href="{{route('category.edit', $data->id)}}"><i class="fas fa-pencil" aria-hidden="true" style="font-size: 18px;"></i><strong class="ml-2">Edit</strong></a></li>@endif
+                                        @if (Auth::user()->power == 1) <li class="li"><a href="{{route('subcategory.edit', $data->id)}}"><i class="fas fa-pencil" aria-hidden="true" style="font-size: 18px;"></i><strong class="ml-2">Edit</strong></a></li>@endif
 
-                                        @if (Auth::user()->power != 3)<li class="li"> <a style="cursor: pointer" name="delete" id="delete{{$data->id}}" data-url="category/destroy/" data-id="{{ $data->id }}" role="button"><i class="fa fa-trash" aria-hidden="true" style="font-size: 18px;cursor: pointer;"></i><strong class="ml-2">Delete</strong></a></li>@endif
+                                        @if (Auth::user()->power != 3)<li class="li"> <a style="cursor: pointer" name="delete" id="delete{{$data->id}}" data-url="subcategory/destroy/" data-id="{{ $data->id }}" role="button"><i class="fa fa-trash" aria-hidden="true" style="font-size: 18px;cursor: pointer;"></i><strong class="ml-2">Delete</strong></a></li>@endif
 
                                     </div>
                                 </div>
@@ -153,6 +164,9 @@
 <script>
     const column = [{
             data: "Sno"
+        },
+        {
+            data: "Category"
         },
         {
             data: "Name"

@@ -9,9 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Filtercategory extends Authenticatable
+class Subcategory extends Authenticatable
 {
-    protected $table = 'filtercategory';
+
+    protected $table = 'subcategory';
     use HasApiTokens, HasFactory, Notifiable;
     /**
      * The attributes that are mass assignable.
@@ -19,9 +20,7 @@ class Filtercategory extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'category_id',
-        'ip', 'added_by', 'is_active'
+        'category_id','name', 'image', 'sequence', 'ip', 'added_by', 'is_active'
     ];
     use SoftDeletes;
     protected $del = ['deleted_at'];
@@ -30,6 +29,7 @@ class Filtercategory extends Authenticatable
      *
      * @var array<int, string>
      */
+
     /**
      * The attributes that should be cast.
      *
@@ -38,8 +38,4 @@ class Filtercategory extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function filters()
-    {
-        return $this->hasMany(Filter::class, 'filtercat_id');
-    }
 }

@@ -67,7 +67,6 @@ class CategoryController extends Controller
 
         $category->ip = $request->ip();
         $category->is_active = 1;
-        $category->date = now()->getTimestamp();
         $category->added_by = $userId;
         $category->save();
         if ($category) {

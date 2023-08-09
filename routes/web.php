@@ -5,7 +5,7 @@ use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\WebSliderController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryController;
-
+use App\Http\Controllers\Backend\SubcategoryController;
 // --------------frontend-------------
 use App\Http\Controllers\HomeController;
 
@@ -128,5 +128,9 @@ Route::group(['prefix' => 'evadmin'], function () {
     Route::resource('category', CategoryController::class);
     Route::get('/category/update/{id}', [CategoryController::class, 'updateStatus'])->name('category.update.status');
     Route::delete('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    //---subcategory ----
+    Route::resource('subcategory', SubcategoryController::class);
+    Route::get('/subcategory/update/{id}', [SubcategoryController::class, 'updateStatus'])->name('subcategory.update.status');
+    Route::delete('/subcategory/destroy/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
   });
 });
