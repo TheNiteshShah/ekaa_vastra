@@ -1,0 +1,425 @@
+html {
+  width: 100%;
+}
+::-webkit-scrollbar{
+  width: 5px;
+ 
+}
+
+::-webkit-scrollbar-thumb{
+  
+  width: 5px;
+ background-color: rgb(128, 128, 128);
+ border-radius: 20px;
+}
+
+::-webkit-scrollbar{
+  height: 7px;
+  width: 7px;
+
+}
+table#datatableRows{
+
+  margin-bottom: 70px !important;
+
+}
+::-webkit-scrollbar-thumb:horizontal{
+  background: rgb(128, 128, 128);
+  border-radius: 10px;
+
+}
+
+.DTFC_LeftBodyLiner::-webkit-scrollbar{
+  width: 5px;
+ 
+}
+
+.DTFC_LeftBodyLiner::-webkit-scrollbar-thumb{
+  
+  width: 5px;
+ background-color: rgba(128, 128, 128, 0) !important;
+ border-radius: 20px;
+}
+
+
+.DTFC_LeftBodyLiner::-webkit-scrollbar{
+  height: 7px;
+  width: 7px;
+
+}
+.DTFC_LeftBodyLiner::-webkit-scrollbar-thumb:horizontal{
+  background: rgba(128, 128, 128, 0) !important;
+  border-radius: 10px;
+
+}
+
+.DTFC_LeftHeadWrapper{
+  position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    overflow: hidden !important;
+    z-index: 99 !important;
+    background: #f7f8f2 !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+body.show-spinner>main {
+  overflow: hidden !important;
+}
+
+body.show-spinner>* {
+  opacity: 0;
+}
+
+
+    .dataTables_scrollHead{
+        overflow: scroll auto !important;
+    position: sticky !important;
+    border: 0px !important;
+    width: 100% !important;
+    top: 13% !important;
+    z-index: 99;
+    background-color: #f8f8f5;
+    /* border-radius: 20px ; */
+    }
+
+    .menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding-top: 100px;
+    z-index: 9999 !important;
+    height: calc(100% - 100px);
+    transition: border-radius .3s;
+   }
+
+    
+ @media (max-width:1439px) {
+    main {
+        margin-left: 390px;
+        margin-right: 0px;
+        margin-top: 130px;
+        margin-bottom: 30px
+    }
+}
+
+    .theme-colors .theme-button {
+    position: absolute;
+    left: -32px;
+    background: #fff;
+    padding: 13px 7px 13px 7px;
+    border-radius: .2rem;
+    color: #3a3a3a;
+    box-shadow: -2px 0 5px rgba(0,0,0,.04);
+    font-size: 20px;
+    top: -5% !important;
+    transform: translateY(-50%);
+    color: #145388;
+}
+
+    .theme-colors {
+    width: 280px !important;
+    position: fixed;
+    z-index: 1030;
+    top: 50%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
+    transform: translate(280px, -50%);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 9999 !important;
+}
+
+/* table.data-table.responsive.nowrap.no-footer.dataTable{
+ padding: 5px !important;
+} */
+    table#datatableRows{
+        padding: 5px;
+    }
+    .col-12.mb-4.data-table-rows.data-tables-hide-filter{
+            padding: 0px 10px;
+    }
+    .dataTables_scrollBody{
+        position: sticky;
+        overflow: hidden;
+        top: -25px;
+
+    }
+
+    @media (max-width:1439px) {
+
+#app-container.menu-hidden main,
+#app-container.menu-sub-hidden main,
+#app-container.sub-hidden main {
+    margin-left: 119px
+}}
+
+/* Spinner */
+body.show-spinner::after {
+  content: " ";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border-top-color: rgba(0, 0, 0, 0.3);
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  position: fixed;
+  z-index: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.DTFC_LeftBodyLiner{
+  position: relative;
+  top: -12px !important;
+  left: -9px !important;
+  width:  auto!important;
+  height: 676px;
+  max-height: 676px;
+}
+
+
+
+
+
+@media (max-width:1440px) {
+  .dataTables_scrollHead {
+ 
+    top: 15% !important;
+
+}
+}
+@media (max-width:1407px) {
+  .dataTables_scrollHead {
+ 
+    top: 13% !important;
+
+}
+}
+
+
+
+
+@media (max-width:1271px) {
+  .dataTables_scrollHead {
+ 
+    top: 12% !important;
+
+}
+}
+
+
+
+@media (max-width:1271px) {
+  .dataTables_scrollHead {
+ 
+    top: 13% !important;
+
+}
+}
+
+@media (max-width:1100px) {
+  .dataTables_scrollHead {
+ 
+    top: 11% !important;
+
+}
+
+}
+
+
+@media (max-width:1027px) {
+  .dataTables_scrollHead {
+ 
+    top: 14% !important;
+
+}
+@media (max-width:1023px) {
+  .dataTables_scrollHead {
+ 
+    top: 12% !important;
+
+}
+}
+
+
+.navbar .navbar-left {
+    flex-basis: 25%;
+}
+}
+
+
+@media (max-width:1017px) {
+  .dataTables_scrollHead {
+ 
+    top: 11% !important;
+
+}
+
+}
+@media (max-width:768px) {
+  .dataTables_scrollHead {
+ 
+    top: 13% !important;
+
+}}
+
+
+@media (max-width:767px) {
+  .dataTables_scrollHead {
+ 
+    top: 13% !important;
+
+}.DTFC_LeftBodyWrapper{
+  display: none;
+}
+.DTFC_LeftHeadWrapper{
+  display: none;
+}
+}
+
+
+
+
+@media (max-width:760px) {
+  .dataTables_scrollHead {
+ 
+    top: 12% !important;
+
+}
+.theme-colors .theme-button {
+  position: absolute;
+  left: -52px;
+  background: #fff;
+  padding: 13px 7px 13px 7px;
+  border-radius: .2rem;
+  color: #3a3a3a;
+  box-shadow: -2px 0 5px rgba(0,0,0,.04);
+  font-size: 20px;
+  top: 10% !important;
+  transform: translateY(-50%);
+  color: #145388;
+}
+.dataTables_scrollBody{
+  position: relative;
+  overflow: auto !important;
+  width: 100%;
+}
+
+
+::-webkit-scrollbar{
+  width: 5px;
+ 
+}
+
+
+::-webkit-scrollbar-thumb{
+  
+  width: 5px;
+ background-color: rgba(128, 128, 128, 0);
+ border-radius: 20px;
+}
+
+
+::-webkit-scrollbar{
+  height: 7px;
+  width: 7px;
+  /* background: rgb(255, 255, 255); */
+}
+::-webkit-scrollbar-thumb:horizontal{
+  background: rgba(128, 128, 128, 0);
+  border-radius: 10px;
+  /* width: 5px; */
+}
+
+
+}
+
+@media (max-width:756px) {
+  .dataTables_scrollHead {
+ 
+    top: 10% !important;
+
+}}
+
+
+@media (max-width:485px) {
+  .dataTables_scrollHead {
+ 
+    top: 11% !important;
+
+}}
+
+@media (max-width:425px) {
+  .dataTables_scrollHead {
+ 
+    top: 10% !important;
+
+}}
+
+
+
+
+
+
+@media (max-width:425px) {
+  .dataTables_scrollHead {
+ 
+    top: 12% !important;
+
+}
+.theme-colors .theme-button {
+  position: absolute;
+  left: -43px;
+  background: #fff;
+  padding: 13px 7px 13px 7px;
+  border-radius: .2rem;
+  color: #3a3a3a;
+  box-shadow: -2px 0 5px rgba(0,0,0,.04);
+  font-size: 20px;
+  top: 10% !important;
+  transform: translateY(-50%);
+  color: #145388;
+}
+
+ .navbar .navbar-left {
+    flex-basis: 27%;
+} 
+.navbar .navbar-right {
+  flex-basis: 25%;
+  text-align: right;
+}
+}
+
+
+
