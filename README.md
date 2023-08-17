@@ -1,1 +1,0 @@
-# ekaa_vastra
