@@ -20,24 +20,9 @@ class Home extends CI_Controller
     //=============================================== Index ==============================================================
     public function index()
     {
-        if (!empty($this->session->userdata('user_type'))) {
-            if ($this->session->userdata('user_type') == 2) {
-                $user_type = 1;
-            } else {
-                $user_type = 2;
-            }
-        } else {
-            $user_type = 2;
-        }
-        $this->db->select('*');
-        $this->db->from('tbl_slider');
-        $this->db->order_by('id', 'desc');
-        $this->db->where('is_active', 1);
-        $data['slider_data'] = $this->db->get();
-        $this->db->select('*');
-        $this->db->from('tbl_category');
-        $this->db->where('is_active', 1);
-        $data['category_data'] = $this->db->get();
+
+        $data['slider_data'] = $this->db->select('id,link,image,image2')->order_by('id', 'desc')->get_where('tbl_slider', array('is_active' => 1))->result();
+
         $this->db->select('*');
         $this->db->from('tbl_shop_by_category');
         $this->db->where('is_active', 1);
@@ -50,7 +35,6 @@ class Home extends CI_Controller
         $this->db->from('tbl_product');
         $this->db->where('is_active', 1);
         $this->db->where('product_type !=', 2);
-        $this->db->where('product_view !=', $user_type);
         $this->db->where('trending', 1);
         $data['trending_data'] = $this->db->get();
         $this->db->select('*');
@@ -66,7 +50,6 @@ class Home extends CI_Controller
         $this->db->from('tbl_product');
         $this->db->where('is_active', 1);
         $this->db->where('product_type !=', 2);
-        $this->db->where('product_view !=', $user_type);
         $this->db->order_by('rand()');
         $this->db->limit(15);
         $data['whats_data'] = $this->db->get();
@@ -410,7 +393,7 @@ class Home extends CI_Controller
             $data['title'] = $returnarray['product_data'][0]->title;
             $data['keyword'] = $returnarray['product_data'][0]->keyword;
             $data['dsc'] = $returnarray['product_data'][0]->dsc;
-            $related_products = $this->products->related_products($url,$returnarray['product_data'][0]->category_id);
+            $related_products = $this->products->related_products($url, $returnarray['product_data'][0]->category_id);
             $buy_with_it = $this->products->buy_with_it($url);
             $product_reviews = $this->products->productReviews($url);
             $type_datas = $this->db->get_where('tbl_type', array('product_id = ' => $returnarray['product_data'][0]->id, 'is_active = ' => 1));
@@ -452,9 +435,9 @@ class Home extends CI_Controller
     }
     public function error404()
     {
-        $this->load->view('frontend/common/header2');
+        $this->load->view('frontend/common/header');
         $this->load->view('errors/error404');
-        $this->load->view('frontend/common/footer2');
+        $this->load->view('frontend/common/footer');
     }
     public function privacy_policy()
     {

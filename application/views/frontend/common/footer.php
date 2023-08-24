@@ -1,303 +1,151 @@
-<!-- =================================== START FOOTER ========================================-->
-<footer class="footer" style="background-color:#fff1f1;">
-  <div class="footer_top">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="widget text-center">
-            <div class="footer_logo">
-              <a href="<?=base_url()?>"><img src="<?=base_url()?>assets/frontend\images\logo2.png" alt="Tiara Logo" style="width:40%;"></a>
+<footer class="main">
+        <section class="newsletter p-30 text-white wow fadeIn animated">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-md-3 mb-lg-0">
+                        <div class="row align-items-center">
+                            <div class="col flex-horizontal-center">
+                                <img class="icon-email" src="<?=base_url()?>assets/frontend/imgs/theme/icons/icon-email.svg" alt="">
+                                <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
+                            </div>
+                            <div class="col my-4 my-md-0 des">
+                                <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first shopping.</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <!-- Subscribe Form -->
+                        <form class="form-subcriber d-flex wow fadeIn animated">
+                            <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
+                            <button class="btn bg-dark text-white" type="submit">Subscribe</button>
+                        </form>
+                        <!-- End Subscribe Form -->
+                    </div>
+                </div>
             </div>
-            <ul class="widget_links d-block mt-3">
-              <li><a href="<?=base_url()?>Home/about_us">About Us</a></li>
-            </ul>
-          </div>
+        </section>
+        <section class="section-padding footer-mid">
+            <div class="container pt-15 pb-20">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widget-about font-md mb-md-5 mb-lg-0">
+                            <div class="logo logo-width-1 wow fadeIn animated">
+                                <a href="<?= base_url() ?>"><img src="<?=base_url()?>assets/frontend/imgs/theme/logo.png" alt="logo"></a>
+                            </div>
+                            <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                            <p class="wow fadeIn animated">
+                                <strong>Address: </strong>Vashali Nagar,Jaipur
+                            </p>
+                            <p class="wow fadeIn animated">
+                                <strong>Phone: </strong>+01 2222 365 /(+91) 01 2345 6789
+                            </p>
+                            <p class="wow fadeIn animated">
+                                <strong>Hours: </strong>10:00 - 18:00, Mon - Sat
+                            </p>
+                            <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
+                                <a href="#"><img src="<?=base_url()?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/frontend/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h5 class="widget-title wow fadeIn animated">About</h5>
+                        <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Delivery Information</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms &amp; Conditions</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Support Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-3">
+                        <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                        <ul class="footer-list wow fadeIn animated">
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="#">View Cart</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Order</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="widget-title wow fadeIn animated">Install App</h5>
+                        <div class="row">
+                            <div class="col-md-8 col-lg-12">
+                                <p class="wow fadeIn animated">From App Store or Google Play</p>
+                                <div class="download-app wow fadeIn animated">
+                                    <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="<?=base_url()?>assets/frontend/imgs/theme/app-store.jpg" alt=""></a>
+                                    <a href="#" class="hover-up"><img src="<?=base_url()?>assets/frontend/imgs/theme/google-play.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                                <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
+                                <img class="wow fadeIn animated" src="<?=base_url()?>assets/frontend/imgs/theme/payment-method.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container pb-20 wow fadeIn animated">
+            <div class="row">
+                <div class="col-12 mb-20">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-lg-12">
+                    <p class="text-center font-sm text-muted mb-0">&copy; 2023, <strong class="text-brand">Ekaa Vastra</strong> - All rights reserved </p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-2 col-md-3 col-sm-6">
-          <div class="widget">
-            <h6 class="widget_title mob_title">BUYING GUIDE</h6>
-            <ul class="widget_links">
-              <li><a href="<?=base_url()?>Home/return_and_replace">Returns, Replace & Exchanges</a></li>
-              <li><a href="<?=base_url()?>Home/shipping_and_delivery">Shipping & Delivery</a></li>
-            </ul>
-          </div>
+    </footer>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <h5 class="mb-10">Now Loading</h5>
+                    <div class="loader">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <?if(!empty($this->session->userdata('user_data'))){?>
-        <div class="col-lg-2 col-md-3 col-sm-6">
-          <div class="widget">
-            <h6 class="widget_title mob_title">ACCOUNT</h6>
-            <ul class="widget_links">
-              <li><a href="<?=base_url()?>Home/my_profile/order">Orders & Returns</a></li>
-              <li><a href="<?=base_url()?>Home/my_profile">Account Details</a></li>
-              <!-- <li><a class="nav-link nav_item" href="#onload-popup1" data-toggle="modal" data-target="#onload-popup1">Login</a></li> -->
-            </ul>
-          </div>
-        </div>
-        <?}?>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="widget">
-            <h6 class="widget_title mob_title">POLICIES</h6>
-            <ul class="widget_links">
-              <li><a href="<?=base_url()?>Home/terms_and_conditions">Terms & Conditions</a></li>
-              <li><a href="<?=base_url()?>Home/privacy_policy">Privacy & Policy</a></li>
-            </ul>
-          </div>
-          <div class="widget gta">
-            <ul class="social_icons social_white">
-              <li style="width:40px;background: #1b74e4; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px;  margin-right: 3px;"><a href="https://www.facebook.com/tiarastore.co.in" target="_blank" rel="noopener noreferrer" ><i class="ion-social-facebook"></i></a></li>
-              <li style="width:40px;background: #1da1f2; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px; margin-right: 3px;"><a href="https://twitter.com/TIARASTORE2710" target="_blank" rel="noopener noreferrer" ><i class="ion-social-twitter"></i></a></li>
-              <li style="width:40px;background:  #dd4d42; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px; margin-right: 3px;"><a href="https://youtube.com/channel/UC8UL2rXUvV6w_mRuJDjITiw" target="_blank" rel="noopener noreferrer"><i class="ion-social-youtube"></i></a></li>
-              <li style="width:40px;background: #d33d87; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px; margin-right: 3px;"><a href="https://instagram.com/tiarastore.co.in?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener noreferrer" ><i class="ion-social-instagram-outline"></i></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="widget">
-            <h6 class="widget_title mob_title">CONTACT US</h6>
-            <ul class="contact_info contact_info_light widget_links">
-              <li>
-                <i class="ti-location-pin"></i>
-                <p>Plot no. C-2, Shop No B-14,15,16,17, Saurav Tower, Gautam Marg,  Vaishali Nagar,  Jaipur, Rajasthan, 302021</p>
-              </li>
-              <li>
-                <i class="ti-email"></i>
-                <a href="mailto:contactus@tiarastore.co.in">contactus@tiarastore.co.in</a>
-              </li>
-              <li>
-                <i class="ti-mobile"></i>
-                <a href="tel:+919511351606"><p>+919511351606</p></a>
-              </li>
-            </ul>
-          </div>
-          <!-- ======================================= START SOCIAL ========================================== -->
-          <div class="widget gta1 text-center d-lg-none">
-            <ul class="social_icons social_white">
-              <li style="width:40px;background: #1b74e4; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px;  margin-right: 3px;"><a href="https://www.facebook.com/tiarastore.co.in" target="_blank" rel="noopener noreferrer" ><i class="ion-social-facebook"></i></a></li>
-              <li style="width:40px;background: #1da1f2; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px; margin-right: 3px;"><a href="https://twitter.com/TIARASTORE2710" target="_blank" rel="noopener noreferrer" ><i class="ion-social-twitter"></i></a></li>
-              <li style="width:40px;background:  #dd4d42; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px; margin-right: 3px;"><a href="https://youtube.com/channel/UC8UL2rXUvV6w_mRuJDjITiw" target="_blank" rel="noopener noreferrer"><i class="ion-social-youtube"></i></a></li>
-              <li style="width:40px;background: #d33d87; text-align: center;border-radius: 50%;padding: 3px 0px 0px 1px; margin-right: 3px;"><a href="https://instagram.com/tiarastore.co.in?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener noreferrer" ><i class="ion-social-instagram-outline"></i></a></li>
-            </ul>
-          </div>
-          <!-- ======================================= END SOCIAL ========================================== -->
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="bottom_footer border-top-tran">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="mb-md-0 text-center text-md-left">© 2022 All Rights Reserved by Tiara</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+    <!-- Vendor JS-->
+    <script src="<?=base_url()?>assets/frontend/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/slick.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/wow.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/jquery-ui.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/perfect-scrollbar.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/magnific-popup.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/select2.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/waypoints.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/counterup.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/jquery.countdown.min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/images-loaded.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/isotope.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/scrollup.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/jquery.vticker-min.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="<?=base_url()?>assets/frontend/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="<?=base_url()?>assets/frontend/js/maind134.js?v=3.4"></script>
+    <script src="<?=base_url()?>assets/frontend/js/shopd134.js?v=3.4"></script>
 
-<!-- ======================================= END FOOTER ========================================== -->
-
-<!-- ======================================= START BOTTOM BAR ========================================== -->
-<div class="container-fluid mobilebottom" style="position:sticky; bottom: 0;background:#f2f2f2;z-index: 9999;" id="footerCount">
-  <div class="row" style="justify-content: space-between;">
-
-    <div class="col-2 text-center mt-2 p-0"><a href="<?=base_url()?>"><i class="linearicons-home" style="font-size: 20px;"></i></a>
-      <h6>Home</h6>
-    </div>
-    <?if (!empty($this->session->userdata('user_data'))) {
-    $wishcount = $this->db->get_where('tbl_wishlist', array('user_id = ' => $this->session->userdata('user_id'), 'user_type', $this->session->userdata('user_type')))->num_rows(); ?>
-    <div class="col-2 text-center mt-2 p-0"><a href="<?=base_url()?>Home/my_profile"><i class="linearicons-user" style="font-size: 20px;"></i></a>
-      <h6>Account</h6>
-    </div>
-    <div class="col-2 text-center mt-2 p-0"><a href="<?=base_url()?>Home/my_wishlist"><i class="linearicons-heart" style="font-size: 20px;"></i><span class="wishlist_count"><?=$wishcount; ?></span></a>
-      <h6>Wishlist</h6>
-    </div>
-    <?
-}else{?>
-  <div class="col-2 text-center mt-2 p-0"><a href="javascript:;" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal"><i class="linearicons-user" style="font-size: 20px;"></i></a>
-    <h6>Login</h6>
-  </div>
-  <div class="col-2 text-center mt-2 p-0"><a href="javascript:;" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal"><i class="linearicons-heart" style="font-size: 20px;"></i><span class="wishlist_count">0</span></a>
-    <h6>Wishlist</h6>
-  </div>
-  <?}?>
-    <?php $cartcount = 0;
-    if (!empty($this->session->userdata('user_data'))) {
-        $cartcount = $this->db->get_where('tbl_cart', array('user_id = ' => $this->session->userdata('user_id'), 'user_type'=>$this->session->userdata('user_type')))->num_rows();
-    } else {
-        if (!empty($this->session->userdata('cart_data'))) {
-            $cartcount = count($this->session->userdata('cart_data'));
-        }
-    }
-    ?>
-    <div class="col-2 text-center mt-2 p-0"><a href="<?=base_url()?>Home/my_bag">&nbsp;<i class="linearicons-bag2" style="font-size: 20px;"></i><span class="cart_count"><?=$cartcount;?></span></a>
-      <h6>Bag</h6>
-    </div>
-    <div class="col-2 text-center mt-2 p-0"><a href="https://wa.me/+919511351606/" target="_blank" rel="noopener noreferrer"> <i class="icon ion-social-whatsapp" style="font-size:17px;color:green;"></i></a>
-      <h6 style="margin-left:-10px;">Connect</h6>
-    </div>
-  </div>
-</div>
-<!-- ======================================= END BOTTOM BAR ========================================== -->
-
-<a  href="https://wa.me/+919511351606/" target="_blank" rel="noopener noreferrer"  class="btn btn-success white btn-lg mt-3 button-fixed-right green  desktopwhatsapp ">
-  <i class="icon ion-social-whatsapp" style="font-size:30px;"></i>
-</a>
-
-<!-- Latest jQuery -->
-<script src="<?=base_url()?>assets/frontend/js/jquery-3.6.0.min.js"></script>
-<script>
-//============= NUMBER VALIDATION =============
-function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : evt.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-}
-//================================== NOTIFY  ======================================
-$(document).ready(function() {
-<?php if (!empty($this->session->flashdata('emessage'))) { ?>
- var fail_message = '<?php echo $this->session->flashdata('emessage')?>';
- loadErrorNotify(fail_message);
-<?php  } ?>
-
-<?php  if (!empty($this->session->flashdata('validationemessage'))) {
-        $valid_errors = $this->session->flashdata('validationemessage');
-        $valid_errors = substr($valid_errors, 0, -1); ?>
-loadErrorNotify("<?=$valid_errors?>");
-<?php
-    } ?>
-
-<?php if (!empty($this->session->flashdata('smessage'))) { ?>
-  var succ_message = '<?php echo $this->session->flashdata('smessage');?>';
-  loadSuccessNotify(succ_message);
- <?php  } ?>
-
-});
-//================================== SUCCESS NOTIFY  ======================================
-
-function loadSuccessNotify(succ_message){
-  notifySuccess(succ_message);
-}
-//================================== FAIL NOTIFY  ======================================
-    function loadErrorNotify(message){
-       notifyError(message);
-    }
-
-  $(".mob_title").click(function() {
-    if (window.matchMedia('(max-width: 991px)').matches) {
-      $(this).next("ul").slideToggle()();
-    }
-  });
-
-  $(".searchshow").click(function() {
-    $('.mobiledisplay').slideToggle()();
-  });
-
-  function pro_change(obj) {
-    var img2 = $(obj).attr("img2");
-    $(obj).attr("src", img2);
-  }
-
-
-  function pro_default(obj) {
-    var img = $(obj).attr("img");
-    $(obj).attr("src", img);
-  }
-
-
-  $(".carousel").carousel({
-    interval: 3000
-  });
-
-  //scroll slides on swipe for touch enabled devices
-  $(".carousel").on("touchstart", function(event) {
-    var yClick = event.originalEvent.touches[0].pageY;
-    $(this).one("touchmove", function(event) {
-      var yMove = event.originalEvent.touches[0].pageY;
-      if (Math.floor(yClick - yMove) > 1) {
-        $(".carousel").carousel("next");
-      } else if (Math.floor(yClick - yMove) < -1) {
-        $(".carousel").carousel("prev");
-      }
-    });
-    $(".carousel").on("touchend", function() {
-      $(this).off("touchmove");
-    });
-  });
-</script>
-
-<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i> </a>
-<!-- Base URL -->
-<script type="text/javascript">
-var base_url = "<?=base_url()?>"
-var api_key = "<?=API_KEY?>"
-</script>
-<!-- Razorpay js -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- Alert Notification js -->
-<script src="<?=base_url()?>assets/frontend/customJS/notificationMessage.js"></script>
-<!-- Login Signup js -->
-<script src="<?=base_url()?>assets/frontend/customJS/loginSignup.js"></script>
-<!-- Cart functions js -->
-<script src="<?=base_url()?>assets/frontend/customJS/cartOfflineOnline.js"></script>
-<!-- Wishlist js -->
-<script src="<?=base_url()?>assets/frontend/customJS/wishlist.js"></script>
-<!-- Promocode js -->
-<script src="<?=base_url()?>assets/frontend/customJS/promoCode.js"></script>
-<!-- Place Order js -->
-<script src="<?=base_url()?>assets/frontend/customJS/placeOrder.js"></script>
-<!-- // - mixed js  -->
-<script src="<?=base_url()?>assets/frontend/customJS/mixed.js"></script>
-
-<!-- popper min js -->
-<script src="<?=base_url()?>assets/frontend/js/popper.min.js"></script>
-<!-- Latest compiled and minified Bootstrap -->
-<script src="<?=base_url()?>assets/frontend/bootstrap/js/bootstrap.min.js"></script>
-<!-- owl-carousel min js  -->
-<script src="<?=base_url()?>assets/frontend/owlcarousel/js/owl.carousel.min.js"></script>
-<!-- magnific-popup min js  -->
-<script src="<?=base_url()?>assets/frontend/js/magnific-popup.min.js"></script>
-<!-- waypoints min js  -->
-<script src="<?=base_url()?>assets/frontend/js/waypoints.min.js"></script>
-<!-- parallax js  -->
-<script src="<?=base_url()?>assets/frontend/js/parallax.js"></script>
-<!-- countdown js  -->
-<script src="<?=base_url()?>assets/frontend/js/jquery.countdown.min.js"></script>
-<!-- imagesloaded js -->
-<script src="<?=base_url()?>assets/frontend/js/imagesloaded.pkgd.min.js"></script>
-<!-- isotope min js -->
-<script src="<?=base_url()?>assets/frontend/js/isotope.min.js"></script>
-<!-- jquery.dd.min js -->
-<script src="<?=base_url()?>assets/frontend/js/jquery.dd.min.js"></script>
-<!-- slick js -->
-<script src="<?=base_url()?>assets/frontend/js/slick.min.js"></script>
-<!-- elevatezoom js -->
-<script src="<?=base_url()?>assets/frontend/js/jquery.elevatezoom.js"></script>
-<!-- scripts js -->
-<script src="<?=base_url()?>assets/frontend/js/scripts.js"></script>
-<script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
-<!-- on load popup -->
-<script>
-$(window).on('load',function(){
-  var pageURL = $(location).attr("href");
-  if(pageURL==base_url){
-    var visited = localStorage.getItem('visited');
-    const now = new Date();
-    if(visited===null){
-      const newD = now.getTime() + 1440*60000;// local storage set with plus 24 hours
-	     localStorage.setItem('visited', newD)
-      $('#onload-popup-my').modal('show')
-    }else{
-    if(now.getTime() > visited){
-    const newD = now.getTime() + 1440*60000;// local storage set with plus 24 hours
-     localStorage.setItem('visited', newD)
-    $('#onload-popup-my').modal('show')
-  }
-  }
-}
-});
-</script>
 
 </body>
+
 
 </html>

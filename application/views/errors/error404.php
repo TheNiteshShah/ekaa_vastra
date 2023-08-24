@@ -1,20 +1,12 @@
-
-<!-- START MAIN CONTENT -->
-<div class="main_content">
-
-<!-- START 404 SECTION -->
-<div class="section">
-	<div class="error_wrap">
-    	<div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-6 col-md-10 order-lg-first mt-5 mb-5">
-                	<div class="text-center">
-                        <div class="error_txt">404</div>
-                        <h5 class="mb-2 mb-sm-3">oops! The page you requested was not found!</h5>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <div class="row align-items-center height-100vh text-center">
+        <div class="col-lg-8 m-auto">
+            <p class="mb-50"><img src="<?= base_url() ?>assets/frontend/imgs/theme/404.png" alt="" class="hover-up"></p>
+            <h2 class="mb-30">Page Not Found</h2>
+            <p class="font-lg text-grey-700 mb-30">
+                The link you clicked may be broken or the page may have been removed.<br> visit the <a href="<?= base_url() ?>"> <span> Homepage</span></a> or <a href="page-contact.html"><span>Contact us</span></a> about the problem
+            </p>
+            <a class="btn btn-default submit-auto-width font-xs hover-up" href="<?= base_url() ?>">Back To Home Page</a>
         </div>
     </div>
 </div>
-<!-- END 404 SECTION -->

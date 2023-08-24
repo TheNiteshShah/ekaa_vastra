@@ -1,437 +1,498 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
+
 <head>
-  <!-- Meta -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="Anil z" name="author">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- SITE TITLE -->
-  <title>Tiara</title>
-  <!-- Favicon Icon -->
-  <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>assets/frontend/images/fav.png">
-  <!-- Animation CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/animate.css">
-  <!-- 4.6 Bootstrap min CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/bootstrap/css/bootstrap.min.css">
-  <!-- 5.0 Bootstrap min CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
-  <!-- Icon Font CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/all.min.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/ionicons.min.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/themify-icons.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/linearicons.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/flaticon.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/simple-line-icons.css">
-  <!--- owl carousel CSS-->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/owlcarousel/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/owlcarousel/css/owl.theme.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/owlcarousel/css/owl.theme.default.min.css">
-  <!-- Magnific Popup CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/magnific-popup.css">
-  <!-- Slick CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/slick.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/slick-theme.css">
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/style.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/responsive.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
-  <link rel="stylesheet" href="<?=base_url()?>assets/frontend/css/jquery-ui.css">
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1KS0D9189"></script> <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-J1KS0D9189'); </script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '225405823602309');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=225405823602309&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <meta charset="utf-8">
+    <title>Ekaa Vastra</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/frontend/imgs/theme/favicon.png">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/frontend/css/maind134.css?v=3.4">
+
 </head>
+
 <body>
-  <?	$headerMiniCart = [];
-  $this->load->library('custom/Cart');
-  if (!empty($this->session->userdata('user_data'))) {
-      $headerMiniCart = $this->cart->ViewCartOnline();
-  } else {
-      $headerMiniCart = $this->cart->ViewCartOffline();
-  }
-  ?>
-<style>
-@media only screen and (max-width: 780px) {
-.mob-show{
-display: flex !important;
-}
-}
-</style>
-<!-- Home Popup Section -->
-<? $popup_data = $this->db->get_where('tbl_popup_image', array('is_active = ' => 1))->result();
-if(!empty($popup_data)){
-?>
-<div class="modal fade subscribe_popup" id="onload-popup-my" tabindex="-1" role="dialog" style="overflow: hidden;" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered mediadevice" role="document" style="margin-top:85px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="ion-ios-close-empty"></i></span>
-                </button>
-                <div class="row no-gutters">
-                    <div class="col-sm-5">
-                    	<div class="background_bg h-100" data-img-src="<?=base_url().$popup_data[0]->image?>"></div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="popup_content">
-                            <div class="popup-text">
-                                <?=$popup_data[0]->text;?>
-                            </div>
-                            <form method="POST" action="<?=base_url()?>Home/subscribe_to_popup" enctype="multipart/form-data">
-                            	<div class="form-group">
-                                	<input name="name" required type="text" class="form-control rounded-0" placeholder="Enter Your Name">
-                                </div>
-                            	<div class="form-group">
-                                	<input name="phone" required type="text" maxlength="10" minlength="10" onkeypress="return isNumberKey(event)" class="form-control rounded-0" placeholder="Enter Your Mobile Number">
-                                </div>
-                                <div class="form-group">
-                                	<input name="email" type="email" class="form-control rounded-0" required placeholder="Enter Your Email">
-                                </div>
-                                <div class="form-group">
-                                	<button class="btn btn-fill-line btn-block text-uppercase rounded-0" title="Subscribe" type="submit">Subscribe</button>
-                                </div>
-                            </form>
+    <!-- Modal -->
+    <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('<?= base_url() ?>assets/frontend/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-    	</div>
+        </div>
     </div>
-</div>
-<?}?>
-<!-- End Screen Load Popup Section -->
-  <!-- =================================== Start login Popup Section ============================================-->
-  <div class="modal fade subscribe_popup" id="onload-popup1" tabindex="-1" role="dialog" aria-hidden="true" style="top: 13%;">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="row no-gutters">
-            <div class="col-sm-12">
-              <div class="popup_content pl-0 pr-0 pt-0">
-                <div class="row text-left">
-                  <div class="col-sm-12">
-                    <?$offer_data = $this->db->get_where('tbl_offer', array('is_active'=> 1))->result();
-                    if (!empty($offer_data)) {
-                        ?>
-                    <img src="<?=base_url().$offer_data[0]->image?>" alt="Offer">
-                    <?}?>
-                  </div>
-                </div>
-                <div class="popup-text" style="padding-left: 50px;padding-right: 50px;">
-                  <div class="heading_s1">
-                    <h6 style="margin-top:10px;">LOG IN TO CONTINUE</h6>
-                  </div>
-                </div>
-                <form method="post" action="javascript:void(0)" id="loginForm" enctype="multipart/form-data" style="padding-left: 50px;padding-right: 50px;">
-                  <div class="form-group">
-                    <input name="number" required type="text" id="loginPhone" class="form-control rounded-0" onkeypress="return isNumberKey(event)" maxlength="10" minlength="10" placeholder="Enter Your Number">
-                    <input type="hidden" id="loginverify" value="0" name="loginverify" />
-                  </div>
-                  <div class="form-group hidden-OTP-field">
-                    <input name="OTP" id="loginOTP" class="form-control rounded-0" type="text" onkeypress="return isNumberKey(event)" maxlength="6" minlength="6" placeholder="Enter OTP">
-                  </div>
-                  <div class="container">
+
+    <!-- Quick view -->
+    <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
                     <div class="row">
-                      <p style="margin-bottom: 3px;">By Continuing, I agree to the <a href="term-condition.html" style="color: #FF324D;">Terms of use</a> & <a href="privacy_policy.html" style="color: #FF324D;">Privacy Policy</a></p>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-fill-out btn-block text-uppercase rounded-0" type="submit">Submit</button>
-                  </div>
-                  <div class="text-center"><span class="mt-3">New Here?<a href="javascript:;" data-target="#onload-popup2" data-toggle="modal" data-dismiss="modal" style="color:#ff324d;">&nbsp;Sign Up</a></span>
-                  </div>
-                  <!-- <p style="margin-bottom: 0px;">Or</p>
-                  <div class="text-center"><span class="mt-3"><a href="<?=base_url()?>Home/reseller_register" style="color:#ff324d;">Sign up as a Reseller</a></span>
-                  </div> -->
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- =================================== END login Popup Section ============================================-->
-  <!-- =================================== Start Sign up Popup Section ============================================-->
-  <div class="modal fade subscribe_popup signupmodal" id="onload-popup2" tabindex="-1" role="dialog" aria-hidden="true" style="top: 13%;overflow-y:scroll;margin-bottom: 30px;">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="row no-gutters">
-            <div class="col-sm-12">
-              <div class="popup_content pl-0 pr-0 pt-0">
-                <div class="row text-left">
-                  <div class="col-sm-12">
-                    <?$offer_data = $this->db->get_where('tbl_offer', array('is_active'=> 1))->result();
-                    if (!empty($offer_data)) {
-                        ?>
-                    <img src="<?=base_url().$offer_data[0]->image?>" alt="Offer">
-                    <?}?>
-                  </div>
-                </div>
-                <div class="popup-text" style="padding-left: 50px;padding-right: 50px;">
-                  <div class="heading_s1 mt-1">
-                    <h6>SIGN UP TO CONTINUE</h6>
-                  </div>
-                </div>
-                <form method="post" action="javascript:void(0)" id="registerForm" enctype="multipart/form-data" style="padding-left: 50px;padding-right: 50px;">
-                  <div class="row">
-                    <div class="form-group col-lg-6">
-                      <input name="fname" required type="text" id="signinFname" class="form-control rounded-0" placeholder="First Name">
-                    </div>
-                    <div class="form-group col-lg-6">
-                      <input name="lname" required type="text" id="signinLname" class="form-control rounded-0" placeholder="Last Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input name="phone" required type="text" id="signinPhone" class="form-control rounded-0" placeholder="Enter Phone Number"  onkeypress="return isNumberKey(event)" maxlength="10" minlength="10">
-                    <input type="hidden" id="signinverify" value="0" name="signinverify" />
-                    <input type="hidden" id="signintype" value="0" name="signinverify" />
-                  </div>
-                  <div class="form-group hidden-OTP-field">
-                    <input name="otp" type="text" id="signinOTP" class="form-control rounded-0" placeholder="Enter OTP">
-                  </div>
-                  <div class="container">
-                    <div class="row">
-                      <p style="margin-bottom: 3px;">By Continuing, I agree to the <a href="term-condition.html" style="color: #FF324D;">Terms of use</a> & <a href="privacy_policy.html" style="color: #ff324d;">Privacy Policy</a></p>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-fill-out btn-block text-uppercase rounded-0" type="submit">Submit</button>
-                  </div>
-                  <div class="text-center"><span class="mt-3">Already have an Account?<a href="#" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal" style="color:#ed6f36;">&nbsp;Log In</a></span>
-                  </div>
-                  <!-- <p style="margin-bottom: 0px;">Or</p>
-                  <div class="text-center"><span class="mt-3"><a href="<?=base_url()?>Home/reseller_register" style="color:#ff324d;">Sign up as a Reseller</a></span>
-                  </div> -->
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- =================================== END Sign up Popup Section ============================================-->
-  <!-- ======================================= START HEADER  =============================================================-->
-  <header class="header_wrap" style="position: sticky; top: 0; z-index: 99999;box-shadow: 5px 1px 5px grey;">
-    <div class="middle-header dark_skin">
-      <div class="container-fluid">
-        <button class="navbar-toggler side_navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarSidetoggle" aria-expanded="false" style="float: left;">
-          <span class="ion-android-menu"></span>
-        </button>
-        <div class="nav_block ">
-          <a class="desktoplogo" href="<?=base_url()?>" style="margin-left:-10px;">
-            <img class="logo_light d-block " src="<?=base_url()?>assets/frontend/images/logo2.png" alt="Tiara Logo" width="40%">
-          </a>
-          <a class="mobilelogo" href="<?=base_url()?>" style="display: flex;justify-content: center;">
-            <img class="logo_light d-block" src="<?=base_url()?>assets/frontend/images/logo2.png" alt="logo" width="45%">
-          </a>
-          <div class="product_search_form radius_input search_form_btn" style="margin-left:-100px;">
-            <form action="<?=base_url()?>Home/search" method="GET" enctype="multipart/form-data">
-              <div class="input-group">
-                <input class="form-control" placeholder="Search Product..." required="" name="search" type="text" style="height: 35px;">
-                <button type="submit" class="search_btn3" style="padding-top: 8px;"><i class="linearicons-magnifier" style="color:grey; font-size: 25px;"></i></button>
-              </div>
-            </form>
-          </div>
-          <!-- <div class="text-center ktm">
-            <a style="padding:4px 14px" class="btn btn-fill-out rounded-0 " href="#" data-animation="slideInLeft" data-animation-delay="1.5s">TRACK ORDER</a>
-          </div> -->
-          <ul class="navbar-nav attr-nav align-items-center" id="headerCount">
-            <li style="font-size: 12px;padding: 0px 10px;" class="dropdown cart_dropdown topicon">
-              <?if(empty($this->session->userdata('user_data'))){?>
-                <a ref="#onload-popup1" data-toggle="modal" data-target="#onload-popup1"class="nav-link cart_trigger" style="padding:0px 10px;">
-                  <i class="linearicons-user"></i></a>
-                	<a href="#onload-popup1" data-toggle="modal" data-target="#onload-popup1">&nbsp;Login</a>
-                <?}else{?>
-                  <a href="#" class="nav-link cart_trigger" data-toggle="dropdown" style="padding:0px 10px;">
-                    <i class="linearicons-user"></i></a>
-                <?echo $this->session->userdata('name');
-                }?>
-              <div class="cart_box  dropdown-menu accountanimation" style="width: 40%;min-width: 150px;">
-                <ul class="cart_list">
-                  <?if(empty($this->session->userdata('user_data'))){?>
-                  <!-- <li> <a href="#onload-popup1" data-toggle="modal" data-target="#onload-popup1">Log In </a> </li> -->
-                  <?}else{?>
-                  <li> <a href="<?=base_url()?>Home/my_profile">My Account </a> </li>
-                  <li> <a href="<?=base_url()?>Home/my_profile/order">My Orders </a> </li>
-                  <li> <a href="<?=base_url()?>User/logout">Log Out </a> </li>
-                  <?}?>
-                </ul>
-              </div>
-            </li>
-            <li style="font-size: 12px;" class="searchshow onclick"><a href="#" class="nav-link" style="padding:0px 10px;"><i class="linearicons-magnifier" style="font-weight: bold;"></i></a><span class="sm_none">Search</span></li>
-            <?$wishcount = 0; $cartcount = 0;
-            if(!empty($this->session->userdata('user_data'))){
-              $wishcount = $this->db->get_where('tbl_wishlist', array('user_id = ' => $this->session->userdata('user_id'), 'user_type', $this->session->userdata('user_type')))->num_rows();
-              ?>
-            <li style="font-size: 12px;padding: 0px 10px;" class="topicon"><a href="<?=base_url()?>Home/my_wishlist" class="nav-link" style="padding:0px 10px;"><i class="linearicons-heart"></i><span class="wishlist_count"><?=$wishcount;?></span></a>Wishlist</li>
-            <?}else{?>
-              <li style="font-size: 12px;padding: 0px 10px;" class="topicon"><a href="javascript:;" class="nav-link" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal" style="padding:0px 10px;"><i class="linearicons-heart"></i><span class="wishlist_count"><?=$wishcount;?></span></a>Wishlist</li>
-              <?}?>
-            <li class="dropdown cart_dropdown topicon" style="position:inherit;font-size: 12px;padding-left:15px;">
-              <? if(!empty($this->session->userdata('user_data'))){
-              $cartcount = $this->db->get_where('tbl_cart', array('user_id = ' => $this->session->userdata('user_id'), 'user_type'=>$this->session->userdata('user_type')))->num_rows();
-            }else{
-              if(!empty($this->session->userdata('cart_data'))){
-              $cartcount = count($this->session->userdata('cart_data'));
-              }
-            }
-              ?>
-              <a class="nav-link cart_trigger" href="#" data-toggle="dropdown" style="padding:0px; padding-left: 3px;">
-              <i class="linearicons-bag2"></i><span class="cart_count"><?=$cartcount?></span></a> Bag
-              <!-- ======================= START WEB MINI CART ====================  -->
-              <div class="cart_box cart_right dropdown-menu dropdown-menu-right">
-                <?if(!empty($headerMiniCart['cart_data'])){?>
-                <ul class="cart_list">
-                  <?foreach($headerMiniCart['cart_data'] as $miniCart){?>
-                  <li>
-                    <a href="javascript:;" product_id="<?=base64_encode($miniCart['product_id'])?>" type_id="<?=base64_encode($miniCart['type_id'])?>" onclick="deleteCart(this)" class="item_remove"><i class="ion-close"></i></a>
-                    <a href="javascript:;"><img src="<?=$miniCart['image']?>" alt="cart_thumb1"><?=$miniCart['product_name']?></a>
-                    <span class="cart_quantity"> <?=$miniCart['quantity']?> x <span class="cart_amount"> <span class="price_symbole">₹</span></span><?=$miniCart['price']?></span>
-                  </li>
-                  <?}?>
-                </ul>
-                <div class="cart_footer">
-                  <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">₹</span></span><?=$headerMiniCart['sub_total']?></p>
-                  <p class="cart_buttons"><a href="<?=base_url()?>Home/my_bag" class="btn btn-fill-line view-cart"> View Bag</i></a></p>
-                </div>
-                <?}else{?>
-                    <img src="<?=base_url()?>assets/frontend/images/cart_empty.jpg" alt="Empty Cart" class="img-fluid">
-                  <?}?>
-              </div>
-              <!-- ======================= END WEB MINI CART ====================  -->
-            </li>
-            <!-- <li class="dropdown cart_dropdown" style="position:inherit;font-size: 12px;padding: 0px 10px;"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"  style="padding:0px; padding-left: 8px;"><i class="linearicons-truck" style="font-size :22px!important;"></i></a> Track</li> -->
-            <!-- <li class="dropdown cart_dropdown"style="position:inherit;font-size: 12px;padding: 0px 10px;"><a href="#" class="nav-link" style="padding:0px"><i class="linearicons-truck" ></i></a>Track Order</li> -->
-            <!-- <li style="margin-top: -5px;"><a href="#" class="nav-link" style="padding:0px 10px;"><i class="linearicons-truck" ></i></a>Track Order</li> -->
-          </ul>
-        </div>
-      </div>
-      <!-- //==================================== START MOBILE SEARCH =============================== -->
-      <div class="container-fluid mobiledisplay">
-        <form action="<?=base_url()?>Home/search" method="GET" enctype="multipart/form-data">
-        <div class="input-group">
-          <input class="form-control" name="search" placeholder="Search Product..." required="" type="text" style="height: 35px;">
-          <button type="submit" class="search_btn3"><i class="linearicons-magnifier" style="color:grey;"></i></button>
-        </div>
-      </form>
-      </div>
-      <!-- //==================================== END MOBILE SEARCH =============================== -->
-    </div>
-    <!-- //==================================== START WEB HEADER =============================== -->
-    <div class="bottom_header dark_skin main_menu_uppercase mob2 ">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12 col-md-8 col-sm-6 col-9">
-            <nav class="navbar navbar-expand-lg" style="height:40px;">
-              <div class="collapse navbar-collapse mobile_side_menu justify-content-center" id="navbarSidetoggle">
-                <ul class="navbar-nav navv">
-                  <li style="padding:10px 10px; display: none;">User Name</li>
-                  <li class="dropdown mobdrop" style="padding-left:5px;">
-                    <a class="nav-link  active" href="<?=base_url()?>">Home</a>
-                  </li>
-                  <?php $i=1;
-                  $this->db->select('*');
-                  $this->db->from('tbl_category');
-                  $this->db->where('is_active', 1);
-                  $this->db->order_by('seq', 'asc');
-                  $category_data= $this->db->get();
-                   foreach ($category_data->result() as $category) {
-                  $this->db->select('*');
-                  $this->db->from('tbl_subcategory');
-                  $this->db->where('category_id', $category->id);
-                  $this->db->where('is_active', 1);
-                  $subcategory_data= $this->db->get(); ?>
-                  <li class="dropdown dropdown-mega-menu mobdrop" style="padding-left:5px;">
-                    <a class="dropdown-toggle nav-link" href="<?=base_url()?>Home/all_products/<?=$category->url?>/1" data-toggle="dropdown"><?=$category->name?></a>
-                    <div class="dropdown-menu">
-                      <ul class="mega-menu d-lg-flex">
-                        <li class="mega-menu-col col-lg-9">
-                          <ul class="d-lg-flex">
-                            <li class="mega-menu-col col-lg-12">
-                              <ul>
-                                <?php $i=1;
-                                foreach ($subcategory_data->result() as $subcat) { ?>
-                                <li><a class="dropdown-item nav-link nav_item" href="<?=base_url()?>Home/all_products/<?=$subcat->url?>/1"><?=$subcat->name?> </a></li>
-                                <?php $i++; } ?>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="mega-menu-col col-lg-3">
-                          <div class="header_banner">
-                            <div class="header_banner_content">
-                              <div class="shop_banner">
-                                <div class="banner_img ">
-                                  <img src="<?=base_url().$category->image?>" alt="shop_banner2" />
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="detail-gallery">
+                                <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                                <!-- MAIN SLIDES -->
+                                <div class="product-image-slider">
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-2.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-1.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-3.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-4.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-5.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-6.jpg" alt="product image">
+                                    </figure>
+                                    <figure class="border-radius-10">
+                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-7.jpg" alt="product image">
+                                    </figure>
                                 </div>
-                              </div>
+                                <!-- THUMBNAILS -->
+                                <div class="slider-nav-thumbnails pl-15 pr-15">
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-3.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-4.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-5.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-6.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-7.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-8.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-9.jpg" alt="product image"></div>
+                                </div>
                             </div>
-                          </div>
-                        </li>
-                      </ul>
+                            <!-- End Gallery -->
+                            <div class="social-icons single-share">
+                                <ul class="text-grey-5 d-inline-block">
+                                    <li><strong class="mr-10">Share this:</strong></li>
+                                    <li class="social-facebook"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
+                                    <li class="social-twitter"> <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
+                                    <li class="social-instagram"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a></li>
+                                    <li class="social-linkedin"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="detail-info">
+                                <h3 class="title-detail mt-30">Colorful Pattern Shirts HD450</h3>
+                                <div class="product-detail-rating">
+                                    <div class="pro-details-brand">
+                                        <span> Brands: <a href="shop-grid-right.html">Bootstrap</a></span>
+                                    </div>
+                                    <div class="product-rate-cover text-end">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:90%">
+                                            </div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (25 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix product-price-cover">
+                                    <div class="product-price primary-color float-left">
+                                        <ins><span class="text-brand">$120.00</span></ins>
+                                        <ins><span class="old-price font-md ml-15">$200.00</span></ins>
+                                        <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                    </div>
+                                </div>
+                                <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                                <div class="short-desc mb-30">
+                                    <p class="font-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi,!</p>
+                                </div>
+
+                                <div class="attr-detail attr-color mb-15">
+                                    <strong class="mr-10">Color</strong>
+                                    <ul class="list-filter color-filter">
+                                        <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
+                                        <li><a href="#" data-color="Yellow"><span class="product-color-yellow"></span></a></li>
+                                        <li class="active"><a href="#" data-color="White"><span class="product-color-white"></span></a></li>
+                                        <li><a href="#" data-color="Orange"><span class="product-color-orange"></span></a></li>
+                                        <li><a href="#" data-color="Cyan"><span class="product-color-cyan"></span></a></li>
+                                        <li><a href="#" data-color="Green"><span class="product-color-green"></span></a></li>
+                                        <li><a href="#" data-color="Purple"><span class="product-color-purple"></span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="attr-detail attr-size">
+                                    <strong class="mr-10">Size</strong>
+                                    <ul class="list-filter size-filter font-small">
+                                        <li><a href="#">S</a></li>
+                                        <li class="active"><a href="#">M</a></li>
+                                        <li><a href="#">L</a></li>
+                                        <li><a href="#">XL</a></li>
+                                        <li><a href="#">XXL</a></li>
+                                    </ul>
+                                </div>
+                                <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                <div class="detail-extralink">
+                                    <div class="detail-qty border radius">
+                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                        <span class="qty-val">1</span>
+                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                    </div>
+                                    <div class="product-extra-link2">
+                                        <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                    </div>
+                                </div>
+                                <ul class="product-meta font-xs color-grey mt-50">
+                                    <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                                    <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">Women</a>, <a href="#" rel="tag">Dress</a> </li>
+                                    <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span></li>
+                                </ul>
+                            </div>
+                            <!-- Detail Info -->
+                        </div>
                     </div>
-                  </li>
-                  <?php $i++;} ?>
-                  <li class="dropdown mobdrop" style="padding-left:5px;">
-                    <a class="nav-link" href="<?=base_url()?>Home/all_blogs">Blog</a>
-                  </li>
-                  <li class=" mobdrop" style="padding-left:5px;"><a class="nav-link nav_item" href="<?=base_url()?>Home/contact">Contact</a></li>
-                  <?if(empty($this->session->userdata('user_data'))){?>
-                  <div class="justify-content-around mt-3 mob-show d-none">
-                    <a href="javascript:;" id="sup" data-target="#onload-popup2" data-toggle="modal" data-bs-dismiss="modal" style="color:#ff324d;"><button class="btn btn-fill-out btn-addtocart">Sign Up</button></a>
-                    	<a href="#onload-popup1" id="log" data-toggle="modal" data-target="#onload-popup1"><button  class="btn btn-fill-out btn-addtocart">Login</button></a>
-                  </div>
-                  <?}else{?>
-                  <div class="justify-content-center mt-3 mob-show d-none">
-                    <a href="<?=base_url()?>User/logout"><button class="btn btn-fill-out btn-addtocart">Logout</button></a>
-                  </div>
-                  <?}?>
-                </ul>
-              </div>
-            </nav>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <!-- //==================================== END WEB HEADER =============================== -->
-  </header>
-  <!-- ============================== Start Mobile Category ======================================================= -->
-  <div style="display: flex;overflow: auto;margin-top: 10px;" class="topiconnav">
-    <?php $i=1; foreach ($category_data->result() as $category) {?>
-    <div class="col-2 imgwidthmanage p-0 text-center">
-      <a href="<?=base_url()?>Home/all_products/<?=$category->url?>/1">
-        <img src="<?=base_url().$category->image2?>" alt="" style="border-radius: 50%;">
-        <p style="font-size:9px;" class="mb-0"><?=$category->name?></p>
-      </a>
+
+
+    <header class="header-area header-style-5 header-height-2">
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info">
+                            <ul>
+                                <li><i class="fi-rs-smartphone"></i> <a href="#">(+01) - 2345 - 6789</a></li>
+                                <li><i class="fi-rs-marker"></i><a href="page-contact.html">Our location</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4">
+                        <div class="text-center">
+                            <div id="news-flash" class="d-inline-block">
+                                <ul>
+                                    <li>Get great devices up to 50% off <a href="shop-grid-right.html">View details</a></li>
+                                    <li>Supper Value Deals - Save more with coupons</li>
+                                    <li>Trendy 25silver jewelry, save up 35% off today <a href="shop-grid-right.html">Shop now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info header-info-right">
+                            <ul>
+                                <!-- <li>
+                                    <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
+                                    <ul class="language-dropdown">
+                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-fr.png" alt="">Français</a></li>
+                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
+                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
+                                    </ul>
+                                </li> -->
+                                <li><i class="fi-rs-user"></i><a href="page-login-register.html">Log In / Sign Up</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =============================== START WEB HEADER ====================================================== -->
+
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1">
+                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="logo"></a>
+                    </div>
+                    <div class="header-right">
+                        <div class="search-style-2">
+                            <form action="#">
+                                <input type="text" placeholder="Search for items...">
+                            </form>
+                        </div>
+                        <div class="header-action-right">
+                            <div class="header-action-2">
+                                <? $cartCount = 0;
+                                $wishCount = 0;
+                                if (!empty($this->session->userdata('user_data'))) {
+                                    $cartCount = $this->db->get_where('tbl_cart', array('user_id = ' => $this->session->userdata('user_id'), 'user_type' => $this->session->userdata('user_type')))->num_rows();
+                                    $wishCount = $this->db->get_where('tbl_wishlist', array('user_id = ' => $this->session->userdata('user_id'), 'user_type', $this->session->userdata('user_type')))->num_rows();
+                                } else {
+                                    if (!empty($this->session->userdata('cart_data'))) {
+                                        $cartCount = count($this->session->userdata('cart_data'));
+                                    }
+                                } ?>
+                                <div class="header-action-icon-2">
+                                    <? if (!empty($this->session->userdata('user_data'))) { ?>
+                                        <a href="<?= base_url() ?>Home/my_wishlist">
+                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                            <span class="pro-count blue"><?= $wishCount ?></span>
+                                        </a>
+                                    <? } else { ?>
+                                        <a href="#">
+                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                            <span class="pro-count blue"><?= $wishCount ?></span>
+                                        </a>
+                                    <?  } ?>
+                                </div>
+                                <div class="header-action-icon-2">
+                                    <a class="mini-cart-icon" href="shop-cart.html">
+                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-cart.svg">
+                                        <span class="pro-count blue"><?= $cartCount ?></span>
+                                    </a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                        <ul>
+                                            <li>
+                                                <div class="shopping-cart-img">
+                                                    <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-3.jpg"></a>
+                                                </div>
+                                                <div class="shopping-cart-title">
+                                                    <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
+                                                    <h4><span>1 × </span>$800.00</h4>
+                                                </div>
+                                                <div class="shopping-cart-delete">
+                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="shopping-cart-img">
+                                                    <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-2.jpg"></a>
+                                                </div>
+                                                <div class="shopping-cart-title">
+                                                    <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
+                                                    <h4><span>1 × </span>$3200.00</h4>
+                                                </div>
+                                                <div class="shopping-cart-delete">
+                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="shopping-cart-footer">
+                                            <div class="shopping-cart-total">
+                                                <h4>Total <span>$4000.00</span></h4>
+                                            </div>
+                                            <div class="shopping-cart-button">
+                                                <a href="shop-cart.html" class="outline">View cart</a>
+                                                <a href="shop-checkout.html">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom header-bottom-bg-color sticky-bar">
+            <div class="container">
+                <div class="header-wrap header-space-between position-relative">
+                    <div class="logo logo-width-1 d-block d-lg-none">
+                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="Ekaa Vastra"></a>
+                    </div>
+                    <div class="header-nav d-none d-lg-flex">
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                            <nav>
+                                <ul>
+                                    <li><a class="" href="<?= base_url() ?>">Home</a></li>
+                                    <?
+                                    $category_data = $this->db->select('id,name,seq,image,image2,url')->order_by('seq', 'asc')->get_where('tbl_category', array('is_active' => 1))->result();
+                                    foreach ($category_data as $category) {
+                                        $sub_category = $this->db->select('id,name,url')->get_where('tbl_subcategory', array('is_active' => 1, 'category_id' => $category->id))->result();
+                                    ?>
+                                        <li class="position-static"><a href="<?= base_url() ?>Home/all_products/<?= $category->url ?>/1" data-toggle="dropdown"><?= $category->name ?><i class="fi-rs-angle-down"></i></a>
+                                            <ul class="mega-menu">
+                                                <li class="sub-mega-menu sub-mega-menu-width-22">
+                                                    <ul>
+                                                        <? foreach ($sub_category as $index => $subcategory) {
+                                                            if ($index % 2 == 0) { ?>
+                                                                <li><a href="<?= base_url() ?>Home/all_products/<?= $subcategory->url ?>/1"><?= $subcategory->name ?></a></li>
+                                                        <? }
+                                                        } ?>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="sub-mega-menu sub-mega-menu-width-22">
+                                                    <ul>
+                                                        <? foreach ($sub_category as $index => $subcategory) {
+                                                            if ($index % 2 != 0) { ?>
+                                                                <li><a href="<?= base_url() ?>Home/all_products/<?= $subcategory->url ?>/1"><?= $subcategory->name ?></a></li>
+                                                        <? }
+                                                        } ?>
+                                                    </ul>
+                                                </li>
+                                                <li class="sub-mega-menu sub-mega-menu-width-34">
+                                                    <div class="menu-banner-wrap">
+                                                        <a href="shop-product-right.html"><img src="<?= base_url() . $category->image ?>" alt="<?= $category->name ?>"></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    <? } ?>
+                                    <li>
+                                        <a href="<?= base_url() ?>Home/contact">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
+                    <div class="header-action-right d-block d-lg-none">
+                        <div class="header-action-2">
+                            <div class="header-action-icon-2">
+                                <? if (!empty($this->session->userdata('user_data'))) { ?>
+                                    <a href="<?= base_url() ?>Home/my_wishlist">
+                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                        <span class="pro-count white"><?= $wishCount ?></span>
+                                    </a>
+                                <? } else { ?>
+                                    <a href="#">
+                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                        <span class="pro-count white"><?= $wishCount ?></span>
+                                    </a>
+                                <?  } ?>
+                            </div>
+                            <div class="header-action-icon-2">
+                                <a class="mini-cart-icon" href="shop-cart.html2">
+                                    <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-cart.svg">
+                                    <span class="pro-count white"><?= $cartCount ?></span>
+                                </a>
+                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                    <ul>
+                                        <li>
+                                            <div class="shopping-cart-img">
+                                                <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-3.jpg"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
+                                                <h3><span>1 × </span>$800.00</h3>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shopping-cart-img">
+                                                <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-4.jpg"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
+                                                <h3><span>1 × </span>$3500.00</h3>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="shopping-cart-footer">
+                                        <div class="shopping-cart-total">
+                                            <h4>Total <span>$383.00</span></h4>
+                                        </div>
+                                        <div class="shopping-cart-button">
+                                            <a href="shop-cart.html">View cart</a>
+                                            <a href="shop-checkout.html">Checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-action-icon-2 d-block d-lg-none">
+                                <div class="burger-icon burger-icon-white">
+                                    <span class="burger-icon-top"></span>
+                                    <span class="burger-icon-mid"></span>
+                                    <span class="burger-icon-bottom"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- =============================== END WEB HEADER ====================================================== -->
+    <!-- =============================== START MOBILE HEADER ====================================================== -->
+
+    <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="mobile-header-logo">
+                    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="logo"></a>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-search search-style-3 mobile-header-border">
+                    <form action="#">
+                        <input type="text" placeholder="Search for items…">
+                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <nav>
+                        <ul class="mobile-menu">
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url() ?>">Home</a> </li>
+                            <? foreach ($category_data as $category) {
+                                $sub_category = $this->db->select('id,name,url')->get_where('tbl_subcategory', array('is_active' => 1, 'category_id' => $category->id))->result();
+                            ?>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url() ?>Home/all_products/<?= $category->url ?>/1"><?= $category->name ?></a>
+                                    <ul class="dropdown">
+                                        <? foreach ($sub_category as $index => $subcategory) { ?>
+                                            <li><a href="<?= base_url() ?>Home/all_products/<?= $subcategory->url ?>/1"><?= $subcategory->name ?></a></li>
+                                        <? } ?>
+                                    </ul>
+                                </li>
+                            <? } ?>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="mobile-header-info-wrap mobile-header-border">
+                    <div class="single-mobile-header-info mt-30">
+                        <a href="<?= base_url() ?>Home/contact"> Our location </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="page-login-register.html">Log In / Sign Up </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="#">(+01) - 2345 - 6789 </a>
+                    </div>
+                </div>
+                <div class="mobile-social-icon">
+                    <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
     </div>
-    <?}?>
-  </div>
-  <!-- ============================== End Mobile Category ======================================================= -->
-  <!-- =============================== END HEADER ================================================================-->
-<script>
-$( "#sup,#log" ).on( "click", function() {
-  $('#navbarSidetoggle').removeClass('show');
-});
-</script>
+    <!-- =============================== END MOBILE HEADER ====================================================== -->
