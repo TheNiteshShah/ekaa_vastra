@@ -22,37 +22,18 @@ class Home extends CI_Controller
     {
 
         $data['slider_data'] = $this->db->select('id,link,image,image2')->order_by('id', 'desc')->get_where('tbl_slider', array('is_active' => 1))->result();
-
-        $this->db->select('*');
-        $this->db->from('tbl_shop_by_category');
-        $this->db->where('is_active', 1);
-        $data['shop_by_category_data'] = $this->db->get();
+        $data['shop_by_category_data'] = $this->db->select('id,link,image,name')->order_by('id', 'desc')->get_where('tbl_shop_by_category', array('is_active' => 1))->result();
         $this->db->select('*');
         $this->db->from('tbl_banner');
         $this->db->where('is_active', 1);
         $data['banner_data'] = $this->db->get();
-        $this->db->select('*');
-        $this->db->from('tbl_product');
-        $this->db->where('is_active', 1);
-        $this->db->where('product_type !=', 2);
-        $this->db->where('trending', 1);
-        $data['trending_data'] = $this->db->get();
+        $data['trending_data'] = $this->db->select('*')->order_by('id', 'desc')->get_where('tbl_product', array('is_active' => 1, 'product_type !=' => 2, 'trending' => 1))->result();
+        $data['whats_data'] = $this->db->select('*')->order_by('rand()')->limit(15)->get_where('tbl_product', array('is_active' => 1, 'product_type !=' => 2))->result();
         $this->db->select('*');
         $this->db->from('tbl_testimonials');
         $this->db->where('is_active', 1);
         $data['testimonials_data'] = $this->db->get();
-        $this->db->select('*');
-        $this->db->from('tbl_blog');
-        $this->db->where('is_active', 1);
-        $this->db->limit(4);
-        $data['blog_data'] = $this->db->get();
-        $this->db->select('*');
-        $this->db->from('tbl_product');
-        $this->db->where('is_active', 1);
-        $this->db->where('product_type !=', 2);
-        $this->db->order_by('rand()');
-        $this->db->limit(15);
-        $data['whats_data'] = $this->db->get();
+        $data['blog_data'] = $this->db->select('*')->order_by('id', 'desc')->limit(4)->get_where('tbl_blog', array('is_active' => 1))->result();
         if (!empty($this->session->userdata('user_data'))) {
             $data['cart_data'] = $this->cart->ViewCartOnline();
         } else {
@@ -103,9 +84,9 @@ class Home extends CI_Controller
                 }
             }
             $data['filter_size'] = array_merge(array_unique($size));
-            $this->load->view('frontend/common/header2', $data);
+            $this->load->view('frontend/common/header', $data);
             $this->load->view('frontend/all_products');
-            $this->load->view('frontend/common/footer2');
+            $this->load->view('frontend/common/footer');
         } else {
             $this->session->set_flashdata('emessage', 'Product not found');
             redirect("/", "refresh");

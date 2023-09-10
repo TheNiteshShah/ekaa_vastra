@@ -76,7 +76,7 @@ class CI_Products
         $config['total_rows'] = $count;
         $config['per_page'] = $per_page;
         $config['num_links'] = 5;
-        $config['full_tag_open'] = '<ul class="pagination mt-3 justify-content-center pagination_style1">';
+        $config['full_tag_open'] = '<ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul>';
         $config['use_page_numbers'] = true;
         $config['next_link'] = 'First';
@@ -85,13 +85,13 @@ class CI_Products
         $config['last_link'] = 'Last';
         $config['last_tag_open'] = '<li class="last page">';
         $config['last_tag_close'] = '</li>';
-        $config['next_link'] = 'Next';
-        $config['next_tag_open'] = '<li class="page-item nextpage">';
+        $config['next_link'] = '<a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a>';
+        $config['next_tag_open'] = '<li class="page-item">';
         $config['next_tag_close'] = '</li>';
-        $config['prev_link'] = ' Previous';
-        $config['prev_tag_open'] = '<li class="page-item prevpage">';
+        $config['prev_link'] = ' <a class="page-link" href="#"><i class="fi-rs-angle-double-small-left"></i></a>';
+        $config['prev_tag_open'] = '<li class="page-item">';
         $config['prev_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="page-item active page-link"><a href="">';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="">';
         $config['cur_tag_close'] = '</a></li>';
         $config['num_tag_open'] = '<li class="page-item page-link">';
         $config['num_tag_close'] = '</li>';
