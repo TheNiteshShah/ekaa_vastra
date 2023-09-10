@@ -1,125 +1,124 @@
-<!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg_gray page-title-mini">
-  <div class="container"><!-- STRART CONTAINER -->
-    <div class="row align-items-center">
-      <div class="col-md-12">
+<main class="main">
+  <!-- =============================== START BREADCRUMB ====================================================== -->
+
+  <div class="page-header breadcrumb-wrap">
+    <div class="container">
+      <div class="breadcrumb">
         <? $cat_name = $this->db->get_where('tbl_category', array('id = ' => $product_data[0]->category_id))->result();
         $subcat_name = $this->db->get_where('tbl_subcategory', array('id = ' => $product_data[0]->subcategory_id))->result(); ?>
-        <ol class="breadcrumb justify-content-md-start">
-          <li class="breadcrumb-item"><a href="<?= base_url() ?>">Home</a></li>
-          <li class="breadcrumb-item"><a href="<?= base_url() ?>Home/all_products/<?= $cat_name[0]->url ?>/1"><?= $cat_name[0]->name ?></a></li>
-          <li class="breadcrumb-item"><a href="<?= base_url() ?>Home/all_products/<?= $subcat_name[0]->url ?>/1"><?= $subcat_name[0]->name ?></a></li>
-          <li class="breadcrumb-item active"><?= $product_data[0]->name ?></li>
-        </ol>
+        <a href="<?= base_url() ?>" rel="nofollow">Home</a> <span></span>
+        <a href="<?= base_url() ?>Home/all_products/<?= $cat_name[0]->url ?>/1" rel="nofollow"><?= $cat_name[0]->name ?></a> <span></span>
+        <a href="<?= base_url() ?>Home/all_products/<?= $subcat_name[0]->url ?>/1" rel="nofollow"><?= $subcat_name[0]->name ?></a>
+        <span></span> <?= $product_data[0]->name ?>
       </div>
     </div>
-  </div><!-- END CONTAINER-->
-</div>
-<!-- END SECTION BREADCRUMB -->
-<!-- START MAIN CONTENT -->
-<div class="main_content">
-  <!-- START SECTION SHOP -->
-  <div class="section pt-2">
+  </div>
+  <!-- =============================== END BREADCRUMB ====================================================== -->
+  <!--============================================ START MAIN CONTENT =========================================================-->
+  <?php $type_mrp = 0;
+  $type_spgst = 0;
+  $type_datas = $this->db->get_where('tbl_type', array('product_id = ' => $product_data[0]->id, 'is_active = ' => 1, 'color_active' => 1, 'size_active' => 1));
+  $type_data = $this->db->get_where('tbl_type', array('id = ' => $type_id))->result();
+  if ($product_data[0]->product_view == 3) {
+    if (!empty($this->session->userdata('user_type'))) {
+      if ($this->session->userdata('user_type') == 2) {
+        $type_mrp = $type_data[0]->reseller_mrp;
+        $type_spgst = $type_data[0]->reseller_spgst;
+      } else {
+        $type_mrp = $type_data[0]->retailer_mrp;
+        $type_spgst = $type_data[0]->retailer_spgst;
+      }
+    } else {
+      $type_mrp = $type_data[0]->retailer_mrp;
+      $type_spgst = $type_data[0]->retailer_spgst;
+    }
+  } elseif ($product_data[0]->product_view == 2) {
+    $type_mrp = $type_data[0]->reseller_mrp;
+    $type_spgst = $type_data[0]->reseller_spgst;
+  } else {
+    $type_mrp = $type_data[0]->retailer_mrp;
+    $type_spgst = $type_data[0]->retailer_spgst;
+  }
+  $discount = $type_mrp - $type_spgst;
+  $percent = 0;
+  if ($discount > 0) {
+    $percent = $discount / $type_mrp * 100;
+    $percent  = round($percent, 2);
+  }
+  if (!empty($type_data[0]->image2)) {
+    $image1 = $type_data[0]->image2;
+  } else {
+    $image1 = $type_data[0]->image;
+  } ?>
+  <section class="mt-50 mb-50">
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 thumb">
-          <?php $type_mrp = 0;
-          $type_spgst = 0;
-          $type_datas = $this->db->get_where('tbl_type', array('product_id = ' => $product_data[0]->id, 'is_active = ' => 1, 'color_active' => 1, 'size_active' => 1));
-          $type_data = $this->db->get_where('tbl_type', array('id = ' => $type_id))->result();
-          if ($product_data[0]->product_view == 3) {
-            if (!empty($this->session->userdata('user_type'))) {
-              if ($this->session->userdata('user_type') == 2) {
-                $type_mrp = $type_data[0]->reseller_mrp;
-                $type_spgst = $type_data[0]->reseller_spgst;
-              } else {
-                $type_mrp = $type_data[0]->retailer_mrp;
-                $type_spgst = $type_data[0]->retailer_spgst;
-              }
-            } else {
-              $type_mrp = $type_data[0]->retailer_mrp;
-              $type_spgst = $type_data[0]->retailer_spgst;
-            }
-          } elseif ($product_data[0]->product_view == 2) {
-            $type_mrp = $type_data[0]->reseller_mrp;
-            $type_spgst = $type_data[0]->reseller_spgst;
-          } else {
-            $type_mrp = $type_data[0]->retailer_mrp;
-            $type_spgst = $type_data[0]->retailer_spgst;
-          }
-          $discount = $type_mrp - $type_spgst;
-          $percent = 0;
-          if ($discount > 0) {
-            $percent = $discount / $type_mrp * 100;
-            $percent  = round($percent, 2);
-          }
-          if (!empty($type_data[0]->image2)) {
-            $image1 = $type_data[0]->image2;
-          } else {
-            $image1 = $type_data[0]->image;
-          } ?>
-          <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="3" data-slides-to-scroll="1" data-infinite="false" data-autoplay="true">
-            <div class="item">
-              <a href="#" class="product_gallery_item active" data-image="<?= base_url() . $type_data[0]->image ?>" data-zoom-image="<?= base_url() . $type_data[0]->image ?>">
-                <img src="<?= base_url() . $type_data[0]->image ?>" alt="<?= $product_data[0]->name ?>" />
-              </a>
-            </div>
-            <? if (!empty($type_data[0]->image2)) { ?>
-              <div class="item">
-                <a href="#" class="product_gallery_item" data-image="<?= base_url() . $type_data[0]->image2 ?>" data-zoom-image="<?= base_url() . $type_data[0]->image2 ?>">
-                  <img src="<?= base_url() . $type_data[0]->image2 ?>" alt="<?= $product_data[0]->name ?>" />
-                </a>
-              </div>
-            <? }
-            if (!empty($type_data[0]->image3)) { ?>
-              <div class="item">
-                <a href="#" class="product_gallery_item" data-image="<?= base_url() . $type_data[0]->image3 ?>" data-zoom-image="<?= base_url() . $type_data[0]->image3 ?>">
-                  <img src="<?= base_url() . $type_data[0]->image3 ?>" alt="<?= $product_data[0]->name ?>" />
-                </a>
-              </div>
-            <? }
-            if (!empty($type_data[0]->image4)) { ?>
-              <div class="item">
-                <a href="#" class="product_gallery_item" data-image="<?= base_url() . $type_data[0]->image4 ?>" data-zoom-image="<?= base_url() . $type_data[0]->image4 ?>">
-                  <img src="<?= base_url() . $type_data[0]->image4 ?>" alt="<?= $product_data[0]->name ?>" />
-                </a>
-              </div>
-            <? }
-            if (!empty($type_data[0]->image5)) { ?>
-              <div class="item">
-                <a href="#" class="product_gallery_item" data-image="<?= base_url() . $type_data[0]->image5 ?>" data-zoom-image="<?= base_url() . $type_data[0]->image5 ?>">
-                  <img src="<?= base_url() . $type_data[0]->image5 ?>" alt="<?= $product_data[0]->name ?>" />
-                </a>
-              </div>
-            <? }
-            if (!empty($type_data[0]->image6)) { ?>
-              <div class="item">
-                <a href="#" class="product_gallery_item" data-image="<?= base_url() . $type_data[0]->image6 ?>" data-zoom-image="<?= base_url() . $type_data[0]->image6 ?>">
-                  <img src="<?= base_url() . $type_data[0]->image6 ?>" alt="p<?= $product_data[0]->name ?>" />
-                </a>
-              </div>
-            <? } ?>
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-6 mb-md-0  preview">
-          <div class="product-image">
-            <div class="product_img_box">
-              <img id="product_img" src='<?= base_url() . $type_data[0]->image ?>' data-zoom-image="<?= base_url() . $type_data[0]->image ?>" alt="<?= $product_data[0]->name ?>" />
-              <a href="#" class="product_img_zoom" title="Zoom">
-                <span class="linearicons-zoom-in"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-6 description">
-          <div class="pr_detail">
-            <div class="product_description mt-3">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4 class="product_title twoline"><a href="#"><?= $product_data[0]->name ?></a></h4>
+        <div class="col-lg-12">
+          <div class="product-detail accordion-detail">
+            <div class="row mb-50">
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="detail-gallery">
+                  <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                  <!-- MAIN SLIDES -->
+                  <div class="product-image-slider">
+                    <figure class="border-radius-10">
+                      <img src="<?= base_url() . $type_data[0]->image ?>" alt="product image">
+                    </figure>
+                    <? if (!empty($type_data[0]->image2)) { ?>
+                      <figure class="border-radius-10">
+                        <img src="<?= base_url() . $type_data[0]->image2 ?>" alt="product image">
+                      </figure>
+                    <? }
+                    if (!empty($type_data[0]->image3)) { ?>
+                      <figure class="border-radius-10">
+                        <img src="<?= base_url() . $type_data[0]->image3 ?>" alt="product image">
+                      </figure>
+                    <? }
+                    if (!empty($type_data[0]->image4)) { ?>
+                      <figure class="border-radius-10">
+                        <img src="<?= base_url() . $type_data[0]->image4 ?>" alt="product image">
+                      </figure>
+                    <? }
+                    if (!empty($type_data[0]->image5)) { ?>
+                      <figure class="border-radius-10">
+                        <img src="<?= base_url() . $type_data[0]->image5 ?>" alt="product image">
+                      </figure>
+                    <? }
+                    if (!empty($type_data[0]->image6)) { ?>
+                      <figure class="border-radius-10">
+                        <img src="<?= base_url() . $type_data[0]->image6 ?>" alt="product image">
+                      </figure>
+                    <? } ?>
+                  </div>
+                  <!-- THUMBNAILS -->
+                  <div class="slider-nav-thumbnails pl-15 pr-15">
+                    <div><img src="<?= base_url() . $type_data[0]->image ?>" alt="product image"></div>
+                    <? if (!empty($type_data[0]->image2)) { ?>
+                      <div><img src="<?= base_url() . $type_data[0]->image2 ?>" alt="product image"></div>
+                    <? }
+                    if (!empty($type_data[0]->image3)) { ?>
+                      <div><img src="<?= base_url() . $type_data[0]->image3 ?>" alt="product image"></div>
+                    <? }
+                    if (!empty($type_data[0]->image4)) { ?>
+                      <div><img src="<?= base_url() . $type_data[0]->image4 ?>" alt="product image"></div>
+                    <? }
+                    if (!empty($type_data[0]->image5)) { ?>
+                      <div><img src="<?= base_url() . $type_data[0]->image5 ?>" alt="product image"></div>
+                    <? }
+                    if (!empty($type_data[0]->image6)) { ?>
+                      <div><img src="<?= base_url() . $type_data[0]->image6 ?>" alt="product image"></div>
+                    <? } ?>
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="rating_wrap">
+                <!-- End Gallery -->
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="detail-info">
+                  <h2 class="title-detail"><?= $product_data[0]->name ?></h2>
+                  <div class="product-detail-rating">
+                    <div class="pro-details-brand">
+                      <span> SKU: <?= $product_data[0]->sku ?></span>
+                    </div>
                     <? $review_count = 0;
                     $totalStars = 0;
                     foreach ($product_reviews->result() as $count) {
@@ -131,588 +130,431 @@
                     } else {
                       $review_countdiv = $review_count;
                     }
+                    $rating = ($totalStars / $review_countdiv) * 100;
                     ?>
-                    <div class="rating">
-                      <?
-                      $rating = ($totalStars / $review_countdiv) * 100;
-                      ?>
-                      <div class="product_rate" style="width:<?= $rating ?>%"></div>
-                    </div>
-                    <span class="rating_num"><?
-                                              echo "(" . $review_count . ")";
-                                              ?></span>
-                  </div>
-                </div>
-              </div>
-              <div class="product_price ">
-                <span class="price">₹<?= $type_spgst ?></span>
-                <? if ($type_mrp > $type_spgst) { ?><del>₹<?= $type_mrp ?></del>
-                <? } ?>
-                <? if ($percent > 0) { ?>
-                  <div class="on_sale">
-                    <span><?= round($percent) ?>% Off</span>
-                  </div>
-                <? } ?>
-                <div class="mt-2" style="font-size: 15px;">Product Code: <a href="#" style="font-size: 14px;"><?= $product_data[0]->sku ?></a></div>
-                <? if ($this->session->userdata('user_type') == 2) { ?>
-                  <div class="mt-2" style="font-size: 15px;">Minimum Quantity: <a href="#" style="font-size: 14px;"><?= $type_data[0]->reseller_min_qty; ?></a></div>
-                <? } ?>
-              </div>
-              <div class="pr_desc"> </div>
-            </div>
-            <div class="pr_switch_wrap clr_mrg">
-              <span class="switch_lable text-left">Color</span>
-              <div class="product_color_switch mb-3">
-                <? foreach ($color_arr as $type) {
-                  $color = $this->db->get_where('tbl_colour', array('id = ' => $type->colour_id, 'is_active = ' => 1))->result();
-                ?>
-                  <span <? if ($type_data[0]->colour_id == $type->colour_id) { ?> class="active" <? } ?> data-color="<?= $color[0]->name ?>" color_id="<?= $color[0]->id ?>" product_id="<?= $product_data[0]->id ?>" onclick="location.href='<?= base_url() ?>Home/product_detail/<?= $product_data[0]->url ?>?type=<?= base64_encode($type->id) ?>'"></span>
-                <? } ?>
-              </div>
-              <div class="pr_switch_wrap mt-4">
-                <span class="switch_lable mt-1">Size</span>
-                <div class="product_size_switch spanpadding" id="size_div">
-                  <?
-                  foreach ($size_arr as $size) {
-                  ?>
-                    <a href="<?= base_url() ?>Home/product_detail/<?= $product_data[0]->url ?>?type=<?= base64_encode($size['type_id']) ?>"><span <? if ($size['stock'] == 0) { ?> class="spananim" <? } ?> <? if ($size['id'] == $type_data[0]->size_id) { ?> class="active" <? } ?>><?= $size['size_name']; ?></span></a>
-                  <? } ?>
-                </div>
-              </div>
-              <div class="pr_switch_wrap">
-                <!-- <span class="switch_lable mt-1">Size</span> -->
-                <div class=" switch2 spanpadding d-flex" style="margin-left: 3px;margin-top: -7px;">
-                  <span><? if ($type_data[0]->inventory < 15) {
-                          echo "Left:" . $type_data[0]->inventory;
-                        } ?></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <p style="color:#FF324D"><a href="javascript:;" data-target="#chart_size_modal" data-toggle="modal" data-dismiss="modal" style="color:#FF324D;"><b>Size Chart</b></a></p>
-            </div>
-            <hr />
-            <? if ($this->session->userdata('user_type') == 2) {
-              $minQty = $type_data[0]->reseller_min_qty;
-            } else {
-              $minQty = 1;
-            } ?>
-            <div class="row mb-2" id="wishlist">
-              <div class="col-lg-7">
-                <div class="cart_extra">
-                  <div class="cart-product-quantity">
-                    <div class="quantity">
-                      <input type="button" value="-" change=0 id="myminus" class="minus">
-                      <input type="text" readonly onkeypress="return isNumberKey(event)" min-qty="<?= $minQty ?>" name="quantity" product_id='' value="<?= $minQty ?>" title="Qty" id="quantity" class="qty" size="4">
-                      <input type="button" value="+" change=0 id="" class="plus">
-                    </div>
-                  </div>
-                </div>
-                <div class="cart_btn desktop_p_detail">
-                  <button class="btn btn-fill-out btn-addtocart" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" quantity="1" id="addtoCartButton" onclick="addToCart(this)" type="button"><i class="linearicons-bag2"></i> <span class="mt-2"> Add to bag</span></button>
-                  <? if (!empty($this->session->userdata('user_data'))) {
-                    $user_id = $this->session->userdata('user_id');
-                    $wihslist = $this->db->get_where('tbl_wishlist', array('user_id' => $user_id, 'product_id' => $product_data[0]->id, 'type_id' => $type_data[0]->id))->result();
-                    if (!empty($wihslist)) {
-                  ?>
-                      <a class="add_wishlist hover-text" href="javascript:void(0)" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="remove" onclick="wishlist(this)"><i class="fa fa-heart" style="color:red;"> <span class="tooltip-text" id="top">Remove from wishlist</span></i></a>
-                    <? } else { ?>
-                      <a class="add_wishlist hover-text" href="javascript:void(0)" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="add" onclick="wishlist(this)"><i class="icon-heart"> <span class="tooltip-text" id="top">Add to wishlist</span></i></a>
-                    <? } ?>
-                  <? } else { ?>
-                    <a class="add_wishlist hover-text" href="javascript:void(0)" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal"> <span class="tooltip-text" id="top">Add to wishlist</span><i class="icon-heart"></i></a>
-                  <? } ?>
-                </div>
-              </div>
-            </div>
-            <style>
-              .owl-carousel>.owl-nav {
-                display: none !important;
-              }
-            </style>
-            <div class="carousel_slider owl-carousel owl-theme" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "1"}, "768":{"items": "1"}, "992":{"items": "1"}, "1199":{"items": "1"}}' data-autoplay="true" data-loop="true">
-              <? $promocode_data = $this->db->get_where('tbl_promocode', array('is_active = ' => 1));
-              foreach ($promocode_data->result() as $promocode) { ?>
-                <div class="item" style="box-shadow: 4px 0px 3px rgb(175, 174, 174);">
-                  <div class="product">
-                    <div class="product_img pt-2 pb-2">
-                      <div class="ml-3 d-flex"> <img src="<?= base_url() ?>assets\frontend\images\offerpic.png" alt="" style="width: 10%;"><span class="mt-1"> Offers for you </span> </div>
-                      <div class="row">
-                        <div class="col-md-12 ml-3">
-                          <p>COUPON: <b><?= $promocode->promocode; ?></b> </p>
+
+                    <div class="product-rate-cover text-end">
+                      <div class="product-rate d-inline-block">
+                        <div class="product-rating" style="width:<?= $rating ?>%">
                         </div>
-                        <div class="col-md-12 ml-3" style="padding-top: 5px;"><span>Congratulation! You are eligible for <? if ($promocode->type == 1) {
-                                                                                                                            echo $promocode->percentage_amount . "%";
-                                                                                                                          } else {
-                                                                                                                            echo "₹" . $promocode->percentage_amount;
-                                                                                                                          } ?> extra discount</span></div>
                       </div>
+                      <span class="font-small ml-5 text-muted"> (<?= $review_count ?> reviews)</span>
                     </div>
                   </div>
-                </div>
-              <? } ?>
-            </div>
-            <hr />
-            <div class="product_sort_info">
-              <ul>
-                <li><i class="linearicons-bag-dollar"></i> Cash On Delivery Available</li>
-                <li><i class="linearicons-truck"></i>Free home delivery on orders above ₹<?=FREESHIPPING?> </li>
-                <li><i class="linearicons-sync"></i> Return And Exchange</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="tab-style3">
-            <ul class="nav nav-tabs" role="tablist">
-              <li class="nav-item ">
-                <a class="nav-link active" id="Additional-info-tab" data-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="true">Product Detail</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="Reviews-tab" data-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Reviews</a>
-              </li>
-            </ul>
-            <div class="tab-content shop_info_tab">
-              <div class="tab-pane show fade active" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
-                <table class="table table-bordered">
-                  <? $description = explode(',', $product_data[0]->description); ?>
-                  <tr>
-                    <? $i = 1;
-                    foreach ($description as $desc) { ?>
-                      <td><?= $desc ?></td>
-                      <? if ($i % 2 == 0) { ?>
-                  </tr>
-                  <tr>
-                  <? } ?>
-                <? $i++;
-                    } ?>
-                  </tr>
-                </table>
-              </div>
-              <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
-                <div class="comments">
-                  <h5 class="product_tab_title">Review For <span><?= $product_data[0]->name; ?></span></h5>
-                  <ul class="list_none comment_list mt-4">
-                    <? foreach ($product_reviews->result() as $reviews) { ?>
-                      <li>
-                        <div class="comment_block">
-                          <div class="rating_wrap">
-                            <div class="rating">
-                              <? if ($reviews->star_rating == 1) {
-                                $width = 20;
-                              } elseif ($reviews->star_rating == 2) {
-                                $width = 40;
-                              } elseif ($reviews->star_rating == 3) {
-                                $width = 60;
-                              } elseif ($reviews->star_rating == 4) {
-                                $width = 80;
-                              } else {
-                                $width = 100;
-                              }
-                              ?>
-                              <div class="product_rate" style="width: <?= $width ?>%"></div>
-                            </div>
-                          </div>
-                          <p class="customer_meta">
-                            <span class="review_author"><?= $reviews->name ?></span>
-                            <span class="comment-date"><? $newdate = new DateTime($reviews->date);
-                                                        echo $newdate->format('F j, Y'); ?></span>
-                          </p>
-                          <div class="description">
-                            <?= $reviews->review ?>
-                          </div>
-                        </div>
-                      </li>
-                    <? } ?>
+                  <div class="clearfix product-price-cover">
+                    <div class="product-price primary-color float-left">
+                      <ins><span class="text-brand">₹<?= $type_spgst ?></span></ins>
+                      <? if ($type_mrp > $type_spgst) { ?><ins><span class="old-price font-md ml-15">₹<?= $type_mrp ?></span></ins><? } ?>
+                      <? if ($percent > 0) { ?><span class="save-price  font-md color3 ml-15"><?= round($percent) ?>% Off</span> <? } ?>
+                    </div>
+                  </div>
+                  <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                  <div class="short-desc mb-30">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi? Officia doloremque facere quia. Voluptatum, accusantium!</p>
+                  </div>
+                  <div class="product_sort_info font-xs mb-30">
+                    <ul>
+                      <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
+                      <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
+                      <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                    </ul>
+                  </div>
+                  <div class="attr-detail attr-color mb-15">
+                    <strong class="mr-10">Color</strong>
+                    <ul class="list-filter color-filter">
+                      <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
+                      <li><a href="#" data-color="Yellow"><span class="product-color-yellow"></span></a></li>
+                      <li class="active"><a href="#" data-color="White"><span class="product-color-white"></span></a></li>
+                      <li><a href="#" data-color="Orange"><span class="product-color-orange"></span></a></li>
+                      <li><a href="#" data-color="Cyan"><span class="product-color-cyan"></span></a></li>
+                      <li><a href="#" data-color="Green"><span class="product-color-green"></span></a></li>
+                      <li><a href="#" data-color="Purple"><span class="product-color-purple"></span></a></li>
+                    </ul>
+                  </div>
+                  <div class="attr-detail attr-size">
+                    <strong class="mr-10">Size</strong>
+                    <ul class="list-filter size-filter font-small">
+                      <li><a href="#">S</a></li>
+                      <li class="active"><a href="#">M</a></li>
+                      <li><a href="#">L</a></li>
+                      <li><a href="#">XL</a></li>
+                      <li><a href="#">XXL</a></li>
+                    </ul>
+                  </div>
+                  <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                  <div class="detail-extralink">
+                    <div class="detail-qty border radius">
+                      <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                      <span class="qty-val">1</span>
+                      <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                    </div>
+                    <div class="product-extra-link2">
+                      <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                      <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                      <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                    </div>
+                  </div>
+                  <ul class="product-meta font-xs color-grey mt-50">
+                    <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                    <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">Women</a>, <a href="#" rel="tag">Dress</a> </li>
+                    <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span></li>
                   </ul>
                 </div>
-                <div class="review_form field_form">
-                  <h5>Add a review</h5>
-                  <form class="row mt-3" method="POST" action="<?= base_url() ?>Home/product_review" enctype="multipart/form-data">
-                    <div class="form-group col-12">
-                      <div class="star_rating">
-                        <span data-value="1" class="" onclick="saveStarValue(1)"><i class="far fa-star"></i></span>
-                        <span data-value="2" class="" onclick="saveStarValue(2)"><i class="far fa-star"></i></span>
-                        <span data-value="3" class="" onclick="saveStarValue(3)"><i class="far fa-star"></i></span>
-                        <span data-value="4" onclick="saveStarValue(4)"><i class="far fa-star"></i></span>
-                        <span data-value="5" onclick="saveStarValue(5)"><i class="far fa-star"></i></span>
-                      </div>
-                      <span style="font-size:12px;color:red" id="validation">Rating field is required</span>
-                    </div>
-                    <input type="hidden" value="<?= $product_data[0]->id ?>" name="product_data" />
-                    <div class="form-group col-12">
-                      <textarea required="required" placeholder="Your review *" class="form-control" name="message" rows="4"></textarea>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <input required="required" placeholder="Enter Name *" class="form-control" name="name" type="text">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <input required="required" placeholder="Enter Email *" class="form-control" name="email" type="email">
-                      <input type="hidden" name="star_rating" id="star_rating" value="" required />
-                    </div>
-                    <div class="form-group col-12">
-                      <button type="submit" class="btn btn-fill-out" name="submit" disabled value="Submit" id="review_btn">Submit Review</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- mobile/cart/wishlist -->
-      <div class="cart_btn mobile_p_detail text-center refreshing" style="position:sticky; bottom:0;z-index:9999;">
-        <? if (!empty($this->session->userdata('user_data'))) {
-          $user_id = $this->session->userdata('user_id');
-          $wihslist = $this->db->get_where('tbl_wishlist', array('user_id' => $user_id, 'product_id' => $product_data[0]->id, 'type_id' => $type_data[0]->id))->result();
-          if (!empty($wihslist)) {
-        ?>
-            <button class="btn  btn-addtocart" type="button" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="remove" onclick="wishlist(this)" style="padding:8px 35px;letter-spacing:1px;background:#FF324D;color:white;"><i class="fa fa-heart"></i><span class="mt-1"> Wishlist</span></button>
-          <? } else { ?>
-            <button class="btn  btn-addtocart" type="button" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="add" onclick="wishlist(this)" style="padding:8px 35px;letter-spacing:1px;background:#FF324D;color:white;"><i class="icon-heart"></i><span class="mt-1"> Wishlist</span></button>
-          <? } ?>
-        <? } else { ?>
-          <button class="btn  btn-addtocart" type="button" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal" style="padding:8px 35px;letter-spacing:1px;background:#FF324D;color:white;"><i class="icon-heart"></i><span class="mt-1"> Wishlist</span></button>
-        <? } ?>
-        <button class="btn  btn-addtocart" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" quantity="1" id="addtoCartButton" onclick="addToCart(this)" type="button" style="padding:8px 35px;background:#FF324D;color:white;"><i class="linearicons-bag2"></i> <span class="mt-1"> Add to bag</span></button>
-      </div>
-      <!-- mobile cart/wishlist -->
-      <div class="row">
-        <div class="col-12">
-          <div class="small_divider"></div>
-          <div class="divider"></div>
-          <div class="medium_divider"></div>
-        </div>
-      </div>
-      <!-- START SECTION SHOP -->
-      <!-- BUY WITH IT SECTION START  -->
-      <? if (!empty($buy_with_it)) { ?>
-        <div class="section" style="padding:0px;">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="heading_s1">
-                  <h2>Buy With It</h2>
-                </div>
+                <!-- Detail Info -->
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
-                <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="false" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "300":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                  <? foreach ($buy_with_it as $buy_with) {
-                    $type_mrp = 0;
-                    $type_spgst = 0;
-                    $type_datas = $this->db->get_where('tbl_type', array('product_id = ' => $buy_with[0]->id, 'is_active' => 1));
-                    $type_data = $type_datas->result();
-                    if (!empty($type_data)) {
-                      if ($buy_with[0]->product_view == 3) {
-                        if (!empty($this->session->userdata('user_type'))) {
-                          if ($this->session->userdata('user_type') == 2) {
-                            $type_mrp = $type_data[0]->reseller_mrp;
-                            $type_spgst = $type_data[0]->reseller_spgst;
-                          } else {
-                            $type_mrp = $type_data[0]->retailer_mrp;
-                            $type_spgst = $type_data[0]->retailer_spgst;
-                          }
-                        } else {
-                          $type_mrp = $type_data[0]->retailer_mrp;
-                          $type_spgst = $type_data[0]->retailer_spgst;
-                        }
-                      } elseif ($buy_with[0]->product_view == 2) {
-                        $type_mrp = $type_data[0]->reseller_mrp;
-                        $type_spgst = $type_data[0]->reseller_spgst;
-                      } else {
-                        $type_mrp = $type_data[0]->retailer_mrp;
-                        $type_spgst = $type_data[0]->retailer_spgst;
-                      }
-                      $discount = $type_mrp - $type_spgst;
-                      $percent = 0;
-                      if ($discount > 0) {
-                        $percent = $discount / $type_mrp * 100;
-                        $percent  = round($percent, 2);
-                      }
-                      if (!empty($type_data[0]->image2)) {
-                        $image1 = $type_data[0]->image2;
-                      } else {
-                        $image1 = $type_data[0]->image;
-                      }
-                  ?>
-                      <div class="item">
-                        <div class="product">
-                          <? if ($buy_with[0]->exclusive == 1) { ?><span class="pr_flash">Exclusive</span>
-                            <? }
-                          $user_id = $this->session->userdata('user_id');
-                          if (!empty($user_id)) {
-                            $wihslist = $this->db->get_where('tbl_wishlist', array('user_id' => $user_id, 'product_id' => $buy_with[0]->id, 'type_id' => $type_data[0]->id))->result();
-                            if (!empty($wihslist)) {
-                            ?>
-                              <span class="htc float-right">
-                                <a href="javascript:void(0)" product_id="<?= base64_encode($buy_with[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="remove" onclick="wishlist(this)"><i class="fa fa-heart float-right" style="color:red;"></i></a>
-                                </li></span>
-                            <? } else { ?>
-                              <span class="htc float-right">
-                                <a href="javascript:void(0)" product_id="<?= base64_encode($buy_with[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="add" onclick="wishlist(this)"><i class="icon-heart float-right" style="color:red;"></i></a>
-                                </li></span>
-                            <? }
-                          } else { ?>
-                            <span class="htc float-right">
-                              <a href="javascript:void(0)" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal"><i class="icon-heart float-right" style="color:red;"></i></a>
-                              </li></span>
-                          <? } ?>
-                          <div class="product_img">
-                            <a href="<?= base_url() ?>Home/product_detail/<?= $buy_with[0]->url ?>?type=<?= base64_encode($type_data[0]->id) ?>">
-                              <img src="<?= base_url() . $type_data[0]->image ?>" onmouseover="pro_change(this)" onmouseout="pro_default(this)" img="<?= base_url() . $type_data[0]->image ?>" img2="<?= base_url() . $image1 ?>" alt="">
-                            </a>
-                            <div class="product_action_box">
-                              <ul class="list_none pr_action_btn">
-                                <?php $i = 1;
-                                $more = 0;
-                                $size_arr = [];
-                                foreach ($type_datas->result() as $type_size) {
-                                  $status = 0;
-                                  if ($i < 5) {
-                                    $this->db->select('*');
-                                    $this->db->from('tbl_size');
-                                    $this->db->where('id', $type_size->size_id);
-                                    $this->db->where('is_active', 1);
-                                    $size_data = $this->db->get()->row();
-                                    if (!empty($size_data)) {
-                                      if ($i == 1) {
-                                        array_push($size_arr, $size_data->id);
-                                        $status = 0;
-                                      } else {
-                                        foreach ($size_arr as $key) {
-                                          if ($key == $size_data->id) {
-                                            $status = 1;
-                                            break;
-                                          }
-                                        }
-                                      }
-                                      if ($status == 0) {
-                                        array_push($size_arr, $size_data->id);
-                                ?>
-                                        <li class="add-to-cart"><a href="<?= base_url() ?>Home/product_detail/<?= $buy_with[0]->url ?>?type=<?= base64_encode($type_size->id) ?>" class="popup-ajax"><?= $size_data->name ?></a></li>
-                                  <?php }
-                                    }
-                                  } else {
-                                    $more++;
-                                  }
-                                  $i++;
-                                }
-                                if ($more > 0) {
-                                  ?>
-                                  <li><a href="<?= base_url() ?>Home/product_detail/<?= $buy_with[0]->url ?>?type=<?= base64_encode($type_data[0]->id) ?>" class="popup-ajax" style="background:transparent; color:white;">+<?= $more ?></a></li>
-                                <? } ?>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product_info">
-                            <h6 class="product_title"><a href="<?= base_url() ?>Home/product_detail/<?= $buy_with[0]->url ?>?type=<?= base64_encode($type_data[0]->id) ?>"><?= $buy_with[0]->name ?></a></h6>
-                            <div class="product_price">
-                              <span class="price">₹<?= $type_spgst ?></span>
-                              <? if ($type_mrp > $type_spgst) { ?><del>₹<?= $type_mrp ?></del>
-                              <? } ?>
-                              <? if ($percent > 0) { ?>
-                                <div class="on_sale">
-                                  <span><?= round($percent) ?>% Off</span>
-                                </div>
-                              <? } ?>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  <?php }
-                  }  ?>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <? } ?>
-      <!-- BUY WITH IT SECTION END  -->
-      <!-- RELATED PRODUCTS SECTION START -->
-      <? if (!empty($related_data)) { ?>
-        <div class="section" style="padding:0px;">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="heading_s1">
-                  <h2>Related Products</h2>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="false" data-dots="false" data-nav="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "300":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                  <? foreach ($related_data->result() as $related) {
-                    $type_datas = $this->db->get_where('tbl_type', array('product_id = ' => $related->id,'is_active' => 1));
-                    $type_data = $type_datas->result();
-                    if (!empty($type_data)) {
-                      if ($related->product_view == 3) {
-                        if (!empty($this->session->userdata('user_type'))) {
-                          if ($this->session->userdata('user_type') == 2) {
-                            $type_mrp = $type_data[0]->reseller_mrp;
-                            $type_spgst = $type_data[0]->reseller_spgst;
-                          } else {
-                            $type_mrp = $type_data[0]->retailer_mrp;
-                            $type_spgst = $type_data[0]->retailer_spgst;
-                          }
-                        } else {
-                          $type_mrp = $type_data[0]->retailer_mrp;
-                          $type_spgst = $type_data[0]->retailer_spgst;
-                        }
-                      } elseif ($related->product_view == 2) {
-                        $type_mrp = $type_data[0]->reseller_mrp;
-                        $type_spgst = $type_data[0]->reseller_spgst;
-                      } else {
-                        $type_mrp = $type_data[0]->retailer_mrp;
-                        $type_spgst = $type_data[0]->retailer_spgst;
-                      }
-                      $discount = $type_mrp - $type_spgst;
-                      $percent = 0;
-                      if ($discount > 0) {
-                        $percent = $discount / $type_mrp * 100;
-                        $percent  = round($percent, 2);
-                      }
-                      if (!empty($type_data[0]->image2)) {
-                        $image1 = $type_data[0]->image2;
-                      } else {
-                        $image1 = $type_data[0]->image;
+
+              <div class="col-lg-10 m-auto entry-main-content">
+                <h2 class="section-title style-1 mb-30">Description</h2>
+                <div class="description mb-50">
+                  <table class="font-md mb-30">
+                    <? $description = explode(',', $product_data[0]->description); ?>
+                    <tr>
+                      <? $i = 1;
+                      foreach ($description as $desc) { ?>
+                        <td><?= $desc ?></td>
+                        <? if ($i % 2 == 0) { ?>
+                    </tr>
+                    <tr>
+                    <? } ?>
+                  <? $i++;
                       } ?>
-                      <div class="item">
-                        <div class="product">
-                          <? if ($related->exclusive == 1) { ?><span class="pr_flash">Exclusive</span>
-                            <? }
-                          $user_id = $this->session->userdata('user_id');
-                          if (!empty($user_id)) {
-                            $wihslist = $this->db->get_where('tbl_wishlist', array('user_id' => $user_id, 'product_id' => $related->id, 'type_id' => $type_data[0]->id))->result();
-                            if (!empty($wihslist)) {
-                            ?>
-                              <span class="htc float-right">
-                                <a href="javascript:void(0)" product_id="<?= base64_encode($related->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="remove" onclick="wishlist(this)"><i class="fa fa-heart float-right" style="color:red;"></i></a>
-                                </li></span>
-                            <? } else { ?>
-                              <span class="htc float-right">
-                                <a href="javascript:void(0)" product_id="<?= base64_encode($related->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="add" onclick="wishlist(this)"><i class="icon-heart float-right" style="color:red;"></i></a>
-                                </li></span>
-                            <? }
-                          } else { ?>
-                            <span class="htc float-right">
-                              <a href="javascript:void(0)" data-target="#onload-popup1" data-toggle="modal" data-dismiss="modal"><i class="icon-heart float-right" style="color:red;"></i></a>
-                              </li></span>
+                    </tr>
+                  </table>
+                </div>
+                <div class="social-icons single-share">
+                  <ul class="text-grey-5 d-inline-block">
+                    <li><strong class="mr-10">Share this:</strong></li>
+                    <li class="social-facebook"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
+                    <li class="social-twitter"> <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
+                    <li class="social-instagram"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a></li>
+                    <li class="social-linkedin"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
+                  </ul>
+                </div>
+                <!--================================= START REVIEWS ==============================================-->
+
+                <? if (!empty($product_reviews->row())) { ?>
+                  <h3 class="section-title style-1 mb-30 mt-30">Reviews (3)</h3>
+                  <div class="comments-area style-2">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <h4 class="mb-30">Customer questions & answers</h4>
+                        <div class="comment-list">
+                          <? foreach ($product_reviews->result() as $reviews) {
+                            if ($reviews->star_rating == 1) {
+                              $width = 20;
+                            } elseif ($reviews->star_rating == 2) {
+                              $width = 40;
+                            } elseif ($reviews->star_rating == 3) {
+                              $width = 60;
+                            } elseif ($reviews->star_rating == 4) {
+                              $width = 80;
+                            } else {
+                              $width = 100;
+                            }
+                          ?>
+                            <div class="single-comment justify-content-between d-flex">
+                              <div class="user justify-content-between d-flex">
+                                <div class="thumb text-center">
+                                  <img src="assets/imgs/page/avatar-6.jpg" alt="">
+                                  <h6><a href="#"><?= $reviews->name ?></a></h6>
+                                  <p class="font-xxs"><? $newdate = new DateTime($reviews->date);
+                                                      echo $newdate->format('F j, Y'); ?></p>
+                                </div>
+                                <div class="desc">
+                                  <div class="product-rate d-inline-block">
+                                    <div class="product-rating" style="width:<?= $width ?>%">
+                                    </div>
+                                  </div>
+                                  <p> <?= $reviews->review ?></p>
+                                  <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                      <p class="font-xs mr-30"><? $newdate = new DateTime($reviews->date);
+                                                                echo $newdate->format('F j, Y'); ?> </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           <? } ?>
-                          <div class="product_img">
-                            <a href="<?= base_url() ?>Home/product_detail/<?= $related->url ?>?type=<?= base64_encode($type_data[0]->id) ?>">
-                              <img src="<?= base_url() . $type_data[0]->image ?>" onmouseover="pro_change(this)" onmouseout="pro_default(this)" img="<?= base_url() . $type_data[0]->image ?>" img2="<?= base_url() . $image1 ?>" alt="<?= $related->name ?>">
-                            </a>
-                            <div class="product_action_box">
-                              <ul class="list_none pr_action_btn">
-                                <?php $i = 1;
-                                $more = 0;
-                                $size_arr = [];
-                                foreach ($type_datas->result() as $type_size) {
-                                  $status = 0;
-                                  if ($i < 5) {
-                                    $this->db->select('*');
-                                    $this->db->from('tbl_size');
-                                    $this->db->where('id', $type_size->size_id);
-                                    $this->db->where('is_active', 1);
-                                    $size_data = $this->db->get()->row();
-                                    if (!empty($size_data)) {
-                                      if ($i == 1) {
-                                        array_push($size_arr, $size_data->id);
-                                        $status = 0;
-                                      } else {
-                                        foreach ($size_arr as $key) {
-                                          if ($key == $size_data->id) {
-                                            $status = 1;
-                                            break;
-                                          }
-                                        }
-                                      }
-                                      if ($status == 0) {
-                                        array_push($size_arr, $size_data->id);
-                                ?>
-                                        <li class="add-to-cart"><a href="<?= base_url() ?>Home/product_detail/<?= $related->url ?>?type=<?= base64_encode($type_size->id) ?>" class="popup-ajax"><?= $size_data->name ?></a></li>
-                                  <?php }
-                                    }
-                                  } else {
-                                    $more++;
-                                  }
-                                  $i++;
-                                }
-                                if ($more > 0) {
-                                  ?>
-                                  <li><a href="<?= base_url() ?>Home/product_detail/<?= $related->url ?>?type=<?= base64_encode($type_data[0]->id) ?>" class="popup-ajax" style="background:transparent; color:white;">+<?= $more ?></a></li>
-                                <? } ?>
-                              </ul>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <h4 class="mb-30">Customer reviews</h4>
+                        <div class="d-flex mb-30">
+                          <div class="product-rate d-inline-block mr-15">
+                            <div class="product-rating" style="width:90%">
                             </div>
                           </div>
-                          <div class="product_info">
-                            <h6 class="product_title"><a href="<?= base_url() ?>Home/product_detail/<?= $related->url ?>?type=<?= base64_encode($type_data[0]->id) ?>"><?= $related->name ?></a></h6>
-                            <div class="product_price">
-                              <span class="price">₹<?= $type_spgst ?></span>
-                              <? if ($type_mrp > $type_spgst) { ?><del>₹<?= $type_mrp ?></del>
-                              <? } ?>
-                              <? if ($percent > 0) { ?>
-                                <div class="on_sale">
-                                  <span><?= round($percent) ?>% Off</span>
-                                </div>
-                              <? } ?>
+                          <h6>4.8 out of 5</h6>
+                        </div>
+                        <div class="progress">
+                          <span>5 star</span>
+                          <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                        </div>
+                        <div class="progress">
+                          <span>4 star</span>
+                          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                        <div class="progress">
+                          <span>3 star</span>
+                          <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                        </div>
+                        <div class="progress">
+                          <span>2 star</span>
+                          <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                        </div>
+                        <div class="progress mb-30">
+                          <span>1 star</span>
+                          <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                        <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
+                      </div>
+                    </div>
+                  </div>
+                <? } ?>
+                <!--comment form-->
+                <div class="comment-form">
+                  <h4 class="mb-15">Add a review</h4>
+                  <div class="product-rate d-inline-block mb-30">
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <form class="form-contact comment_form" method="POST" action="<?= base_url() ?>Home/product_review" enctype="multipart/form-data" id="commentForm">
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="hidden" value="<?= $product_data[0]->id ?>" name="product_data" />
+                            <input type="hidden" name="star_rating" id="star_rating" value="" required />
+                            <div class="form-group">
+                              <textarea class="form-control w-100" required name="message" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input class="form-control" name="name" required id="name" type="text" placeholder="Name">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input class="form-control" name="email" required id="email" type="email" placeholder="Email">
                             </div>
                           </div>
                         </div>
-                      </div>
-                  <?php }
-                    $i++;
-                  }  ?>
+                        <div class="form-group">
+                          <button type="submit" class="button button-contactForm">Submit
+                            Review</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <!--================================= END REVIEWS ==============================================-->
+
             </div>
+            <!--================================= START BUY WITH IT PRODUCTS ==============================================-->
+            <? if (!empty($buy_with_it)) { ?>
+              <div class="row mt-60">
+                <div class="col-12">
+                  <h3 class="section-title style-1 mb-30">Buy With It</h3>
+                </div>
+                <div class="carausel-4-columns-cover arrow-center position-relative">
+                  <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
+                  <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
+                    <?php $i = 1;
+                    foreach ($buy_with_it->result() as $trending) {
+                      $type_data = $this->db->get_where('tbl_type', array('is_active' => 1, 'color_active' => 1, 'size_active' => 1, 'product_id' => $trending->id))->row();
+                      if (!empty($type_data)) {
+                        if ($trending->product_view == 3) {
+                          if (!empty($this->session->userdata('user_type'))) {
+                            if ($this->session->userdata('user_type') == 2) {
+                              $type_mrp = $type_data->reseller_mrp;
+                              $type_spgst = $type_data->reseller_spgst;
+                            } else {
+                              $type_mrp = $type_data->retailer_mrp;
+                              $type_spgst = $type_data->retailer_spgst;
+                            }
+                          } else {
+                            $type_mrp = $type_data->retailer_mrp;
+                            $type_spgst = $type_data->retailer_spgst;
+                          }
+                        } elseif ($trending->product_view == 2) {
+                          $type_mrp = $type_data->reseller_mrp;
+                          $type_spgst = $type_data->reseller_spgst;
+                        } else {
+                          $type_mrp = $type_data->retailer_mrp;
+                          $type_spgst = $type_data->retailer_spgst;
+                        }
+                        $discount = $type_mrp - $type_spgst;
+                        $percent = 0;
+                        if ($discount > 0) {
+                          $percent = $discount / $type_mrp * 100;
+                          $percent  = round($percent, 2);
+                        }
+                        if (!empty($type_data->image2)) {
+                          $image1 = $type_data->image2;
+                        } else {
+                          $image1 = $type_data->image;
+                        }
+                    ?>
+                        <div class="product-cart-wrap">
+                          <div class="product-img-action-wrap">
+                            <div class="product-img product-img-zoom">
+                              <a href="<?= base_url() ?>Home/product_detail/<?= $trending->url ?>?type=<?= base64_encode($type_data->id) ?>">
+                                <img class="default-img" src="<?= base_url() . $type_data->image ?>" alt="">
+                                <img class="hover-img" src="<?= base_url() . $image1 ?>" alt="">
+                              </a>
+                            </div>
+                            <div class="product-action-1">
+                              <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                <i class="fi-rs-eye"></i></a>
+                              <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                              <!-- <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> -->
+                            </div>
+                            <? if ($trending->exclusive == 1) { ?>
+                              <div class="product-badges product-badges-position product-badges-mrg">
+                                <span class="hot">Hot</span>
+                              </div>
+                            <? } ?>
+                          </div>
+                          <div class="product-content-wrap">
+                            <!-- <div class="product-category">
+                                    <a href="shop-grid-right.html">Nulla</a>
+                                </div> -->
+                            <h2><a href="<?= base_url() ?>Home/product_detail/<?= $trending->url ?>?type=<?= base64_encode($type_data->id) ?>"><?= $trending->name ?></a></h2>
+                            <!-- <div class="rating-result" title="90%">
+                                    <span>
+                                        <span>70%</span>
+                                    </span>
+                                </div> -->
+                            <? if ($percent > 0) { ?>
+                              <span>
+                                <span><?= round($percent) ?>% Off</span>
+                              </span>
+                            <? } ?>
+                            <div class="product-price">
+                              <span>₹<?= $type_spgst ?></span>
+                              <? if ($type_mrp > $type_spgst) { ?><span class="old-price">₹<?= $type_mrp ?></span><? } ?>
+                            </div>
+                            <!-- <div class="product-action-1 show">
+                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                </div> -->
+                          </div>
+                        </div>
+                    <? }
+                    } ?>
+                  </div>
+                </div>
+              </div>
+            <? } ?>
+            <!--================================= END BUY WITH IT PRODUCTS ==============================================-->
+            <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
+              <img class="border-radius-10" src="<?= base_url() ?>assets/frontend/imgs/banner/banner-4.png" alt="">
+              <div class="banner-text">
+                <h4 class="mb-15 mt-40">New Launch</h4>
+                <h2 class="fw-600 mb-20">Get Extra 10% off <br>on your first order</h2>
+              </div>
+            </div>
+            <!--================================= START RELATED PRODUCTS ==============================================-->
+            <? if (!empty($related_data)) { ?>
+              <div class="row mt-60">
+                <div class="col-12">
+                  <h3 class="section-title style-1 mb-30">Related products</h3>
+                </div>
+                <div class="carausel-4-columns-cover arrow-center position-relative">
+                  <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
+                  <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
+                    <?php $i = 1;
+                    foreach ($related_data->result() as $trending) {
+                      $type_data = $this->db->get_where('tbl_type', array('is_active' => 1, 'color_active' => 1, 'size_active' => 1, 'product_id' => $trending->id))->row();
+                      if (!empty($type_data)) {
+                        if ($trending->product_view == 3) {
+                          if (!empty($this->session->userdata('user_type'))) {
+                            if ($this->session->userdata('user_type') == 2) {
+                              $type_mrp = $type_data->reseller_mrp;
+                              $type_spgst = $type_data->reseller_spgst;
+                            } else {
+                              $type_mrp = $type_data->retailer_mrp;
+                              $type_spgst = $type_data->retailer_spgst;
+                            }
+                          } else {
+                            $type_mrp = $type_data->retailer_mrp;
+                            $type_spgst = $type_data->retailer_spgst;
+                          }
+                        } elseif ($trending->product_view == 2) {
+                          $type_mrp = $type_data->reseller_mrp;
+                          $type_spgst = $type_data->reseller_spgst;
+                        } else {
+                          $type_mrp = $type_data->retailer_mrp;
+                          $type_spgst = $type_data->retailer_spgst;
+                        }
+                        $discount = $type_mrp - $type_spgst;
+                        $percent = 0;
+                        if ($discount > 0) {
+                          $percent = $discount / $type_mrp * 100;
+                          $percent  = round($percent, 2);
+                        }
+                        if (!empty($type_data->image2)) {
+                          $image1 = $type_data->image2;
+                        } else {
+                          $image1 = $type_data->image;
+                        }
+                    ?>
+                        <div class="product-cart-wrap">
+                          <div class="product-img-action-wrap">
+                            <div class="product-img product-img-zoom">
+                              <a href="<?= base_url() ?>Home/product_detail/<?= $trending->url ?>?type=<?= base64_encode($type_data->id) ?>">
+                                <img class="default-img" src="<?= base_url() . $type_data->image ?>" alt="">
+                                <img class="hover-img" src="<?= base_url() . $image1 ?>" alt="">
+                              </a>
+                            </div>
+                            <div class="product-action-1">
+                              <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                <i class="fi-rs-eye"></i></a>
+                              <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                              <!-- <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> -->
+                            </div>
+                            <? if ($trending->exclusive == 1) { ?>
+                              <div class="product-badges product-badges-position product-badges-mrg">
+                                <span class="hot">Hot</span>
+                              </div>
+                            <? } ?>
+                          </div>
+                          <div class="product-content-wrap">
+                            <!-- <div class="product-category">
+                                    <a href="shop-grid-right.html">Nulla</a>
+                                </div> -->
+                            <h2><a href="<?= base_url() ?>Home/product_detail/<?= $trending->url ?>?type=<?= base64_encode($type_data->id) ?>"><?= $trending->name ?></a></h2>
+                            <!-- <div class="rating-result" title="90%">
+                                    <span>
+                                        <span>70%</span>
+                                    </span>
+                                </div> -->
+                            <? if ($percent > 0) { ?>
+                              <span>
+                                <span><?= round($percent) ?>% Off</span>
+                              </span>
+                            <? } ?>
+                            <div class="product-price">
+                              <span>₹<?= $type_spgst ?></span>
+                              <? if ($type_mrp > $type_spgst) { ?><span class="old-price">₹<?= $type_mrp ?></span><? } ?>
+                            </div>
+                            <!-- <div class="product-action-1 show">
+                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                </div> -->
+                          </div>
+                        </div>
+                    <? }
+                    } ?>
+                  </div>
+                </div>
+              </div>
+            <? } ?>
+            <!--================================= END RELATED PRODUCTS ==============================================-->
           </div>
-        </div>
-      <? } ?>
-      <!-- RELATED PRODUCTS SECTION END  -->
-      <!-- END SECTION SHOP -->
-    </div>
-  </div>
-</div>
-<!-- END SECTION SHOP -->
-<!-- =================================== Start PRODUCT IMAGE SIZE CHART ============================================-->
-<div class="modal fade subscribe_popup" id="chart_size_modal" tabindex="-1" role="dialog" style="overflow: hidden;" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered mediadevice" role="document" style="margin-top:85px;">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><i class="ion-ios-close-empty"></i></span>
-        </button>
-        <div class="row" style="padding: 40px;">
-          <img src="<?= base_url() . $product_data[0]->image1 ?>" class="img-fluid" />
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- =================================== END PRODUCT IMAGE SIZE CHART ============================================-->
-<script>
-  $(document).ready(function() {
-    $('.star_rating span').on('click', function() {
-      var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
-      var stars = $(this).parent().children('.star_rating span');
-      for (var i = 0; i < stars.length; i++) {
-        $(stars[i]).removeClass('selected');
-      }
-      for (i = 0; i < onStar; i++) {
-        $(stars[i]).addClass('selected');
-      }
-      $('#review_btn').removeAttr('disabled');
-      document.getElementById("validation").style.visibility = "hidden"
-    });
-  });
-  function saveStarValue(i) {
-    $('#star_rating').val(i);
-  }
-</script>
+  </section>
+</main>

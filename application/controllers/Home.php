@@ -395,9 +395,9 @@ class Home extends CI_Controller
             $data['color_arr'] = $color_arr;
             $data['size_arr'] = $size_arr;
             if (!empty($returnarray['type_exists'])) {
-                $this->load->view('frontend/common/header2', $data);
+                $this->load->view('frontend/common/header', $data);
                 $this->load->view('frontend/product_details');
-                $this->load->view('frontend/common/footer2');
+                $this->load->view('frontend/common/footer');
             } else {
                 $this->session->set_flashdata('emessage', 'Product not found');
                 redirect("/", "refresh");
