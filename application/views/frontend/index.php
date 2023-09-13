@@ -259,7 +259,7 @@
 
     <section class="section-padding">
         <div class="container wow fadeIn animated">
-            <h3 class="section-title mb-20"><span>Ekka</span> Trending</h3>
+            <h3 class="section-title mb-20"><span>Ekaa</span> Trending</h3>
             <div class="carausel-4-columns-cover arrow-center position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows2"></div>
                 <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns2">

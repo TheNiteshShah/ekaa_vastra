@@ -259,9 +259,9 @@ class Home extends CI_Controller
         } else {
             $cart_fetch = $this->cart->ViewCartOffline();
         }
-        $this->load->view('frontend/common/header2', $cart_fetch);
+        $this->load->view('frontend/common/header', $cart_fetch);
         $this->load->view('frontend/cart');
-        $this->load->view('frontend/common/footer2');
+        $this->load->view('frontend/common/footer');
     }
     public function contact_form_submit()
     {

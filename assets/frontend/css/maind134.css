@@ -2909,10 +2909,10 @@ table .product-thumbnail img {
 }
 
 .custom-modal .modal-dialog .btn-close {
-  position: absolute;
+  /* position: absolute;
   right: 30px;
   top: 30px;
-  z-index: 2;
+  z-index: 2; */
 }
 
 /*COMPONENTS -> BANNERS*/
@@ -9923,3 +9923,4 @@ span.fi-rs-apps {
 .zoomContainer{ z-index: 9999;}
 .zoomWindow{ z-index: 9999;}
 /*# sourceMappingURL=main.css.map */
+.hidden-OTP-field{display:none;}

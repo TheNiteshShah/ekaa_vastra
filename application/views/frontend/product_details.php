@@ -159,39 +159,50 @@
                       <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
                     </ul>
                   </div>
+                  <!-- ============= COLORS =================== -->
                   <div class="attr-detail attr-color mb-15">
                     <strong class="mr-10">Color</strong>
                     <ul class="list-filter color-filter">
-                      <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
-                      <li><a href="#" data-color="Yellow"><span class="product-color-yellow"></span></a></li>
-                      <li class="active"><a href="#" data-color="White"><span class="product-color-white"></span></a></li>
-                      <li><a href="#" data-color="Orange"><span class="product-color-orange"></span></a></li>
-                      <li><a href="#" data-color="Cyan"><span class="product-color-cyan"></span></a></li>
-                      <li><a href="#" data-color="Green"><span class="product-color-green"></span></a></li>
-                      <li><a href="#" data-color="Purple"><span class="product-color-purple"></span></a></li>
+                      <? foreach ($color_arr as $type) {
+                        $color = $this->db->get_where('tbl_colour', array('id = ' => $type->colour_id, 'is_active = ' => 1))->result();
+                      ?>
+                        <li <? if ($type_data[0]->colour_id == $type->colour_id) { ?> class="active" <? } ?>><a href="#" data-color="<?= $color[0]->name ?>" color_id="<?= $color[0]->id ?>" product_id="<?= $product_data[0]->id ?>" onclick="location.href='<?= base_url() ?>Home/product_detail/<?= $product_data[0]->url ?>?type=<?= base64_encode($type->id) ?>'"><span style=" background: <?= $color[0]->name ?>"></span></a></li>
+                      <? } ?>
                     </ul>
                   </div>
                   <div class="attr-detail attr-size">
                     <strong class="mr-10">Size</strong>
+                    <!-- ============= Size =================== -->
                     <ul class="list-filter size-filter font-small">
-                      <li><a href="#">S</a></li>
-                      <li class="active"><a href="#">M</a></li>
-                      <li><a href="#">L</a></li>
-                      <li><a href="#">XL</a></li>
-                      <li><a href="#">XXL</a></li>
+                      <?
+                      foreach ($size_arr as $size) {
+                      ?>
+                        <li <? if ($size['id'] == $type_data[0]->size_id) { ?> class="active" <? } ?>><a href="<?= base_url() ?>Home/product_detail/<?= $product_data[0]->url ?>?type=<?= base64_encode($size['type_id']) ?>"><?= $size['size_name']; ?></a></li>
+                      <? } ?>
                     </ul>
                   </div>
                   <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                   <div class="detail-extralink">
                     <div class="detail-qty border radius">
                       <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                      <span class="qty-val">1</span>
+                      <span type="text" readonly onkeypress="return isNumberKey(event)" min-qty="1" name="quantity" product_id='' value="1" title="Qty" id="quantity" class="qty-val">1 </span>
                       <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                     </div>
                     <div class="product-extra-link2">
-                      <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                      <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                      <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                      <button product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" quantity="1" id="addtoCartButton" onclick="addToCart(this)" type="button" class="button button-add-to-cart">Add to cart</button>
+                      <? if (!empty($this->session->userdata('user_data'))) {
+                        $user_id = $this->session->userdata('user_id');
+                        $wihslist = $this->db->get_where('tbl_wishlist', array('user_id' => $user_id, 'product_id' => $product_data[0]->id, 'type_id' => $type_data[0]->id))->result();
+                        if (!empty($wihslist)) {
+                      ?>
+                          <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0)" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="remove" onclick="wishlist(this)"><i class="fi-rs-heart"></i></a>
+                        <? } else { ?>
+                          <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0)" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="add" onclick="wishlist(this)"><i class="fi-rs-heart"></i></a>
+                          <? }
+                      } else { ?>
+                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#LoginModal"><i class="fi-rs-heart"></i></a>
+                     
+                      <? } ?>
                     </div>
                   </div>
                   <ul class="product-meta font-xs color-grey mt-50">

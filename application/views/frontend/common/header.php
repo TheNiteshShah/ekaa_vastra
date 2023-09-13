@@ -15,10 +15,81 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/frontend/imgs/theme/favicon.png">
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/frontend/css/maind134.css?v=3.4">
-
+    <!-- Include Toast CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
 </head>
 
 <body>
+<?	$headerMiniCart = [];
+  $this->load->library('custom/Cart');
+  if (!empty($this->session->userdata('user_data'))) {
+      $headerMiniCart = $this->cart->ViewCartOnline();
+  } else {
+      $headerMiniCart = $this->cart->ViewCartOffline();
+  }
+  ?>
+    <!-- Modal -->
+    <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('<?= base_url() ?>assets/frontend/imgs/banner/menu-banner-7.png')">
+                        <div class="deal-top">
+                            <h2 class="text-brand">Deal of the Day</h2>
+                            <h5>Limited quantities.</h5>
+                        </div>
+                        <div class="deal-content">
+                            <h6 class="product-title"><a href="shop-product-right.html">Summer Collection New Morden Design</a></h6>
+                            <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                        </div>
+                        <div class="deal-bottom">
+                            <p>Hurry Up! Offer End In:</p>
+                            <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"><span class="countdown-section"><span class="countdown-amount hover-up">03</span><span class="countdown-period"> days </span></span><span class="countdown-section"><span class="countdown-amount hover-up">02</span><span class="countdown-period"> hours </span></span><span class="countdown-section"><span class="countdown-amount hover-up">43</span><span class="countdown-period"> mins </span></span><span class="countdown-section"><span class="countdown-amount hover-up">29</span><span class="countdown-period"> sec </span></span></div>
+                            <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login -->
+    <div class="modal fade custom-modal" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between">
+
+                        <h4>LOG IN TO CONTINUE</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" action="javascript:void(0)" id="loginForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input name="number" required type="text" id="loginPhone" onkeypress="return isNumberKey(event)" maxlength="10" minlength="10" placeholder="Enter Your Number">
+                            <input type="hidden" id="loginverify" value="0" name="loginverify">
+                        </div>
+                        <div class="form-group hidden-OTP-field">
+                            <input name="OTP" id="loginOTP" class="form-control rounded-0" type="text" onkeypress="return isNumberKey(event)" maxlength="6" minlength="6" placeholder="Enter OTP">
+                        </div>
+                        <div class="login_footer form-group">
+                            <div class="chek-form">
+                                <div class="custome-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
+                                    <label class="form-check-label" for="exampleCheckbox1"><span>By Continuing, I agree to the <a href="term-condition.html" style="color: #FF324D;">Terms of use</a> & <a href="privacy_policy.html" style="color: #FF324D;">Privacy Policy</a></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-fill-out btn-block hover-up" name="login">Log in</button>
+                        </div>
+                    </form>
+                    <div class="text-center"><span class="mt-3">New Here?<a href="javascript:;" data-target="#onload-popup2" data-toggle="modal" data-dismiss="modal" style="color:#ff324d;">&nbsp; Sign Up</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Modal -->
     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -212,7 +283,10 @@
                                         <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
                                     </ul>
                                 </li> -->
-                                <li><i class="fi-rs-user"></i><a href="page-login-register.html">Log In / Sign Up</a></li>
+                                <? if (empty($this->session->userdata('user_data'))) { ?>
+                                    <li><i class="fi-rs-user"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">Log In / Sign Up </a></li>
+                                <? } else {
+                                } ?>
                             </ul>
                         </div>
                     </div>
@@ -234,7 +308,7 @@
                             </form>
                         </div>
                         <div class="header-action-right">
-                            <div class="header-action-2">
+                            <div class="header-action-2" id="headerCount">
                                 <? $cartCount = 0;
                                 $wishCount = 0;
                                 if (!empty($this->session->userdata('user_data'))) {
@@ -264,41 +338,34 @@
                                         <span class="pro-count blue"><?= $cartCount ?></span>
                                     </a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                        <ul>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-3.jpg"></a>
+                                        <? if (!empty($headerMiniCart['cart_data'])) { ?>
+                                            <ul>
+                                                <? foreach ($headerMiniCart['cart_data'] as $miniCart) { ?>
+                                                    <li>
+                                                        <div class="shopping-cart-img">
+                                                            <a href="#"><img alt="Ekaa Vastra" src="<?=$miniCart['image']?>"></a>
+                                                        </div>
+                                                        <div class="shopping-cart-title">
+                                                            <h4><a href="#"><?=$miniCart['product_name']?></a></h4>
+                                                            <h4><span> <?=$miniCart['quantity']?> × </span>₹<?=$miniCart['price']?></h4>
+                                                        </div>
+                                                        <div class="shopping-cart-delete">
+                                                            <a href="javascript:;" product_id="<?=base64_encode($miniCart['product_id'])?>" type_id="<?=base64_encode($miniCart['type_id'])?>" onclick="deleteCart(this)" ><i class="fi-rs-cross-small"></i></a>
+                                                        </div>
+                                                    </li>
+                                                <? } ?>
+                                            </ul>
+                                            <div class="shopping-cart-footer">
+                                                <div class="shopping-cart-total">
+                                                    <h4>Total <span>₹<?=$headerMiniCart['sub_total']?></span></h4>
                                                 </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                    <h4><span>1 × </span>$800.00</h4>
+                                                <div class="shopping-cart-button">
+                                                    <a href="<?=base_url()?>Home/my_bag" class="outline">View cart</a>
                                                 </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                    <h4><span>1 × </span>$3200.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="shopping-cart-footer">
-                                            <div class="shopping-cart-total">
-                                                <h4>Total <span>$4000.00</span></h4>
                                             </div>
-                                            <div class="shopping-cart-button">
-                                                <a href="shop-cart.html" class="outline">View cart</a>
-                                                <a href="shop-checkout.html">Checkout</a>
-                                            </div>
-                                        </div>
+                                        <? } else { ?>
+                                            <img src="<?= base_url() ?>assets/frontend/images/cart_empty.jpg" alt="Empty Cart" class="img-fluid">
+                                        <? } ?>
                                     </div>
                                 </div>
                             </div>
@@ -478,7 +545,7 @@
                         <a href="<?= base_url() ?>Home/contact"> Our location </a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="page-login-register.html">Log In / Sign Up </a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">Log In / Sign Up </a>
                     </div>
                     <div class="single-mobile-header-info">
                         <a href="#">(+01) - 2345 - 6789 </a>
