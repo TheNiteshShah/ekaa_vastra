@@ -18,11 +18,12 @@ class Order extends CI_Controller
 
     //-------------calculate--------------
 
-    public function calculate($pincode,$courier_id)
+    public function calculate()
     {
         if (!empty($this->session->userdata('user_data'))) {
-            $calculate = $this->order->calculate($pincode,$courier_id);
-            if ($calculate==1) {
+            $calculate = $this->order->calculate();
+            if ($calculate == 1) {
+                redirect("Order/view_checkout");
                 redirect("Order/view_checkout");
             } else {
                 redirect("Home/my_bag");
@@ -42,10 +43,23 @@ class Order extends CI_Controller
             $data['state_data'] = $this->db->get('all_states');
             $cart_fetch = $this->cart->ViewCartOnline();
             $data['cart_fetch'] = $cart_fetch;
+            $user_id = $this->session->userdata('user_id');
+            $user_type = $this->session->userdata('user_type');
+            $data['address_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_user_address', array('user_id' => $user_id, 'user_type' => $user_type, 'is_default' => 1,'is_active'=>1))->row();
+            //---update order address ------
+            
+            if (!empty($data['address_data'])) {
+                $data_update3 = array('address_id' => $data['address_data']->id);
+                $this->db->where('id', base64_decode($this->session->userdata('order_id')));
+                $zapak3 = $this->db->update('tbl_order1', $data_update3);
+                // $update = $this->order->updateShipping($data['address_data'], $this->session->userdata('order_id'));
+            }
+            $data['order_data'] = $this->db->get_where('tbl_order1', array('id' => base64_decode($this->session->userdata('order_id'))))->result();
 
-            $this->load->view('frontend/common/header2', $data);
+
+            $this->load->view('frontend/common/header', $data);
             $this->load->view('frontend/checkout');
-            $this->load->view('frontend/common/footer2');
+            $this->load->view('frontend/common/footer');
         } else {
             redirect("/", "refresh");
         }
@@ -82,72 +96,89 @@ class Order extends CI_Controller
         echo $apply;
     }
 
-    //--------checkout----------------
-    public function checkout()
-    {
-        if (!empty($this->session->userdata('user_data'))) {
-            $this->load->helper(array('form', 'url'));
-            $this->load->library('form_validation');
-            $this->load->helper('security');
-            if ($this->input->post()) {
-                $this->form_validation->set_rules('fname', 'fname', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('lname', 'lname', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('email', 'email', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('phonenumber', 'phonenumber', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('state', 'state', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('city', 'city', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('address', 'address', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('payment_method', 'payment_method', 'required|xss_clean|trim');
-                $this->form_validation->set_rules('referalcode', 'referalcode', 'xss_clean|trim');
+   //--------checkout----------------
+   public function checkout()
+   {
+       if (!empty($this->session->userdata('user_data'))) {
+           $this->load->helper(array('form', 'url'));
+           $this->load->library('form_validation');
+           $this->load->helper('security');
+           if ($this->input->post()) {
+               // $this->form_validation->set_rules('fname', 'fname', 'required|xss_clean|trim');
+               // $this->form_validation->set_rules('lname', 'lname', 'required|xss_clean|trim');
+               // $this->form_validation->set_rules('email', 'email', 'required|xss_clean|trim');
+               // $this->form_validation->set_rules('phonenumber', 'phonenumber', 'required|xss_clean|trim');
+               // $this->form_validation->set_rules('state', 'state', 'required|xss_clean|trim');
+               // $this->form_validation->set_rules('city', 'city', 'required|xss_clean|trim');
+               // $this->form_validation->set_rules('address_id', 'address_id', 'required|xss_clean|trim');
+               $this->form_validation->set_rules('payment_method', 'payment_method', 'required|xss_clean|trim');
+               $this->form_validation->set_rules('referalcode', 'referalcode', 'xss_clean|trim');
 
-                if ($this->form_validation->run()== true) {
-                    $name=$this->input->post('fname')." ".$this->input->post('lname');
-                    ;
-                    $email=$this->input->post('email');
-                    $phone=$this->input->post('phonenumber');
-                    $state=$this->input->post('state');
-                    $city=$this->input->post('city');
-                    $address=$this->input->post('address');
-                    $payment_method=$this->input->post('payment_method');
-                    $referalcode=$this->input->post('referalcode');
-                    if ($payment_method==1) {
-                        $order_array = array(
-                        'name'=>$name,
-                        'email'=>$email,
-                        'phone'=>$phone,
-                        'state'=>$state,
-                        'city'=>$city,
-                        'address'=>$address,
-                        'referalcode'=>$referalcode,
-                        'payment_type'=>$payment_method,
-                          );
-                        $placeOrder = $this->order->PlaceOrder($order_array);
-                        echo $placeOrder;
-                    } elseif ($payment_method==2) {
-                        //--- Create Razorpay order ID ---------
-                        $placeOrder = $this->order->CreateRazorPayOrderID();
-                        echo $placeOrder;
-                    } else {
-                        $respone['status'] = false;
-                        $respone['message'] = 'Some unknown error occurred';
-                        echo json_encode($respone);
-                    }
-                } else {
-                    $respone['status'] = false;
-                    $respone['message'] = validation_errors();
-                    echo json_encode($respone);
-                }
-            } else {
-                $respone['status'] = false;
-                $respone['message'] ="Please insert some data, No data available";
-                echo json_encode($respone);
-            }
-        } else {
-            $respone['status'] = false;
-            $respone['message'] ="Some unknown error occurred";
-            echo json_encode($respone);
-        }
-    }
+               if ($this->form_validation->run() == true) {
+                   // $name = $this->input->post('fname') . " " . $this->input->post('lname');;
+                   // $email = $this->input->post('email');
+                   // $phone = $this->input->post('phonenumber');
+                   // $state = $this->input->post('state');
+                   // $city = $this->input->post('city');
+                   // $address_id = $this->input->post('address_id');
+                   $payment_method = $this->input->post('payment_method');
+                   $referalcode = $this->input->post('referalcode');
+                   $order_id = base64_decode($this->session->userdata('order_id'));
+                   $order1_data = $this->db->get_where('tbl_order1', array('id' => $order_id))->row();
+                   if (!empty($order1_data->address_id)) {
+                       $address_data = $this->db->get_where('tbl_user_address', array('id' => $order1_data->address_id))->row();
+                       if (!empty($address_data)) {
+                           $update = $this->order->updateShipping($address_data, $this->session->userdata('order_id'), 1);
+                           $shipping = json_decode($update);
+                           if ($shipping->status == false) {
+                               echo $update;
+                               return;
+                           }
+                       }
+                   } else {
+                       $respone['status'] = false;
+                       $respone['message'] = 'Please add address before checkout';
+                       echo json_encode($respone);
+                       return;
+                   }
+                   if ($payment_method == 1) {
+                       $order_array = array(
+                           // 'name' => $name,
+                           // 'email' => $email,
+                           // 'phone' => $phone,
+                           // 'state' => $state,
+                           // 'city' => $city,
+                           // 'address' => $address,
+                           'referalcode' => $referalcode,
+                           'payment_type' => $payment_method,
+                       );
+                       $placeOrder = $this->order->PlaceOrder($order_array);
+                       echo $placeOrder;
+                   } elseif ($payment_method == 2) {
+                       //--- Create Razorpay order ID ---------
+                       $placeOrder = $this->order->CreateRazorPayOrderID();
+                       echo $placeOrder;
+                   } else {
+                       $respone['status'] = false;
+                       $respone['message'] = 'Some unknown error occurred';
+                       echo json_encode($respone);
+                   }
+               } else {
+                   $respone['status'] = false;
+                   $respone['message'] = validation_errors();
+                   echo json_encode($respone);
+               }
+           } else {
+               $respone['status'] = false;
+               $respone['message'] = "Please insert some data, No data available";
+               echo json_encode($respone);
+           }
+       } else {
+           $respone['status'] = false;
+           $respone['message'] = "Some unknown error occurred";
+           echo json_encode($respone);
+       }
+   }
 
 
     // ======================================== Order place after payment ===============================
@@ -233,9 +264,9 @@ class Order extends CI_Controller
 
             $this->session->unset_userdata('order_id');
 
-            $this->load->view('frontend/common/header2', $data);
+            $this->load->view('frontend/common/header', $data);
             $this->load->view('frontend/order_success');
-            $this->load->view('frontend/common/footer2');
+            $this->load->view('frontend/common/footer');
         } else {
             redirect("/", "refresh");
         }
@@ -243,9 +274,9 @@ class Order extends CI_Controller
 
     public function order_failed()
     {
-        $this->load->view('frontend/common/header2');
+        $this->load->view('frontend/common/header');
         $this->load->view('frontend/order_failed');
-        $this->load->view('frontend/common/footer2');
+        $this->load->view('frontend/common/footer');
     }
 
     //===========View my orders=========================
@@ -521,6 +552,129 @@ class Order extends CI_Controller
             }
         } else {
             redirect('/', 'refresh');
+        }
+    }
+    public function add_address()
+    {
+        if ((!empty($this->session->userdata('user_data')) && !empty($this->session->userdata('order_id')))) {
+            $data['order_data'] = $this->db->get_where('tbl_order1', array('id' => base64_decode($this->session->userdata('order_id'))))->result();
+
+            $data['state_data'] = $this->db->get('all_states');
+            $user_id = $this->session->userdata('user_id');
+            $user_type = $this->session->userdata('user_type');
+            $data['address_data'] = $this->db->order_by('is_default', 'asc')->get_where('tbl_user_address', array('user_id' => $user_id, 'user_type' => $user_type,'is_active'=>1))->result();
+            $this->load->view('frontend/common/header', $data);
+            $this->load->view('frontend/add_address');
+            $this->load->view('frontend/common/footer');
+        } else {
+            redirect("/", "refresh");
+        }
+    }
+    public function add_address_data()
+    {
+
+        if (!empty($this->session->userdata('user_data'))) {
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
+            $this->load->helper('security');
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('fname', 'fname', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('lname', 'lname', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('email', 'email', 'xss_clean|trim');
+                $this->form_validation->set_rules('phonenumber', 'phonenumber', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('state', 'state', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('city', 'city', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('address', 'address', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('pincode', 'pincode', 'required|xss_clean|trim');
+                if ($this->form_validation->run() == true) {
+                    $fname = $this->input->post('fname');
+                    $lname = $this->input->post('lname');
+                    $email = $this->input->post('email');
+                    $phone = $this->input->post('phonenumber');
+                    $state = $this->input->post('state');
+                    $city = $this->input->post('city');
+                    $address = $this->input->post('address');
+                    $pincode = $this->input->post('pincode');
+                    date_default_timezone_set("Asia/Calcutta");
+                    $cur_date = date("Y-m-d H:i:s");
+                    $user_id = $this->session->userdata('user_id');
+                    $user_type = $this->session->userdata('user_type');
+                    $data_update = array('is_default' => 0,);
+                    $this->db->where('user_id', $user_id);
+                    $this->db->where('user_type', $user_type);
+                    $zapak = $this->db->update('tbl_user_address', $data_update);
+                    $data_insert = array(
+                        'user_id' => $user_id,
+                        'user_type' => $user_type,
+                        'f_name' => $fname,
+                        'l_name' => $lname,
+                        'email' => $email,
+                        'phone' => $phone,
+                        'state' => $state,
+                        'city' => $city,
+                        'address' => $address,
+                        'pincode' => $pincode,
+                        'is_default' => 1,
+                        'date' => $cur_date
+                    );
+
+                    $last_id = $this->base_model->insert_table("tbl_user_address", $data_insert, 1);
+                    if (!empty($last_id)) {
+                        $this->session->set_flashdata('smessage', 'Address added successfully!');
+                        redirect($_SERVER['HTTP_REFERER']);
+                    } else {
+                        $this->session->set_flashdata('emessage', 'Some error occurred!');
+                        redirect($_SERVER['HTTP_REFERER']);
+                    }
+                } else {
+                    $this->session->set_flashdata('emessage', validation_errors());
+                    redirect($_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        } else {
+            redirect('/', 'refresh');
+        }
+    }
+
+    public function change_address()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('address_id', 'address_id', 'required|xss_clean|trim');
+            if ($this->form_validation->run() == true) {
+                $address_id = strtoupper($this->input->post('address_id'));
+                $user_id = $this->session->userdata('user_id');
+                $user_type = $this->session->userdata('user_type');
+                //---remove all default address ------
+                $data_update = array('is_default' => 0,);
+                $this->db->where('user_id', $user_id);
+                $this->db->where('user_type', $user_type);
+                $zapak = $this->db->update('tbl_user_address', $data_update);
+                //---update default address ------
+                $data_update2 = array('is_default' => 1,);
+                $this->db->where('id', $address_id);
+                $zapak2 = $this->db->update('tbl_user_address', $data_update2);
+                $user_id = $this->session->userdata('user_id');
+                $user_type = $this->session->userdata('user_type');
+                $data['address_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_user_address', array('id' => $address_id))->row();
+                if (!empty($data['address_data'])) {
+                    $update = $this->order->updateShipping($data['address_data'], $this->session->userdata('order_id'));
+                }
+                redirect("Order/view_checkout");
+            } else {
+                $respone['status'] = false;
+                $respone['message'] = "Please insert some data, No data available";
+                echo json_encode($respone);
+            }
+        } else {
+            $respone['status'] = false;
+            $respone['message'] = validation_errors();
+            echo json_encode($respone);
         }
     }
 }

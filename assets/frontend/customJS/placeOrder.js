@@ -1,42 +1,43 @@
-$('#placeOrderForm').on('submit', function(e) {
+$('#placeOrderForm').on('submit', function (e) {
   e.preventDefault();
-  var fname = $("#fname").val()
-  var lname = $("#lname").val()
-  var email = $("#email").val()
-  var phonenumber = $("#phonenumber").val()
-  var state = $("#state").val()
-  var city = $("#city").val()
-  var address = $("#address").val()
+  // var fname = $("#fname").val()
+  // var lname = $("#lname").val()
+  // var email = $("#email").val()
+  // var phonenumber = $("#phonenumber").val()
+  // var state = $("#state").val()
+  // var city = $("#city").val()
+  // var address = $("#address").val()
   var referalcode = $("#referalcode").val()
-  var payment_method = $(".payment_emthod:checked").val()
+  var payment_method = $(".payment_option:checked").val()
+  // alert(payment_method);return;
   var formData = {
-    fname: fname,
-    lname: lname,
-    email: email,
-    phonenumber: phonenumber,
-    state: state,
-    city: city,
-    address: address,
+    // fname: fname,
+    // lname: lname,
+    // email: email,
+    // phonenumber: phonenumber,
+    // state: state,
+    // city: city,
+    // address: address,
     referalcode: referalcode,
     payment_method: payment_method
   };
-  $("#loader").css("display",'block');
-  $("#place").css("display",'none');
+  $("#loader").css("display", 'block');
+  $("#place").css("display", 'none');
   // return;
   $.ajax({
     type: "POST",
     url: base_url + 'Order/checkout',
     data: formData,
     dataType: "json",
-    success: function(response) {
+    success: function (response) {
       if (payment_method == 1) {
         // ------ COD Order Placed -----------------------
         if (response.status == true) {
           window.location.replace(base_url + "Order/order_success");
         } else if (response.status == false) {
           notifyError(response.message)
-          $("#loader").css("display",'none');
-          $("#place").css("display",'block');
+          $("#loader").css("display", 'none');
+          $("#place").css("display", 'block');
         }
       } else {
         // ------ Razorpay Order ID Created -----------------
@@ -49,13 +50,13 @@ $('#placeOrderForm').on('submit', function(e) {
             "name": "Tiara",
             "description": "Online Payment",
             "prefill": {
-              "name": fname+" "+lname,
+              "name": fname + " " + lname,
               "email": email,
               "contact": phonenumber,
             },
             // "image": "https://example.com/your_logo",
             "order_id": response.razorpayOrder,
-            "handler": function(response) {
+            "handler": function (response) {
               if (response.razorpay_payment_id.length !== 0) {
                 // alert(response.razorpay_payment_id)
                 $.ajax({
@@ -77,14 +78,14 @@ $('#placeOrderForm').on('submit', function(e) {
                     payment_method: payment_method
                   },
                   "prefill": {
-                    "name": fname+ " "+lname,
+                    "name": fname + " " + lname,
                     "email": email,
                     "phone": phonenumber,
                   },
                   "notes": {
                     "address": address,
                   },
-                  success: function(respawn) {
+                  success: function (respawn) {
                     if (respawn.status == true) {
                       localStorage.removeItem("shipping");
                       localStorage.removeItem("sub_total");
@@ -97,9 +98,9 @@ $('#placeOrderForm').on('submit', function(e) {
                   }
                 });
               } else {
-                    notifyError(response.message)
-                $("#loader").css("display",'none');
-                $("#place").css("display",'block');
+                notifyError(response.message)
+                $("#loader").css("display", 'none');
+                $("#place").css("display", 'block');
               }
             },
             "theme": {
@@ -109,19 +110,36 @@ $('#placeOrderForm').on('submit', function(e) {
           var rzp1 = new Razorpay(options);
           rzp1.open();
         } else {
-          alert('Not OKay');
+          notifyError(response.message)
+          $("#loader").css("display", 'none');
+          $("#place").css("display", 'block');
         }
       }
     }
   });
 });
 //==================== call calculate  ================
-function call_calculate(){
-var pincode = $('#pincode').val();
-var courier_id = $('#courier_id').val();
-  if(pincode!="") {
-window.location.replace(base_url+"Order/calculate/"+pincode+"/"+courier_id);
-  }else{
-     notifyError('Please Enter Pincode Before Checkout!')
-  }
+function call_calculate() {
+  // var pincode = $('#pincode').val();
+  // var courier_id = $('#courier_id').val();
+  // if (pincode != "") {
+    // window.location.replace(base_url + "Order/calculate/" + pincode + "/" + courier_id);
+    window.location.replace(base_url + "Order/calculate");
+  // } else {
+  //   notifyError('Please Enter Pincode Before Checkout!')
+  // }
 }
+//===========================================  ==============================================
+$('select').on('change', function () {
+  var price = $(this).find(':selected').attr('data-id');
+  if (price) {
+    var shipping = $('#spn').val();
+    var amount = price - shipping;
+    $('#return_msg').html('Amount to be Return (Excluding Shipping): ₹' + amount)
+  } else {
+    $('#return_msg').html('')
+  }
+  return;
+
+
+});

@@ -17,41 +17,6 @@
     if (!empty($cart_data)) { ?>
       <div class="container">
         <!-- ===================================================== START CART PRODUCTS ======================================================= -->
-<style>
-  .v-counter {
-    border-radius: 32px;
-    max-width: 89px;
-    overflow: auto;
-    /* padding: 0px 4px; */
-    border: 1px solid #323140;
-    /* margin: 10px; */
-}
-
-.v-counter input[type=button]:hover {
-    color: black;
-    font-weight: bold;
-    background-color: transparent;
-}
-.v-counter span {
-   
-    font-size: 13px;
-    color: black;
-    font-family: 'Open Sans';
-}
-.v-counter input[type=button], input[type=text] {
-    display: inline-block;
-    width: 20px;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    text-align: center;
-    cursor: pointer;
-    padding: 0px;
-    color: black;
-    height: 33px;
-    font-family: 'Open Sans';
-}
-</style>
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
@@ -84,9 +49,9 @@
                           <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                         </div> -->
                         <div class="v-counter">
-                          <input type="button" class="minusBtn" value="-" />
-                          <input type="text" size="25" value="1" class="count" />
-                          <input type="button" class="plusBtn" value="+" /> 
+                          <input type="button" class="minusBtn" value="-" product_id="<?=base64_encode($cart['product_id'])?>" type_id="<?=base64_encode($cart['type_id'])?>" change="<?=$cart['type_id']?>"/>
+                          <input type="text" size="25" name="quantity" id="quantity<?=$cart['type_id']?>" product_id="<?=base64_encode($cart['product_id'])?>" type_id="<?=base64_encode($cart['type_id'])?>"  value="<?=$cart['quantity']?>" title="Qty"  class="count" readonly/>
+                          <input type="button" class="plusBtn" value="+" product_id="<?=base64_encode($cart['product_id'])?>" type_id="<?=base64_encode($cart['type_id'])?>" change="<?=$cart['type_id']?>"/> 
                         </div>
                       </td>
                       <td class="text-right" data-title="Cart">
@@ -110,7 +75,7 @@
               <div class="col-lg-6 col-md-12">
                 <div class="border p-md-4 p-30 border-radius cart-totals">
                   <div class="heading_s1 mb-3">
-                    <h4>Cart Totals</h4>
+                    <h4>Cart Total</h4>
                   </div>
                   <div class="table-responsive">
                     <table class="table">

@@ -53,7 +53,7 @@ class CI_Login
                   //--------------- Send Register OTP -----------
                   $msg ='Dear User,Your OTP for signup to TIARASTORE is '.$OTP.'. Valid for 30 minutes. Please do not share this OTP.Welcome !!Regards,TIARASTORE';
                   $DLT = SIGNUP_DLT;
-                  $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
+                //   $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
 
                     $respone['status'] = true;
                     $respone['message'] ='Please enter otp sent to your register mobile number';
@@ -117,7 +117,7 @@ class CI_Login
                     //--------------- Send Register OTP----- -----
                     $msg ='Dear User,Your OTP for signup to TIARASTORE is '.$OTP.'. Valid for 30 minutes. Please do not share this OTP.Welcome !!Regards,TIARASTORE';
                     $DLT = SIGNUP_DLT;
-                    $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
+                    // $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
 
                     $respone['status'] = true;
                     $respone['message'] ='Please enter otp sent to your register mobile number';
@@ -271,9 +271,9 @@ class CI_Login
             //----------------------- user login handle --------------------------------
             if ($type==1) {
                 if ($userCheck[0]->is_active==1) {
-                    //--------------- Insert data into otp table -----
-                    $OTP = random_int(100000, 999999);
-                    // $OTP = 123456;
+                    // --------------- Insert data into otp table -----
+                    // $OTP = random_int(100000, 999999);
+                    $OTP = 123456;
                     $data_insert2 = array(
                             'phone'=>$phone,
                             'otp'=>$OTP,
@@ -288,7 +288,7 @@ class CI_Login
                         //--------------- Send login OTP----- -----
                         $msg ='Dear User,Your OTP for login to TIARASTORE is '.$OTP.'. Valid for 30 minutes. Please do not share this OTP.Thank You,TIARASTORE';
                         $DLT = LOGIN_DLT;
-                        $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
+                        // $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
 
                         $respone['status'] = true;
                         $respone['message'] ='Please enter otp sent to your register mobile number';
@@ -330,7 +330,7 @@ class CI_Login
                         //         //--------------- Send Login OTP----- -----
                         $msg ='Dear User,Your OTP for login to TIARASTORE is '.$OTP.'. Valid for 30 minutes. Please do not share this OTP.Thank You,TIARASTORE';
                         $DLT = LOGIN_DLT;
-                        $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
+                        // $sendmsg = $this->CI->messages->sendOtpMsg91($phone,$msg,$OTP,$DLT);
                         $respone['status'] = true;
                         $respone['message'] ='Please enter otp sent to your register mobile number';
                         $this->CI->session->set_flashdata('smessage', 'Please enter otp sent to your register mobile number');

@@ -5,7 +5,7 @@
                 <div class="col-lg-7 mb-md-3 mb-lg-0">
                     <div class="row align-items-center">
                         <div class="col flex-horizontal-center">
-                            <img class="icon-email" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-email.svg" alt="">
+                            <img class="icon-email" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-email.svg" alt="">
                             <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
                         </div>
                         <div class="col my-4 my-md-0 des">
@@ -30,7 +30,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5 mb-lg-0">
                         <div class="logo logo-width-1 wow fadeIn animated">
-                            <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="logo"></a>
+                            <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/images/theme/logo.png" alt="logo"></a>
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                         <p class="wow fadeIn animated">
@@ -44,11 +44,11 @@
                         </p>
                         <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                            <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                            <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                            <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                            <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                            <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                            <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-facebook.svg" alt=""></a>
+                            <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-twitter.svg" alt=""></a>
+                            <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-instagram.svg" alt=""></a>
+                            <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-pinterest.svg" alt=""></a>
+                            <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-youtube.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -80,13 +80,13 @@
                         <div class="col-md-8 col-lg-12">
                             <p class="wow fadeIn animated">From App Store or Google Play</p>
                             <div class="download-app wow fadeIn animated">
-                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="<?= base_url() ?>assets/frontend/imgs/theme/app-store.jpg" alt=""></a>
-                                <a href="#" class="hover-up"><img src="<?= base_url() ?>assets/frontend/imgs/theme/google-play.jpg" alt=""></a>
+                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="<?= base_url() ?>assets/frontend/images/theme/app-store.jpg" alt=""></a>
+                                <a href="#" class="hover-up"><img src="<?= base_url() ?>assets/frontend/images/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                             <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
-                            <img class="wow fadeIn animated" src="<?= base_url() ?>assets/frontend/imgs/theme/payment-method.png" alt="">
+                            <img class="wow fadeIn animated" src="<?= base_url() ?>assets/frontend/images/theme/payment-method.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
     </div>
 </footer>
 <!-- Preloader Start -->
-<div id="preloader-active">
+<!-- <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
             <div class="text-center">
@@ -118,7 +118,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Vendor JS-->
 <script>
     var base_url = "<?= base_url() ?>"
@@ -149,7 +149,7 @@
 <script src="<?= base_url() ?>assets/frontend/js/maind134.js?v=3.4"></script>
 <script src="<?= base_url() ?>assets/frontend/js/shopd134.js?v=3.4"></script>
 <!-- Alert Notification js -->
-<script src="<?=base_url()?>assets/frontend/customJS/notificationMessage.js"></script>
+<script src="<?= base_url() ?>assets/frontend/customJS/notificationMessage.js"></script>
 <!-- Login Signup js -->
 <script src="<?= base_url() ?>assets/frontend/customJS/loginSignup.js"></script>
 <!-- Cart functions js -->
@@ -180,82 +180,6 @@
             var succ_message = '<?php echo $this->session->flashdata('smessage'); ?>';
             notifySuccess(succ_message);
         <?php  } ?>
-        //----- check city ------
-        <?php if (empty($this->session->userdata('city_id'))) { ?>
-            $("#cityModel").modal('toggle');
-        <? } ?>
-
-// Store references that all functions can use.
-var resultEl = document.querySelector(".resultSet"),
-  plusMinusWidgets = document.querySelectorAll(".v-counter");
-
-// Attach the handlers to each plus-minus thing
-for (var i = 0; i < plusMinusWidgets.length; i++) {
-  plusMinusWidgets[i].querySelector(".minusBtn").addEventListener("click", clickHandler);
-  plusMinusWidgets[i].querySelector(".plusBtn").addEventListener("click", clickHandler);
-  plusMinusWidgets[i].querySelector(".count").addEventListener("change", changeHandler);
-}
-
-/*****
- * both plus and minus use the same function, but value is set by the class of the
- *  button
- *****/
-function clickHandler(event) {
-  // reference to the count input field
-  var countEl = event.target.parentNode.querySelector(".count");
-  if (event.target.className.match(/\bminusBtn\b/)) {
-    countEl.value = Number(countEl.value) - 1;
-  } else if (event.target.className.match(/\bplusBtn\b/)) {
-    countEl.value = Number(countEl.value) + 1;
-    
-  }
-  // When we programmatically change the value, we need to manually trigger
-  //  the change event.
-  triggerEvent(countEl, "change");
-};
-
-/*****
- * changeHandler() processes whenever a plusMinusWidget's count el is changed.
- *  It iterates over all plusMinusWidgets, gets their count, and outputs that
- *  to the given resultEl input field.
- *****/
-function changeHandler(event) {
-  // remove all value from the result el.
-  resultEl.value = 0;
-  /******
-   * Here is the only functional change, per your comment. Rather
-   *  concatenating a string, you want to sum values of the 
-   *  plusMinusWidget. To do this, we need to cast the value of each
-   *  plusMinusWidget to a Number value, and add that to the Number
-   *  value of the resultEl.
-   *****/
-  for (var i = 0; i < plusMinusWidgets.length; i++) {
-    // Add the current plusMinusWidget value to the resultEl value.
-    resultEl.value = Number(resultEl.value) + Number(plusMinusWidgets[i].querySelector('.count').value);
-
-  }
-
-};
-
-/*****
- * triggerEvent() -- function to trigger an HTMLEvent on a given element.
- *  similar to jquery's trigger(), simply a convenience function. Not the
- *  point of this exercise.
- *****/
-
-function triggerEvent(el, type){
-   if ('createEvent' in document) {
-        // modern browsers, IE9+
-        var e = document.createEvent('HTMLEvents');
-        e.initEvent(type, false, true);
-        el.dispatchEvent(e);
-    } else {
-        // IE 8
-        var e = document.createEventObject();
-        e.eventType = type;
-        el.fireEvent('on'+e.eventType, e);
-    }
-}
     });
 </script>
 </body>

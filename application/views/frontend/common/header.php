@@ -12,7 +12,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/frontend/imgs/theme/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/frontend/images/theme/favicon.png">
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/frontend/css/maind134.css?v=3.4">
     <!-- Include Toast CSS -->
@@ -21,21 +21,21 @@
 </head>
 
 <body>
-<?	$headerMiniCart = [];
-  $this->load->library('custom/Cart');
-  if (!empty($this->session->userdata('user_data'))) {
-      $headerMiniCart = $this->cart->ViewCartOnline();
-  } else {
-      $headerMiniCart = $this->cart->ViewCartOffline();
-  }
-  ?>
+    <? $headerMiniCart = [];
+    $this->load->library('custom/Cart');
+    if (!empty($this->session->userdata('user_data'))) {
+        $headerMiniCart = $this->cart->ViewCartOnline();
+    } else {
+        $headerMiniCart = $this->cart->ViewCartOffline();
+    }
+    ?>
     <!-- Modal -->
     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
-                    <div class="deal" style="background-image: url('<?= base_url() ?>assets/frontend/imgs/banner/menu-banner-7.png')">
+                    <div class="deal" style="background-image: url('<?= base_url() ?>assets/frontend/images/banner/menu-banner-7.png')">
                         <div class="deal-top">
                             <h2 class="text-brand">Deal of the Day</h2>
                             <h5>Limited quantities.</h5>
@@ -59,11 +59,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="d-flex justify-content-between">
+                    <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="w-100 text-center">
+                        <div class="logo logo-width-1" style="margin-right:0">
+                            <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/images/theme/logo.png" alt="logo"></a>
+                        </div>
 
-                        <h4>LOG IN TO CONTINUE</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <h4 class="mb-3">LOG IN TO CONTINUE</h4>
                     <form method="post" action="javascript:void(0)" id="loginForm" enctype="multipart/form-data">
                         <div class="form-group">
                             <input name="number" required type="text" id="loginPhone" onkeypress="return isNumberKey(event)" maxlength="10" minlength="10" placeholder="Enter Your Number">
@@ -75,7 +78,7 @@
                         <div class="login_footer form-group">
                             <div class="chek-form">
                                 <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="" required>
                                     <label class="form-check-label" for="exampleCheckbox1"><span>By Continuing, I agree to the <a href="term-condition.html" style="color: #FF324D;">Terms of use</a> & <a href="privacy_policy.html" style="color: #FF324D;">Privacy Policy</a></span></label>
                                 </div>
                             </div>
@@ -96,7 +99,7 @@
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
-                    <div class="deal" style="background-image: url('<?= base_url() ?>assets/frontend/imgs/banner/menu-banner-7.png')">
+                    <div class="deal" style="background-image: url('<?= base_url() ?>assets/frontend/images/banner/menu-banner-7.png')">
                         <div class="deal-top">
                             <h2 class="text-brand">Deal of the Day</h2>
                             <h5>Limited quantities.</h5>
@@ -129,46 +132,46 @@
                                 <!-- MAIN SLIDES -->
                                 <div class="product-image-slider">
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-2.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-2.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-1.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-1.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-3.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-3.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-4.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-4.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-5.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-5.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-6.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-6.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
-                                        <img src="<?= base_url() ?>assets/frontend/imgs/shop/product-16-7.jpg" alt="product image">
+                                        <img src="<?= base_url() ?>assets/frontend/images/shop/product-16-7.jpg" alt="product image">
                                     </figure>
                                 </div>
                                 <!-- THUMBNAILS -->
                                 <div class="slider-nav-thumbnails pl-15 pr-15">
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-3.jpg" alt="product image"></div>
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-4.jpg" alt="product image"></div>
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-5.jpg" alt="product image"></div>
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-6.jpg" alt="product image"></div>
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-7.jpg" alt="product image"></div>
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-8.jpg" alt="product image"></div>
-                                    <div><img src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-9.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-3.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-4.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-5.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-6.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-7.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-8.jpg" alt="product image"></div>
+                                    <div><img src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-9.jpg" alt="product image"></div>
                                 </div>
                             </div>
                             <!-- End Gallery -->
                             <div class="social-icons single-share">
                                 <ul class="text-grey-5 d-inline-block">
                                     <li><strong class="mr-10">Share this:</strong></li>
-                                    <li class="social-facebook"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
-                                    <li class="social-twitter"> <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
-                                    <li class="social-instagram"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a></li>
-                                    <li class="social-linkedin"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
+                                    <li class="social-facebook"><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-facebook.svg" alt=""></a></li>
+                                    <li class="social-twitter"> <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-twitter.svg" alt=""></a></li>
+                                    <li class="social-instagram"><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-instagram.svg" alt=""></a></li>
+                                    <li class="social-linkedin"><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-pinterest.svg" alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -278,9 +281,9 @@
                                 <!-- <li>
                                     <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
                                     <ul class="language-dropdown">
-                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-fr.png" alt="">Français</a></li>
-                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
-                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
+                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/flag-fr.png" alt="">Français</a></li>
+                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/flag-dt.png" alt="">Deutsch</a></li>
+                                        <li><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/flag-ru.png" alt="">Pусский</a></li>
                                     </ul>
                                 </li> -->
                                 <? if (empty($this->session->userdata('user_data'))) { ?>
@@ -299,7 +302,7 @@
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="logo"></a>
+                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/images/theme/logo.png" alt="logo"></a>
                     </div>
                     <div class="header-right">
                         <div class="search-style-2">
@@ -319,22 +322,23 @@
                                         $cartCount = count($this->session->userdata('cart_data'));
                                     }
                                 } ?>
+
                                 <div class="header-action-icon-2">
                                     <? if (!empty($this->session->userdata('user_data'))) { ?>
                                         <a href="<?= base_url() ?>Home/my_wishlist">
-                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-heart.svg">
                                             <span class="pro-count blue"><?= $wishCount ?></span>
                                         </a>
                                     <? } else { ?>
                                         <a href="#">
-                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-heart.svg">
                                             <span class="pro-count blue"><?= $wishCount ?></span>
                                         </a>
                                     <?  } ?>
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <a class="mini-cart-icon" href="shop-cart.html">
-                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-cart.svg">
+                                    <a class="mini-cart-icon" href="<?= base_url() ?>Home/my_bag">
+                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-cart.svg">
                                         <span class="pro-count blue"><?= $cartCount ?></span>
                                     </a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -343,30 +347,45 @@
                                                 <? foreach ($headerMiniCart['cart_data'] as $miniCart) { ?>
                                                     <li>
                                                         <div class="shopping-cart-img">
-                                                            <a href="#"><img alt="Ekaa Vastra" src="<?=$miniCart['image']?>"></a>
+                                                            <a href="#"><img alt="Ekaa Vastra" src="<?= $miniCart['image'] ?>"></a>
                                                         </div>
                                                         <div class="shopping-cart-title">
-                                                            <h4><a href="#"><?=$miniCart['product_name']?></a></h4>
-                                                            <h4><span> <?=$miniCart['quantity']?> × </span>₹<?=$miniCart['price']?></h4>
+                                                            <h4><a href="#"><?= $miniCart['product_name'] ?></a></h4>
+                                                            <h4><span> <?= $miniCart['quantity'] ?> × </span>₹<?= $miniCart['price'] ?></h4>
                                                         </div>
                                                         <div class="shopping-cart-delete">
-                                                            <a href="javascript:;" product_id="<?=base64_encode($miniCart['product_id'])?>" type_id="<?=base64_encode($miniCart['type_id'])?>" onclick="deleteCart(this)" ><i class="fi-rs-cross-small"></i></a>
+                                                            <a href="javascript:;" product_id="<?= base64_encode($miniCart['product_id']) ?>" type_id="<?= base64_encode($miniCart['type_id']) ?>" onclick="deleteCart(this)"><i class="fi-rs-cross-small"></i></a>
                                                         </div>
                                                     </li>
                                                 <? } ?>
                                             </ul>
                                             <div class="shopping-cart-footer">
                                                 <div class="shopping-cart-total">
-                                                    <h4>Total <span>₹<?=$headerMiniCart['sub_total']?></span></h4>
+                                                    <h4>Total <span>₹<?= $headerMiniCart['sub_total'] ?></span></h4>
                                                 </div>
                                                 <div class="shopping-cart-button">
-                                                    <a href="<?=base_url()?>Home/my_bag" class="outline">View cart</a>
+                                                    <a href="<?= base_url() ?>Home/my_bag" class="outline">View Cart</a>
                                                 </div>
                                             </div>
                                         <? } else { ?>
                                             <img src="<?= base_url() ?>assets/frontend/images/cart_empty.jpg" alt="Empty Cart" class="img-fluid">
                                         <? } ?>
                                     </div>
+                                </div>
+                                <div class="header-action-icon-2">
+                                    <? if (!empty($this->session->userdata('user_data'))) { ?>
+                                        <a href="#">
+                                            <img class="svgInject" alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/user.png">
+                                        </a>
+                                        <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                            <ul>
+                                                <li>
+                                                    <a href="<?= base_url() ?>User/logout">Logout</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    <? }?>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +398,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="Ekaa Vastra"></a>
+                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/images/theme/logo.png" alt="Ekaa Vastra"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
@@ -433,26 +452,26 @@
                             <div class="header-action-icon-2">
                                 <? if (!empty($this->session->userdata('user_data'))) { ?>
                                     <a href="<?= base_url() ?>Home/my_wishlist">
-                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-heart.svg">
                                         <span class="pro-count white"><?= $wishCount ?></span>
                                     </a>
                                 <? } else { ?>
                                     <a href="#">
-                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-heart.svg">
+                                        <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-heart.svg">
                                         <span class="pro-count white"><?= $wishCount ?></span>
                                     </a>
                                 <?  } ?>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.html2">
-                                    <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-cart.svg">
+                                    <img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-cart.svg">
                                     <span class="pro-count white"><?= $cartCount ?></span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-3.jpg"></a>
+                                                <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-3.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
@@ -464,7 +483,7 @@
                                         </li>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/imgs/shop/thumbnail-4.jpg"></a>
+                                                <a href="shop-product-right.html"><img alt="Ekaa Vastra" src="<?= base_url() ?>assets/frontend/images/shop/thumbnail-4.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
@@ -506,7 +525,7 @@
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
-                    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/imgs/theme/logo.png" alt="logo"></a>
+                    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/frontend/images/theme/logo.png" alt="logo"></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
@@ -553,11 +572,11 @@
                 </div>
                 <div class="mobile-social-icon">
                     <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                    <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-facebook.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-twitter.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-instagram.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-pinterest.svg" alt=""></a>
+                    <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-youtube.svg" alt=""></a>
                 </div>
             </div>
         </div>

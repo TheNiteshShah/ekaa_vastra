@@ -21,7 +21,7 @@ class CI_Order
     }
 
     //===================================== CALCULATE ========================================================
-    public function calculate($pincode, $courier_id)
+    public function calculate()
     {
         $user_type = $this->CI->session->userdata('user_type');
         if ($user_type == 2) {
@@ -74,14 +74,26 @@ class CI_Order
                 $final_amount = $total;
             }
             // echo $total; die();
-            $shipping = $this->CI->shiprocket->GetCourierServiceability($pincode, $total_weight, $final_amount);
-            $shipping = json_decode($shipping);
-            if ($shipping->status == false) {
-                $this->CI->session->set_flashdata('emessage', 'Some error occurred!');
-                return 0;
-                exit;
+            // echo $total; die();
+            $pincode = '';
+            if (!empty($address_data)) {
+                $pincode = $address_data->pincode;
+                // $shipping = $this->CI->shiprocket->GetCourierServiceability($pincode, $total_weight, $final_amount);
+                // $shipping = json_decode($shipping);
+                // if ($shipping->status == false) {
+                //     $this->CI->session->set_flashdata('emessage', $shipping->message);
+                //     return 0;
+                //     exit;
+                // }
+                // $shipping = $shipping->data->shipping;
+                // $courier_id = $shipping->data->courier_id;
+                $shipping = 0;
+                $courier_id = '';
+            } else {
+                $shipping = 0;
+                $courier_id = '';
             }
-            $final_amount = $final_amount + $shipping->data->shipping;
+            $final_amount = $final_amount + $shipping;
             //------order1 entry-------------
             $order1_insert = array(
                 'user_id' => $user_id,
@@ -90,7 +102,7 @@ class CI_Order
                 'final_amount' => $final_amount,
                 'payment_status' => 0,
                 'order_status' => 0,
-                'shipping' => $shipping->data->shipping,
+                'shipping' => $shipping,
                 'pincode' => $pincode,
                 'courier_id' => $courier_id,
                 'weight' => $total_weight,
@@ -193,12 +205,12 @@ class CI_Order
                 }
                 //----------order1 entry-------------
                 $order1_update = array(
-                    'name' => $placeOrder['name'],
-                    'email' => $placeOrder['email'],
-                    'phone' => $placeOrder['phone'],
-                    'address' => $placeOrder['address'],
-                    'state' => $placeOrder['state'],
-                    'city' => $placeOrder['city'],
+                    // 'name' => $placeOrder['name'],
+                    // 'email' => $placeOrder['email'],
+                    // 'phone' => $placeOrder['phone'],
+                    // 'address' => $placeOrder['address'],
+                    // 'state' => $placeOrder['state'],
+                    // 'city' => $placeOrder['city'],
                     'final_amount' => $final_amount,
                     'refererral_code' => $placeOrder['referalcode'],
                     'ref_points' => $referpoints['refer_points'],
@@ -292,105 +304,105 @@ class CI_Order
 
                     //order placing start
                     //whattsapp message sent
-                    $this->CI->db->select('*');
-                    $this->CI->db->from('tbl_order2');
-                    $this->CI->db->where('main_id', $order_id);
-                    $d1 = $this->CI->db->get();
-                    $p1 = '';
-                    $i = 1;
-                    foreach ($d1->result() as $data1) {
-                        $productid = $data1->product_id;
-                        $typeid = $data1->type_id;
-                        $qtys = $data1->quantity;
-                        $this->CI->db->select('*');
-                        $this->CI->db->from('tbl_product');
-                        $this->CI->db->where('id', $productid);
-                        $dsa = $this->CI->db->get();
-                        $da_p = $dsa->row();
-                        if (!empty($da_p)) {
-                            $p_name = $da_p->name;
-                        } else {
-                            $p_name = '';
-                        }
-                        $this->CI->db->select('*');
-                        $this->CI->db->from('tbl_type');
-                        $this->CI->db->where('id', $typeid);
-                        $dsa = $this->CI->db->get();
-                        $da_type = $dsa->row();
-                        if (!empty($da_type)) {
-                            $tsize = $da_type->size_id;
-                            $tcolor = $da_type->colour_id;
-                        } else {
-                            $tsize = '';
-                            $tcolor = '';
-                        }
+                    // $this->CI->db->select('*');
+                    // $this->CI->db->from('tbl_order2');
+                    // $this->CI->db->where('main_id', $order_id);
+                    // $d1 = $this->CI->db->get();
+                    // $p1 = '';
+                    // $i = 1;
+                    // foreach ($d1->result() as $data1) {
+                    //     $productid = $data1->product_id;
+                    //     $typeid = $data1->type_id;
+                    //     $qtys = $data1->quantity;
+                    //     $this->CI->db->select('*');
+                    //     $this->CI->db->from('tbl_product');
+                    //     $this->CI->db->where('id', $productid);
+                    //     $dsa = $this->CI->db->get();
+                    //     $da_p = $dsa->row();
+                    //     if (!empty($da_p)) {
+                    //         $p_name = $da_p->name;
+                    //     } else {
+                    //         $p_name = '';
+                    //     }
+                    //     $this->CI->db->select('*');
+                    //     $this->CI->db->from('tbl_type');
+                    //     $this->CI->db->where('id', $typeid);
+                    //     $dsa = $this->CI->db->get();
+                    //     $da_type = $dsa->row();
+                    //     if (!empty($da_type)) {
+                    //         $tsize = $da_type->size_id;
+                    //         $tcolor = $da_type->colour_id;
+                    //     } else {
+                    //         $tsize = '';
+                    //         $tcolor = '';
+                    //     }
 
 
-                        $this->CI->db->select('*');
-                        $this->CI->db->from('tbl_size');
-                        $this->CI->db->where('id', $tsize);
-                        $dsa_size = $this->CI->db->get()->row();
-                        $size = $dsa_size->name;
+                    //     $this->CI->db->select('*');
+                    //     $this->CI->db->from('tbl_size');
+                    //     $this->CI->db->where('id', $tsize);
+                    //     $dsa_size = $this->CI->db->get()->row();
+                    //     $size = $dsa_size->name;
 
-                        $this->CI->db->select('*');
-                        $this->CI->db->from('tbl_colour');
-                        $this->CI->db->where('id', $tcolor);
-                        $dsa_color = $this->CI->db->get()->row();
-                        $colour = $dsa_color->colour_name;
-                    }
-                    $product_des = '&product name=' . $p_name . '-' . $size . '(' . $colour . ')*' . $qtys;
-                    $this->CI->db->select('*');
-                    $this->CI->db->from('tbl_order1');
-                    $this->CI->db->where('id', $order_id);
-                    $dsa = $this->CI->db->get();
-                    $da = $dsa->row();
-                    if (!empty($da)) {
-                        $totalamt = $da->total_amount;
-                        $cur_date2 = $da->date;
-                        $ptype = $da->payment_type;
-                        $user_id2 = $da->user_id;
-
-
-                        $this->CI->db->select('*');
-                        $this->CI->db->from('tbl_users');
-                        $this->CI->db->where('id', $user_id2);
-                        $dsa = $this->CI->db->get();
-                        $da = $dsa->row();
-                        if (!empty($da)) {
-                            $first_name = $da->f_name;
-                            $last_name = $da->l_name;
-                            $name2 = $first_name . $last_name;
-                        } else {
-                            $name2 = '';
-                        }
-                        if ($ptype == 1) {
-                            $pptype = "Cash on delivery";
-                        } else if ($ptype == 2) {
-                            $pptype = "Online payment";
-                        }
-                    }
+                    //     $this->CI->db->select('*');
+                    //     $this->CI->db->from('tbl_colour');
+                    //     $this->CI->db->where('id', $tcolor);
+                    //     $dsa_color = $this->CI->db->get()->row();
+                    //     $colour = $dsa_color->colour_name;
+                    // }
+                    // $product_des = '&product name=' . $p_name . '-' . $size . '(' . $colour . ')*' . $qtys;
+                    // $this->CI->db->select('*');
+                    // $this->CI->db->from('tbl_order1');
+                    // $this->CI->db->where('id', $order_id);
+                    // $dsa = $this->CI->db->get();
+                    // $da = $dsa->row();
+                    // if (!empty($da)) {
+                    //     $totalamt = $da->total_amount;
+                    //     $cur_date2 = $da->date;
+                    //     $ptype = $da->payment_type;
+                    //     $user_id2 = $da->user_id;
 
 
+                    //     $this->CI->db->select('*');
+                    //     $this->CI->db->from('tbl_users');
+                    //     $this->CI->db->where('id', $user_id2);
+                    //     $dsa = $this->CI->db->get();
+                    //     $da = $dsa->row();
+                    //     if (!empty($da)) {
+                    //         $first_name = $da->f_name;
+                    //         $last_name = $da->l_name;
+                    //         $name2 = $first_name . $last_name;
+                    //     } else {
+                    //         $name2 = '';
+                    //     }
+                    //     if ($ptype == 1) {
+                    //         $pptype = "Cash on delivery";
+                    //     } else if ($ptype == 2) {
+                    //         $pptype = "Online payment";
+                    //     }
+                    // }
 
-                    $curl = curl_init();
-                    curl_setopt_array($curl, array(
-                        CURLOPT_URL => 'https://whatsapp.fineoutput.com/send_order_message',
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => '',
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 0,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => 'phone=' . WHATSAPP_NUMBERS3 . '&order_id=' . $order_id . '&amount=' . $totalamt . '&date=' . $cur_date2 . '&method=' . $pptype . $product_des . '&customer_name=' . $name2  .  '',
-                        CURLOPT_HTTPHEADER => array(
-                            'token:' . TOKEN . '',
-                            'Content-Type:application/x-www-form-urlencoded',
-                            'Cookie:ci_session=e40e757b02bc2d8fb6f5bf9c5b7bb2ea74c897e8'
-                        ),
-                    ));
-                    $respons = curl_exec($curl);
-                    curl_close($curl);
+
+
+                    // $curl = curl_init();
+                    // curl_setopt_array($curl, array(
+                    //     CURLOPT_URL => 'https://whatsapp.fineoutput.com/send_order_message',
+                    //     CURLOPT_RETURNTRANSFER => true,
+                    //     CURLOPT_ENCODING => '',
+                    //     CURLOPT_MAXREDIRS => 10,
+                    //     CURLOPT_TIMEOUT => 0,
+                    //     CURLOPT_FOLLOWLOCATION => true,
+                    //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    //     CURLOPT_CUSTOMREQUEST => 'POST',
+                    //     CURLOPT_POSTFIELDS => 'phone=' . WHATSAPP_NUMBERS3 . '&order_id=' . $order_id . '&amount=' . $totalamt . '&date=' . $cur_date2 . '&method=' . $pptype . $product_des . '&customer_name=' . $name2  .  '',
+                    //     CURLOPT_HTTPHEADER => array(
+                    //         'token:' . TOKEN . '',
+                    //         'Content-Type:application/x-www-form-urlencoded',
+                    //         'Cookie:ci_session=e40e757b02bc2d8fb6f5bf9c5b7bb2ea74c897e8'
+                    //     ),
+                    // ));
+                    // $respons = curl_exec($curl);
+                    // curl_close($curl);
 
                     $respone['status'] = true;
                     return json_encode($respone);
@@ -778,6 +790,50 @@ class CI_Order
             return true;
         } else {
             return false;
+        }
+    }
+    // =================================== UPDATE SHIPPING ===========================================================
+    public function updateShipping($address_data, $order_id, $check = 0)
+    {
+        $order_id = base64_decode($order_id);
+        $order1_data = $this->CI->db->get_where('tbl_order1', array('id' => $order_id))->row();
+        // print_r($order1_data);die();
+
+        $pincode = $address_data->pincode;
+        $shipping = $this->CI->shiprocket->GetCourierServiceability($pincode, $order1_data->weight, $order1_data->final_amount);
+        $shipping = json_decode($shipping);
+        if ($shipping->status == false) {
+            $this->CI->session->set_flashdata('emessage', $shipping->message);
+            $data_update = array(
+                'shipping' => 0, 'final_amount' => $order1_data->total_amount - $order1_data->promo_discount,
+            );
+            $this->CI->db->where('id', $order_id);
+            $zapak = $this->CI->db->update('tbl_order1', $data_update);
+            $respone['status'] = false;
+            $respone['message'] =  $shipping->message;
+            return json_encode($respone);
+            exit;
+        }
+        if ($check == 1) {
+            $respone['status'] = true;
+            return json_encode($respone);
+        }
+        $shipping_charge = $shipping->data->shipping;
+        $courier_id = $shipping->data->courier_id;
+        $data_update = array(
+            'shipping' => $shipping_charge, 'courier_id' => $courier_id,
+            'final_amount' => $order1_data->final_amount + $shipping_charge, 'address_id' => $address_data->id
+        );
+        $this->CI->db->where('id', $order_id);
+        $zapak = $this->CI->db->update('tbl_order1', $data_update);
+        if (!empty($zapak)) {
+            $respone['status'] = true;
+            return json_encode($respone);
+        } else {
+            $respone['status'] = false;
+            $respone['message'] =  'Some error occured';
+            return json_encode($respone);
+            exit;
         }
     }
 }

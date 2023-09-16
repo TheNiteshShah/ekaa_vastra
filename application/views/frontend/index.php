@@ -36,37 +36,37 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/feature-1.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/theme/icons/feature-1.png" alt="">
                         <h4 class="bg-1">Free Shipping</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/feature-2.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/theme/icons/feature-2.png" alt="">
                         <h4 class="bg-3">Online Order</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/feature-3.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/theme/icons/feature-3.png" alt="">
                         <h4 class="bg-2">Save Money</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/feature-4.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/theme/icons/feature-4.png" alt="">
                         <h4 class="bg-4">Promotions</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/feature-5.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/theme/icons/feature-5.png" alt="">
                         <h4 class="bg-5">Happy Sell</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/feature-6.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/theme/icons/feature-6.png" alt="">
                         <h4 class="bg-6">24/7 Support</h4>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
     <section class="banner-2 section-padding pb-0">
         <div class="container">
             <div class="banner-img banner-big wow fadeIn animated f-none">
-                <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-4.png" alt="">
+                <img src="<?= base_url() ?>assets/frontend/images/banner/banner-4.png" alt="">
                 <div class="banner-text d-md-block d-none">
                     <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
                     <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="banner-img wow fadeIn animated">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-1.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/banner/banner-1.png" alt="">
                         <div class="banner-text">
                             <span>Smart Offer</span>
                             <h4>Save 20% on <br>Woman Bag</h4>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="banner-img wow fadeIn animated">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-2.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/banner/banner-2.png" alt="">
                         <div class="banner-text">
                             <span>Sale off</span>
                             <h4>Great Summer <br>Collection</h4>
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-lg-4 d-md-none d-lg-flex">
                     <div class="banner-img wow fadeIn animated  mb-sm-0">
-                        <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-3.png" alt="">
+                        <img src="<?= base_url() ?>assets/frontend/images/banner/banner-3.png" alt="">
                         <div class="banner-text">
                             <span>New Arrivals</span>
                             <h4>Shop Today’s <br>Deals & Offers</h4>
@@ -245,7 +245,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="banner-bg wow fadeIn animated" style="background-image: url('<?= base_url() ?>assets/frontend/imgs/banner/banner-8.jpg')">
+                    <div class="banner-bg wow fadeIn animated" style="background-image: url('<?= base_url() ?>assets/frontend/images/banner/banner-8.jpg')">
                         <div class="banner-content">
                             <h5 class="text-grey-4 mb-15">Shop Today’s Deals</h5>
                             <h2 class="fw-600">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</h2>
@@ -392,7 +392,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="banner-img banner-1 wow fadeIn animated">
-                                <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-5.jpg" alt="">
+                                <img src="<?= base_url() ?>assets/frontend/images/banner/banner-5.jpg" alt="">
                                 <div class="banner-text">
                                     <span>Accessories</span>
                                     <h4>Save 17% on <br>Autumn Hat</h4>
@@ -402,7 +402,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="banner-img mb-15 wow fadeIn animated">
-                                <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-6.jpg" alt="">
+                                <img src="<?= base_url() ?>assets/frontend/images/banner/banner-6.jpg" alt="">
                                 <div class="banner-text">
                                     <span>Big Offer</span>
                                     <h4>Save 20% on <br>Women's socks</h4>
@@ -410,7 +410,7 @@
                                 </div>
                             </div>
                             <div class="banner-img banner-2 wow fadeIn animated">
-                                <img src="<?= base_url() ?>assets/frontend/imgs/banner/banner-7.jpg" alt="">
+                                <img src="<?= base_url() ?>assets/frontend/images/banner/banner-7.jpg" alt="">
                                 <div class="banner-text">
                                     <span>Smart Offer</span>
                                     <h4>Save 20% on <br>Eardrop</h4>

@@ -63,6 +63,7 @@ function updateCart(i) {
   var product_id = $("#quantity" + i).attr("product_id");
   var type_id = $("#quantity" + i).attr("type_id");
   var quantity = $("#quantity" + i).val();
+  // alert(quantity);return;
   if (quantity == 0) {
     window.location.reload();
     return;

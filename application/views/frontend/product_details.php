@@ -1,6 +1,11 @@
 <main class="main">
   <!-- =============================== START BREADCRUMB ====================================================== -->
-
+  <style>
+    .v-counter{margin-top:3px}
+    .v-counter input[type=button] {
+      width: 30px !important;
+    }
+  </style>
   <div class="page-header breadcrumb-wrap">
     <div class="container">
       <div class="breadcrumb">
@@ -177,16 +182,21 @@
                       <?
                       foreach ($size_arr as $size) {
                       ?>
-                        <li <? if ($size['id'] == $type_data[0]->size_id) { ?> class="active" <? } ?>><a href="<?= base_url() ?>Home/product_detail/<?= $product_data[0]->url ?>?type=<?= base64_encode($size['type_id']) ?>"><?= $size['size_name']; ?></a></li>
+                        <li <? if ($size['id'] == $type_data[0]->size_id) { ?> class="active" <? } ?>><a href="#" onclick="location.href='<?= base_url() ?>Home/product_detail/<?= $product_data[0]->url ?>?type=<?= base64_encode($size['type_id']) ?>'"><?= $size['size_name']; ?></a></li>
                       <? } ?>
                     </ul>
                   </div>
                   <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                   <div class="detail-extralink">
-                    <div class="detail-qty border radius">
+                    <!-- <div class="detail-qty border radius">
                       <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                       <span type="text" readonly onkeypress="return isNumberKey(event)" min-qty="1" name="quantity" product_id='' value="1" title="Qty" id="quantity" class="qty-val">1 </span>
                       <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                    </div> -->
+                    <div class="v-counter">
+                      <input type="button" class="minusBtn" value="-" change="0" />
+                      <input type="text" size="25" class="count" name="quantity" product_id='' value="1" title="Qty" id="quantity" readonly />
+                      <input type="button" class="plusBtn" value="+" change="0" />
                     </div>
                     <div class="product-extra-link2">
                       <button product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" quantity="1" id="addtoCartButton" onclick="addToCart(this)" type="button" class="button button-add-to-cart">Add to cart</button>
@@ -198,10 +208,10 @@
                           <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0)" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="remove" onclick="wishlist(this)"><i class="fi-rs-heart"></i></a>
                         <? } else { ?>
                           <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0)" product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" status="add" onclick="wishlist(this)"><i class="fi-rs-heart"></i></a>
-                          <? }
+                        <? }
                       } else { ?>
                         <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#LoginModal"><i class="fi-rs-heart"></i></a>
-                     
+
                       <? } ?>
                     </div>
                   </div>
@@ -237,10 +247,10 @@
                 <div class="social-icons single-share">
                   <ul class="text-grey-5 d-inline-block">
                     <li><strong class="mr-10">Share this:</strong></li>
-                    <li class="social-facebook"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
-                    <li class="social-twitter"> <a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
-                    <li class="social-instagram"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-instagram.svg" alt=""></a></li>
-                    <li class="social-linkedin"><a href="#"><img src="<?= base_url() ?>assets/frontend/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
+                    <li class="social-facebook"><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-facebook.svg" alt=""></a></li>
+                    <li class="social-twitter"> <a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-twitter.svg" alt=""></a></li>
+                    <li class="social-instagram"><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-instagram.svg" alt=""></a></li>
+                    <li class="social-linkedin"><a href="#"><img src="<?= base_url() ?>assets/frontend/images/theme/icons/icon-pinterest.svg" alt=""></a></li>
                   </ul>
                 </div>
                 <!--================================= START REVIEWS ==============================================-->
@@ -268,7 +278,7 @@
                             <div class="single-comment justify-content-between d-flex">
                               <div class="user justify-content-between d-flex">
                                 <div class="thumb text-center">
-                                  <img src="assets/imgs/page/avatar-6.jpg" alt="">
+                                  <img src="assets/images/page/avatar-6.jpg" alt="">
                                   <h6><a href="#"><?= $reviews->name ?></a></h6>
                                   <p class="font-xxs"><? $newdate = new DateTime($reviews->date);
                                                       echo $newdate->format('F j, Y'); ?></p>
@@ -461,7 +471,7 @@
             <? } ?>
             <!--================================= END BUY WITH IT PRODUCTS ==============================================-->
             <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
-              <img class="border-radius-10" src="<?= base_url() ?>assets/frontend/imgs/banner/banner-4.png" alt="">
+              <img class="border-radius-10" src="<?= base_url() ?>assets/frontend/images/banner/banner-4.png" alt="">
               <div class="banner-text">
                 <h4 class="mb-15 mt-40">New Launch</h4>
                 <h2 class="fw-600 mb-20">Get Extra 10% off <br>on your first order</h2>
