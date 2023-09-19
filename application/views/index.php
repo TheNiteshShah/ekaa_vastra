@@ -1,8 +1,8 @@
 <html>
 <head>
-<title>Anay Pareek</title>
+<title>Ekaa Vastra</title>
 </head>
 <body>
-  Hii!! Welcome to Anay Pareek's Custom Codeignitor, Please edit this page and insert your frontend codes
+<img src="<?= base_url() ?>assets/frontend/images/coming_soon.jpeg" alt="logo" style="width:100%;height:100%">
 </body>
 </html>
