@@ -17,4 +17,4 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-          remote-dir: public_html/beta.ekaavastra.com/
+          remote-dir: public_html/ekaavastra.com/
