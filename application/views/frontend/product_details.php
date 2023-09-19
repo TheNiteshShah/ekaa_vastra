@@ -187,7 +187,7 @@
                     </ul>
                   </div>
                   <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                  <div class="detail-extralink">
+                  <div class="detail-extralink" id="wishlist">
                     <!-- <div class="detail-qty border radius">
                       <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                       <span type="text" readonly onkeypress="return isNumberKey(event)" min-qty="1" name="quantity" product_id='' value="1" title="Qty" id="quantity" class="qty-val">1 </span>
@@ -198,7 +198,7 @@
                       <input type="text" size="25" class="count" name="quantity" product_id='' value="1" title="Qty" id="quantity" readonly />
                       <input type="button" class="plusBtn" value="+" change="0" />
                     </div>
-                    <div class="product-extra-link2">
+                    <div class="product-extra-link2 product-content-wrap">
                       <button product_id="<?= base64_encode($product_data[0]->id) ?>" type_id="<?= base64_encode($type_data[0]->id) ?>" quantity="1" id="addtoCartButton" onclick="addToCart(this)" type="button" class="button button-add-to-cart">Add to cart</button>
                       <? if (!empty($this->session->userdata('user_data'))) {
                         $user_id = $this->session->userdata('user_id');

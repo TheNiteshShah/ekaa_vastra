@@ -410,9 +410,9 @@ class Home extends CI_Controller
     public function my_wishlist()
     {
         $wishlist_data = $this->wishlist->ViewWishlist();
-        $this->load->view('frontend/common/header2', $wishlist_data);
+        $this->load->view('frontend/common/header', $wishlist_data);
         $this->load->view('frontend/wishlist');
-        $this->load->view('frontend/common/footer2');
+        $this->load->view('frontend/common/footer');
     }
     public function error404()
     {

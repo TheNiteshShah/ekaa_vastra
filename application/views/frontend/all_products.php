@@ -96,12 +96,12 @@
                             <img class="hover-img" src="<?= base_url() . $image1 ?>" alt="">
                           </a>
                         </div>
-                        <div class="product-action-1">
+                        <!-- <div class="product-action-1">
                           <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
                             <i class="fi-rs-search"></i></a>
                           <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                          <!-- <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> -->
-                        </div>
+                          <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                        </div> -->
                         <? if ($data->exclusive == 1) { ?>
                           <div class="product-badges product-badges-position product-badges-mrg">
                             <span class="hot">Hot</span>
@@ -124,7 +124,24 @@
                           <span>₹<?= $type_spgst ?></span>
                           <? if ($type_mrp > $type_spgst) { ?><span class="old-price">₹<?= $type_mrp ?></span><? } ?>
                         </div>
-
+                        <div class="product-action-1 show">
+                          <? $user_id = $this->session->userdata('user_id');
+                          if (!empty($user_id)) {
+                            $wihslist = $this->db->get_where('tbl_wishlist', array('user_id' => $user_id, 'product_id' => $data->id, 'type_id' => $type_data->id))->result();
+                            if (!empty($wihslist)) {
+                          ?>
+                              <span class="iWish<?= $type_data->id ?>">
+                                <a aria-label="Remove" class="action-btn hover-up" href="javascript:void(0)" product_id="<?= base64_encode($data->id) ?>" type_id="<?= base64_encode($type_data->id) ?>" status="remove" onclick="wishlistWithFilter(this)"><i class="fi-rs-heart"></i></a>
+                              </span>
+                            <? } else { ?>
+                              <span class="iWish<?= $type_data->id ?>">
+                                <a aria-label="Add" class="action-btn hover-up" href="javascript:void(0)" product_id="<?= base64_encode($data->id) ?>" type_id="<?= base64_encode($type_data->id) ?>" status="add" onclick="wishlistWithFilter(this)"><i class="fi-rs-heart"></i></a>
+                              </span>
+                            <? }
+                          } else { ?>
+                            <a aria-label="Add to wishlist" class="action-btn hover-up" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal"><i class="fi-rs-heart"></i></a>
+                          <? } ?>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -208,18 +225,18 @@
                 ?>
                     <label class="fw-900 mt-15"><?= $filter->name ?></label>
                     <div class="custome-checkbox">
-                    <? $attributes = $this->db->get_where('tbl_attribute', array('filter_id = ' => $filter->id));
-                              foreach ($attributes->result() as $attr) {
-                                if ($t == 1) {
-                                  $column = 'category_id';
-                                } else {
-                                  $column = 'subcategory_id';
-                                }
-                                $check2 = $this->db->get_where('tbl_product', array("(JSON_CONTAINS(all_attributes,'[\"$attr->id\"]')) > " => 0, $column => $id))->result();
-                                if (!empty($check2)) {
-                              ?>
+                      <? $attributes = $this->db->get_where('tbl_attribute', array('filter_id = ' => $filter->id));
+                      foreach ($attributes->result() as $attr) {
+                        if ($t == 1) {
+                          $column = 'category_id';
+                        } else {
+                          $column = 'subcategory_id';
+                        }
+                        $check2 = $this->db->get_where('tbl_product', array("(JSON_CONTAINS(all_attributes,'[\"$attr->id\"]')) > " => 0, $column => $id))->result();
+                        if (!empty($check2)) {
+                      ?>
                           <input class="form-check-input" type="checkbox" name="attribute[]" id="f<?= $attr->id ?>" value="<?= $attr->id ?>">
-                          <label class="form-check-label" for="f<?= $attr->id ?>" ><span><?= $attr->name ?></span></label>
+                          <label class="form-check-label" for="f<?= $attr->id ?>"><span><?= $attr->name ?></span></label>
                           <br>
                       <? }
                       } ?>

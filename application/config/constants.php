@@ -116,3 +116,4 @@ define('REFERAL_POINTS',100);
 define('MINREDEEM_POINTS',100);
 //=============== SHIPROCKET  =======
 define('SHIPROCKET_PICKUP','302020');
+define('FREESHIPPING','2999');

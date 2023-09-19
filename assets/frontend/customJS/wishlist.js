@@ -54,9 +54,9 @@ function wishlistWithFilter(obj) {
         $("#headerCount").load(window.location.href + " #headerCount > *");   // wishlist count
         $("#footerCount").load(window.location.href + " #footerCount > *");   // wishlist count
         if(status=="remove"){
-        $('.iWish'+atob(type_id)).html('<a href="javascript:void(0)" product_id="'+product_id+'" type_id="'+type_id+'" status="add" onclick="wishlistWithFilter(this)"><i class="icon-heart float-right" style="color:red;"></i></a>')
+        $('.iWish'+atob(type_id)).html('<a aria-label="Add" class="action-btn hover-up" href="javascript:void(0)" product_id="'+product_id+'" type_id="'+type_id+'" status="add" onclick="wishlistWithFilter(this)"><i class="fi-rs-heart"></i></a>')
       }else{
-        $('.iWish'+atob(type_id)).html('<a href="javascript:void(0)" product_id="'+product_id+'" type_id="'+type_id+'" status="remove" onclick="wishlistWithFilter(this)"><i class="fa fa-heart float-right" style="color:red;"></i></a>')
+        $('.iWish'+atob(type_id)).html('<a aria-label="Remove" class="action-btn hover-up" href="javascript:void(0)" product_id="'+product_id+'" type_id="'+type_id+'" status="remove" onclick="wishlistWithFilter(this)"><i class="fi-rs-heart"></i></a>')
       }
       } else if (response.status == false) {
         notifyError(response.message)
