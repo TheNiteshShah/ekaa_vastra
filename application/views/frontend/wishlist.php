@@ -1,76 +1,60 @@
-<!-- ================================================== START SECTION BREADCRUMB =====================================================-->
-<div class="breadcrumb_section bg_gray page-title-mini">
-  <div class="container">
-    <!-- STRART CONTAINER -->
-    <div class="row align-items-center">
-
-      <div class="col-md-12">
-        <ol class="breadcrumb justify-content-md-start">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Pages</a></li>
-          <li class="breadcrumb-item active">Wishlist</li>
-        </ol>
+<main class="main">
+  <div class="page-header breadcrumb-wrap">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index-2.html" rel="nofollow">Home</a>
+        <span></span> Shop
+        <span></span> Wishlist
       </div>
     </div>
-  </div><!-- END CONTAINER-->
-</div>
-<!-- =================================================== END SECTION BREADCRUMB ==========================================================-->
-
-<!--  ================================================== START MAIN CONTENT ================================================================-->
-<div class="main_content">
-
-  <!-- ================================================== START SECTION WISHLIST ==================================================================-->
-  <div class="section" id="wishlist">
-    <?if (!empty($wishlist_data)) {?>
+  </div>
+  <section class="mt-50 mb-50">
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="table-responsive wishlist_table">
-            <table class="table">
+          <div class="table-responsive">
+            <table class="table shopping-summery text-center">
               <thead>
-                <tr>
-                  <th class="product-thumbnail">&nbsp;</th>
-                  <th class="product-name">Product</th>
-                  <th class="product-price">Price</th>
-                  <th class="product-stock-status">Stock Status</th>
-                  <th class="product-add-to-cart"></th>
-                  <th class="product-remove">Remove</th>
+                <tr class="main-heading">
+                  <th scope="col" colspan="2">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Stock Status</th>
+                  <th scope="col">Action</th>
+                  <th scope="col">Remove</th>
                 </tr>
               </thead>
               <tbody>
-                <?php $i=1; foreach ($wishlist_data as $wishlist) { ?>
-                <tr>
-                  <td class="product-thumbnail"><a href="<?=base_url()?>Home/product_detail/<?=$wishlist['url']?>?type=<?=base64_encode($wishlist['type_id'])?>"><img src="<?=$wishlist['image']?>" alt="product1"></a></td>
-                  <td class="product-name" data-title="Product"><a href="<?=base_url()?>Home/product_detail/<?=$wishlist['url']?>?type=<?=base64_encode($wishlist['type_id'])?>"><?=$wishlist['product_name']?></a>
-                    <br /><span style="font-size: 12px;">Size: <?=$wishlist['size']?><br />Color: <?=$wishlist['color']?></span>
+                <?php $i = 1;
+                foreach ($wishlist_data as $wishlist) { ?>
+                  <tr>
+                    <td class="image product-thumbnail"><img src="<?= $wishlist['image'] ?>" alt="#"></td>
+                    <td class="product-des product-name">
+                      <h5 class="product-name"><a href="<?= base_url() ?>Home/product_detail/<?= $wishlist['url'] ?>?type=<?= base64_encode($wishlist['type_id']) ?>"><?= $wishlist['product_name'] ?></a></h5>
+                      <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
+                      </p>
+                    </td>
+                    <td class="price" data-title="Price"><span>₹<?= $wishlist['price'] ?> </span></td>
+                    <td class="text-center" data-title="Stock">
+                      <? if ($wishlist['stock'] == 1) { ?>
+                        <span class="text-success font-weight-bold">In Stock</span>
 
-                  </td>
-                  <td class="product-price" data-title="Price">₹<?=$wishlist['price']?></td>
-                  <td class="product-stock-status" data-title="Stock Status">
-                    <?if ($wishlist['stock']==1) {?>
-                    <span class="badge badge-pill badge-success">In Stock</span>
-                    <?} else {?>
-                    <span class="badge badge-pill badge-danger">Out of Stock</span>
-                    <?}?>
-                  </td>
-                  <td class="product-add-to-cart">
-                    <?if ($wishlist['stock']==1) {?>
-                    <a href="javascript:;" class="btn btn-fill-out" product_id="<?=base64_encode($wishlist['product_id'])?>" type_id="<?=base64_encode($wishlist['type_id'])?>" status="move"  onclick="wishlist(this)"><i class="icon-basket-loaded"></i> Move to Cart</a>
-                    <?}?>
-                  </td>
-                  <td class="product-remove" data-title="Remove"><a href="javascript:void(0)" product_id="<?=base64_encode($wishlist['product_id'])?>" type_id="<?=base64_encode($wishlist['type_id'])?>" status="remove"  onclick="wishlist(this)"><i class="ti-close"></i></a></td>
-                </tr>
-                <?php $i++; } ?>
+                      <? } else { ?>
+                        <span class="text-danger font-weight-bold">Out of Stock</span>
+
+                      <? } ?>
+                    </td>
+                    <td class="text-right" data-title="Cart">
+                      <button class="btn btn-sm"><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</button>
+                    </td>
+                    <td class="action" data-title="Remove"><a href="#"><i class="fi-rs-trash"></i></a></td>
+                  </tr>
+                <?php $i++;
+                } ?>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <?} else {?>
-    <div class="text-center">
-      <img src="<?=base_url()?>assets/frontend/images/wishlist_empty.jpg" alt="Empty Wishlist" class="img-fluid">
-    </div>
-    <?}?>
-  </div>
-  <!-- ================================================================== END SECTION WISHLIST ========================================================-->
+  </section>
+</main>
