@@ -4,15 +4,15 @@ on:
     branches:
       - main  # Change this to your main branch name
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@3.1
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+  
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
