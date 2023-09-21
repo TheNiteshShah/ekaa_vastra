@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            <table class="table shopping-summery text-center">
+            <table class="table shopping-summery text-center" id="wishlist">
               <thead>
                 <tr class="main-heading">
                   <th scope="col" colspan="2">Product</th>
@@ -44,9 +44,11 @@
                       <? } ?>
                     </td>
                     <td class="text-right" data-title="Cart">
-                      <button class="btn btn-sm"><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</button>
+                    <?if ($wishlist['stock']==1) {?>
+                      <a href="javascript:;" class="btn btn-sm" product_id="<?=base64_encode($wishlist['product_id'])?>" type_id="<?=base64_encode($wishlist['type_id'])?>" status="move"  onclick="wishlist(this)"><i class="fi-rs-shopping-bag mr-5"></i>Move to cart</a>
+                      <?}?>
                     </td>
-                    <td class="action" data-title="Remove"><a href="#"><i class="fi-rs-trash"></i></a></td>
+                    <td class="action" data-title="Remove"><a href="javascript:void(0)" product_id="<?=base64_encode($wishlist['product_id'])?>" type_id="<?=base64_encode($wishlist['type_id'])?>" status="remove"  onclick="wishlist(this)"><i class="fi-rs-trash"></i></a></td>
                   </tr>
                 <?php $i++;
                 } ?>
