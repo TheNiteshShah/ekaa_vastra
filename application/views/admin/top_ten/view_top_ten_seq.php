@@ -35,7 +35,7 @@
 
                 <div class="panel-body">
                   <div class="col-lg-10">
-                    <form action="<?php echo base_url() ?>dcadmin/Top_ten/add_top_ten_data" method="POST" id="slide_frm" enctype="multipart/form-data">
+                    <form action="<?php echo base_url() ?>evadmin/Top_ten/add_top_ten_data" method="POST" id="slide_frm" enctype="multipart/form-data">
                       <div class="table-responsive">
                         <table class="table table-hover">
                           <input type="hidden" name="sub_id" value="<?=$sub_id?>">

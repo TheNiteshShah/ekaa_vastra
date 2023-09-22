@@ -48,7 +48,7 @@ class Users extends CI_finecontrol
                     // $path = FCPATH . "assets/public/users/".$img;
                     // unlink($path);
                     $this->session->set_flashdata('smessage', 'Data deleted successfully');
-                    redirect("dcadmin/users/view_users", "refresh");
+                    redirect("evadmin/users/view_users", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -81,7 +81,7 @@ class Users extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/users/view_users", "refresh");
+                    redirect("evadmin/users/view_users", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -98,7 +98,7 @@ class Users extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/users/view_users", "refresh");
+                    redirect("evadmin/users/view_users", "refresh");
                 } else {
                     $data['e']="Error occurred";
                     // exit;

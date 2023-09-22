@@ -4,7 +4,7 @@
 Update Approved Reseller
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 <!-- <li><a href="<?php echo base_url() ?>admin/college"><i class="fa fa-dashboard"></i> All Team </a></li> -->
 
 </ol>
@@ -36,7 +36,7 @@ Update Approved Reseller
 
   <div class="panel-body">
       <div class="col-lg-10">
-         <form action="<?php echo base_url() ?>dcadmin/Reseller/update_reseller_data/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+         <form action="<?php echo base_url() ?>evadmin/Reseller/update_reseller_data/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
       <div class="table-responsive">
           <table class="table table-hover">
 

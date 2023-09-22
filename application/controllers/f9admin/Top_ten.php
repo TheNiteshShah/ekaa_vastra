@@ -107,7 +107,7 @@
                            $zapak=$this->db->update('tbl_product', $data_update);
 
                            if (!empty($zapak)) {
-                               redirect("dcadmin/Top_ten/view_top_ten_products/".base64_encode($sub_id), "refresh");
+                               redirect("evadmin/Top_ten/view_top_ten_products/".base64_encode($sub_id), "refresh");
                            } else {
                                $this->session->set_flashdata('emessage', 'Some error occured');
                                redirect($_SERVER['HTTP_REFERER']);

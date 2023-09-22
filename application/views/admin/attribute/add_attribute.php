@@ -4,8 +4,8 @@
 Add New Attribute
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Attributes/view_attribute/<?=$id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Attribute </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Attributes/view_attribute/<?=$id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Attribute </a></li>
 
 </ol>
 </section>
@@ -36,7 +36,7 @@ Add New Attribute
 
 <div class="panel-body">
 <div class="col-lg-10">
-<form action="<?php echo base_url() ?>dcadmin/Attributes/add_attribute_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+<form action="<?php echo base_url() ?>evadmin/Attributes/add_attribute_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
 <div class="table-responsive">
   <table class="table table-hover">
 <input name="filter_id" type="hidden" value="<?=$id?>"/>

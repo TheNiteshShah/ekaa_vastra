@@ -226,7 +226,7 @@ class System extends CI_finecontrol
 						$last_id = $this->base_model->insert_table("tbl_team", $data_insert, 1);
 						if ($last_id != 0) {
 							$this->session->set_flashdata('smessage', 'Team inserted successfully');
-							redirect("dcadmin/System/view_team", "refresh");
+							redirect("evadmin/System/view_team", "refresh");
 						} else {
 							$this->session->set_flashdata('emessage', 'Error occurred in data insert, Please try again');
 							redirect($_SERVER['HTTP_REFERER']);
@@ -284,7 +284,7 @@ class System extends CI_finecontrol
 						}
 						if ($last_id != 0) {
 							$this->session->set_flashdata('smessage', 'Team updated successfully');
-							redirect("dcadmin/System/view_team", "refresh");
+							redirect("evadmin/System/view_team", "refresh");
 						} else {
 							$this->session->set_flashdata('emessage', 'Error occurred in data insert, Please try again');
 							redirect($_SERVER['HTTP_REFERER']);
@@ -323,7 +323,7 @@ class System extends CI_finecontrol
 				$zapak = $this->db->delete('tbl_team', array('id' => $id));
 				if ($zapak != 0) {
 					$this->session->set_flashdata('smessage', 'Successfully deleted');
-					redirect("dcadmin/System/view_team", "refresh");
+					redirect("evadmin/System/view_team", "refresh");
 				} else {
 					$this->session->set_flashdata('emessage', 'Error occurred');
 					redirect($_SERVER['HTTP_REFERER']);
@@ -359,7 +359,7 @@ class System extends CI_finecontrol
 					$zapak = $this->db->update('tbl_team', $data_update);
 					if ($zapak != 0) {
 						$this->session->set_flashdata('smessage', 'Status successfully Updated');
-						redirect("dcadmin/system/view_team", "refresh");
+						redirect("evadmin/system/view_team", "refresh");
 					} else {
 						$this->session->set_flashdata('emessage', 'Error occurred');
 						redirect($_SERVER['HTTP_REFERER']);
@@ -373,7 +373,7 @@ class System extends CI_finecontrol
 					$zapak = $this->db->update('tbl_team', $data_update);
 					if ($zapak != 0) {
 						$this->session->set_flashdata('smessage', 'Status successfully Updated');
-						redirect("dcadmin/system/view_team", "refresh");
+						redirect("evadmin/system/view_team", "refresh");
 					} else {
 						$this->session->set_flashdata('emessage', 'Error occurred');
 						redirect($_SERVER['HTTP_REFERER']);

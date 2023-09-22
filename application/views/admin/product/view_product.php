@@ -4,8 +4,8 @@
       <?=$category_name." > ".$subcategory_name?>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Product/view_product/<?=base64_encode($subcategory_id)?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Product/view_product/<?=base64_encode($subcategory_id)?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
       <!-- <li class="active"></li> -->
     </ol>
   </section>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-lg-12">
         <?if ($this->session->userdata('position')!='Manager') {?>
-        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Product/add_product/<?=base64_encode($category_id)?>/<?=base64_encode($subcategory_id)?>" role="button" style="margin-bottom:12px;"> Add Product</a>
+        <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Product/add_product/<?=base64_encode($category_id)?>/<?=base64_encode($subcategory_id)?>" role="button" style="margin-bottom:12px;"> Add Product</a>
         <?}?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -22,7 +22,7 @@
                 $cur_date=date("d-m-Y");?>
               <a href="<?=base_url()?>assets/admin/type_dummy.xlsx" download="Type Dummy (<?=$cur_date?>)"><button type="button" class="btn custom_btn">Download Type Excel</button></a>
               <div style="display:flex;border:1px solid grey;padding:2px">
-                <form method="post" action="<?=base_url()?>dcadmin/Type/import_type_data" enctype="multipart/form-data" style="display:flex">
+                <form method="post" action="<?=base_url()?>evadmin/Type/import_type_data" enctype="multipart/form-data" style="display:flex">
                   <input type="file" name="uploadFile" class="form-control" required />
                   <button type="submit" class="btn custom_btn">Upload Types</button>
                 </form>
@@ -166,13 +166,13 @@ if ($data->trending==1) {
                             <ul class="dropdown-menu" role="menu">
 
                               <?php if ($data->is_active==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Product/updateproductStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Product/updateproductStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                               <?php } else { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Product/updateproductStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Product/updateproductStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                               <?php		}   ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Product/update_product/<?php echo base64_encode($data->id) ?>">Edit</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Type/view_type/<?php echo base64_encode($data->id) ?>">Type</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Product/view_buy_with_it/<?php echo base64_encode($data->id) ?>">Buy With It</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Product/update_product/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Type/view_type/<?php echo base64_encode($data->id) ?>">Type</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Product/view_buy_with_it/<?php echo base64_encode($data->id) ?>">Buy With It</a></li>
                               <?if ($this->session->userdata('position')=='Super Admin') {?>
                               <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                               <?}?>
@@ -182,7 +182,7 @@ if ($data->trending==1) {
 
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
                           <p> Are you sure delete this </p>
-                          <a href="<?php echo base_url() ?>dcadmin/Product/delete_product/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                          <a href="<?php echo base_url() ?>evadmin/Product/delete_product/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                           <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div>
                       </td>

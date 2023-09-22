@@ -244,7 +244,7 @@
 
       <header class="main-header custom_header">
         <!-- Logo -->
-        <a href="<?=base_url()?>dcadmin/home" class="logo custom_header" style="background-color:white !important;"><img src="<? echo base_url()?>assets/logo2.png"></a>
+        <a href="<?=base_url()?>evadmin/home" class="logo custom_header" style="background-color:white !important;"><img src="<? echo base_url()?>assets/logo2.png"></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top custom_header" role="navigation">
           <!-- Sidebar toggle button-->

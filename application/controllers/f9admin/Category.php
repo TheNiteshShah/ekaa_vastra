@@ -153,7 +153,7 @@ class Category extends CI_finecontrol
                         $last_id=$this->base_model->insert_table("tbl_category", $data_insert, 1) ;
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                            redirect("dcadmin/Category/view_category", "refresh");
+                            redirect("evadmin/Category/view_category", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -182,7 +182,7 @@ class Category extends CI_finecontrol
 
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
-                            redirect("dcadmin/Category/view_category", "refresh");
+                            redirect("evadmin/Category/view_category", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -246,7 +246,7 @@ class Category extends CI_finecontrol
                 $zapak=$this->db->delete('tbl_category', array('id' => $id));
                 $zapak=$this->db->delete('tbl_subcategory', array('category_id' => $id));
                 $zapak2=$this->db->delete('tbl_product', array('category_id' => $id));
-                redirect("dcadmin/category/view_category", "refresh");
+                redirect("evadmin/category/view_category", "refresh");
             // } else {
                 //     echo "Error";
                 //     exit;
@@ -283,7 +283,7 @@ class Category extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Status updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/Category/view_category", "refresh");
+                    redirect("evadmin/Category/view_category", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -313,7 +313,7 @@ class Category extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Status updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/Category/view_category", "refresh");
+                    redirect("evadmin/Category/view_category", "refresh");
                 } else {
                     $data['e']="Error occurred";
                     // exit;

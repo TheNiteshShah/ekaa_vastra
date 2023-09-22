@@ -4,15 +4,15 @@
 <?=$model->f_name." ".$model->l_name?>'s Point History
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Model/view_model"><i class="fa fa-undo" aria-hidden="true"></i> View Model Points </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Model/view_model"><i class="fa fa-undo" aria-hidden="true"></i> View Model Points </a></li>
 </ol>
 </section>
 <section class="content">
 <div class="row">
 <div class="col-lg-12">
   <?if($this->session->userdata('position')!='Manager'){?>
-<!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Model/add_model_points" role="button" style="margin-bottom:12px;"> Add Model Points</a> -->
+<!-- <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Model/add_model_points" role="button" style="margin-bottom:12px;"> Add Model Points</a> -->
 <? } ?>
 
 <div class="panel panel-default">
@@ -70,7 +70,7 @@ if(!empty($this->session->flashdata('emessage'))){ ?>
 <div class="btn-group">
 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
 <ul class="dropdown-menu" role="menu">
-<li><a href="<?php echo base_url() ?>dcadmin/Model/view_model_points_detials/<?php echo base64_encode($data->id) ?>">View Details</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Model/view_model_points_detials/<?php echo base64_encode($data->id) ?>">View Details</a></li>
 </ul>
 </div>
 </div>

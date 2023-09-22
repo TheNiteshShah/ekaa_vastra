@@ -4,14 +4,14 @@
       Popup Enquiry
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <!-- <li class="active"></li> -->
     </ol>
   </section>
   <section class="content">
     <div class="row">
       <div class="col-lg-12">
-        <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/contact_us/add_contact_us" role="button" style="margin-bottom:12px;"> Add contact_us</a> -->
+        <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/contact_us/add_contact_us" role="button" style="margin-bottom:12px;"> Add contact_us</a> -->
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>View Popup</h3>
@@ -80,11 +80,11 @@
                             <ul class="dropdown-menu" role="menu">
 
                               <?php if ($data->is_active==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/contact_us/updatecontact_usStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/contact_us/updatecontact_usStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                               <?php } else { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/contact_us/updatecontact_usStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/contact_us/updatecontact_usStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                               <?php		}   ?> -->
-                              <!-- <li><a href="<?php echo base_url() ?>dcadmin/contact_us/update_contact_us/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                              <!-- <li><a href="<?php echo base_url() ?>evadmin/contact_us/update_contact_us/<?php echo base64_encode($data->id) ?>">Edit</a></li>
                               <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                             </ul>
                           </div>
@@ -92,7 +92,7 @@
 
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
                           <p> Are you sure delete this </p>
-                          <a href="<?php echo base_url() ?>dcadmin/contact_us/delete_contact_us/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                          <a href="<?php echo base_url() ?>evadmin/contact_us/delete_contact_us/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                           <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div> -->
                       </td>

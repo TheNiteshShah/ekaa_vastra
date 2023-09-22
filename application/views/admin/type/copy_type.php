@@ -5,8 +5,8 @@
       <?=$productView?>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li><a href="<?php echo base_url() ?>dcadmin/Type/view_type/<?=$id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Type </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="<?php echo base_url() ?>evadmin/Type/view_type/<?=$id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Type </a></li>
     </ol>
   </section>
   <section class="content">
@@ -36,7 +36,7 @@
 
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/type/add_type_data/<?php echo base64_encode(1); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>evadmin/type/add_type_data/<?php echo base64_encode(1); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <input type="hidden" name="product_id" value="<?=base64_encode($type->product_id)?>">

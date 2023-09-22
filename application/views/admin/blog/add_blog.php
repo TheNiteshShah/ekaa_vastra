@@ -4,8 +4,8 @@
       Add New Blog
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Blog/view_blog"><i class="fa fa-undo" aria-hidden="true"></i> View Blog </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Blog/view_blog"><i class="fa fa-undo" aria-hidden="true"></i> View Blog </a></li>
     </ol>
   </section>
   <section class="content">
@@ -34,7 +34,7 @@
 
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action=" <?php echo base_url()  ?>dcadmin/Blog/add_blog_data/<? echo base64_encode(1);  ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action=" <?php echo base_url()  ?>evadmin/Blog/add_blog_data/<? echo base64_encode(1);  ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <!-- <tr>

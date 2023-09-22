@@ -82,7 +82,7 @@ class Model extends CI_finecontrol
 
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data updated successfully');
-                        redirect("dcadmin/Model/view_model", "refresh");
+                        redirect("evadmin/Model/view_model", "refresh");
                     } else {
                         $this->session->set_flashdata('emessage', 'Sorry error occurred');
                         redirect($_SERVER['HTTP_REFERER']);
@@ -202,7 +202,7 @@ class Model extends CI_finecontrol
                     $last_id=$this->base_model->insert_table("tbl_model_products", $data_insert, 1) ;
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                        redirect("dcadmin/Model/view_model_products/".base64_encode($user_id), "refresh");
+                        redirect("evadmin/Model/view_model_products/".base64_encode($user_id), "refresh");
                     } else {
                         $this->session->set_flashdata('emessage', 'Sorry error occurred');
                         redirect($_SERVER['HTTP_REFERER']);

@@ -4,15 +4,15 @@
 Size
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<!-- <li><a href="<?php echo base_url() ?>dcadmin/Size/view_size"><i class="fa fa-dashboard"></i> view size </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<!-- <li><a href="<?php echo base_url() ?>evadmin/Size/view_size"><i class="fa fa-dashboard"></i> view size </a></li>
 <!-- <li class="active"></li> -->
 </ol>
 </section><section class="content">
 <div class="row">
 <div class="col-lg-12">
   <?if($this->session->userdata('position')!='Manager'){?>
-<a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Size/add_size" role="button" style="margin-bottom:12px;"> Add Size</a>
+<a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Size/add_size" role="button" style="margin-bottom:12px;"> Add Size</a>
 <?}?>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -76,11 +76,11 @@ Size
               <ul class="dropdown-menu" role="menu">
 
                 <?php if ($data->is_active==1) { ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/size/updatesizeStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/size/updatesizeStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                 <?php } else { ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/size/updatesizeStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/size/updatesizeStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                 <?php		}   ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/size/update_size/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/size/update_size/<?php echo base64_encode($data->id) ?>">Edit</a></li>
                   <?if($this->session->userdata('position')=='Super Admin'){?>
                 <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                 <?}?>
@@ -90,7 +90,7 @@ Size
 
           <div style="display:none" id="cnfbox<?php echo $i ?>">
             <p> Are you sure delete this </p>
-            <a href="<?php echo base_url() ?>dcadmin/size/delete_size/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+            <a href="<?php echo base_url() ?>evadmin/size/delete_size/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
             <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
           </div>
         </td>

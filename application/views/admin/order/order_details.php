@@ -4,21 +4,21 @@
               Order Details
             </h1>
             <ol class="breadcrumb">
-              <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
               <?php if ($status==1){?>
-              <li><a href="<?php echo base_url() ?>dcadmin/Order/view_order"><i class="fa fa-undo" aria-hidden="true"></i> View New Orders </a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Order/view_order"><i class="fa fa-undo" aria-hidden="true"></i> View New Orders </a></li>
               <?}?>
               <?php if ($status==2){?>
-              <li><a href="<?php echo base_url() ?>dcadmin/Order/accepted_order"><i class="fa fa-undo" aria-hidden="true"></i> View Accepted Orders</a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Order/accepted_order"><i class="fa fa-undo" aria-hidden="true"></i> View Accepted Orders</a></li>
               <?}?>
               <?php if ($status==3){?>
-              <li><a href="<?php echo base_url() ?>dcadmin/Order/dispatched_order"><i class="fa fa-undo" aria-hidden="true"></i> View Dispatched Orders </a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Order/dispatched_order"><i class="fa fa-undo" aria-hidden="true"></i> View Dispatched Orders </a></li>
               <?}?>
               <?php if ($status==4){?>
-              <li><a href="<?php echo base_url() ?>dcadmin/Order/completed_order"><i class="fa fa-undo" aria-hidden="true"></i> View Completed Orders </a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Order/completed_order"><i class="fa fa-undo" aria-hidden="true"></i> View Completed Orders </a></li>
               <?}?>
               <?php if ($status==5){?>
-              <li><a href="<?php echo base_url() ?>dcadmin/Order/cancelled_order"><i class="fa fa-undo" aria-hidden="true"></i> View Rejected Orders </a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Order/cancelled_order"><i class="fa fa-undo" aria-hidden="true"></i> View Rejected Orders </a></li>
               <?}?>
               <li class="active"></li>
             </ol>
@@ -26,7 +26,7 @@
           <section class="content">
             <div class="row">
               <div class="col-lg-12">
-                <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/order/add_order" role="button" style="margin-bottom:12px;"></a> -->
+                <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/order/add_order" role="button" style="margin-bottom:12px;"></a> -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>View order</h3>

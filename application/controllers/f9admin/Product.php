@@ -252,7 +252,7 @@ class Product extends CI_finecontrol
                         $last_id=$this->base_model->insert_table("tbl_product", $data_insert, 1) ;
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                            redirect("dcadmin/Type/view_type/".base64_encode($last_id), "refresh");
+                            redirect("evadmin/Type/view_type/".base64_encode($last_id), "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -295,7 +295,7 @@ class Product extends CI_finecontrol
                         $last_id=$this->db->update('tbl_product', $data_insert);
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
-                            redirect("dcadmin/product/view_product/".base64_encode($subcategory_id), "refresh");
+                            redirect("evadmin/product/view_product/".base64_encode($subcategory_id), "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -544,7 +544,7 @@ class Product extends CI_finecontrol
                     $last_id=$this->db->update('tbl_product', $data_insert);
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                        redirect("dcadmin/Product/view_buy_with_it/".$pro_id, "refresh");
+                        redirect("evadmin/Product/view_buy_with_it/".$pro_id, "refresh");
                     } else {
                         $this->session->set_flashdata('emessage', 'Sorry error occurred');
                         redirect($_SERVER['HTTP_REFERER']);

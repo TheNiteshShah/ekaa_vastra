@@ -4,8 +4,8 @@
       Pop Up Image
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Popup_Image/view_popup_image"><i class="fa fa-undo" aria-hidden="true"></i> View Pop Up Image </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Popup_Image/view_popup_image"><i class="fa fa-undo" aria-hidden="true"></i> View Pop Up Image </a></li>
       <!-- <li class="active"></li> -->
     </ol>
   </section>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-lg-12">
         <?if($this->session->userdata('position')!='Manager'){?>
-        <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Popup_Image/add_popup_image" role="button" style="margin-bottom:12px;"> Add Pop Up Image</a> -->
+        <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Popup_Image/add_popup_image" role="button" style="margin-bottom:12px;"> Add Pop Up Image</a> -->
   <?}?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -82,11 +82,11 @@
                             <ul class="dropdown-menu" role="menu">
 
                               <?php if ($data->is_active==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Popup_Image/updatepopup_imageStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Popup_Image/updatepopup_imageStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                               <?php } else { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Popup_Image/updatepopup_imageStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Popup_Image/updatepopup_imageStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                               <?php		}   ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Popup_Image/update_popup_image/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Popup_Image/update_popup_image/<?php echo base64_encode($data->id) ?>">Edit</a></li>
                               <?if($this->session->userdata('position')=='Super Admin'){?>
                               <!-- <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li> -->
                                 <?}?>
@@ -96,7 +96,7 @@
 
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
                           <p> Are you sure delete this </p>
-                          <a href="<?php echo base_url() ?>dcadmin/Popup_Image/delete_popup_image/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                          <a href="<?php echo base_url() ?>evadmin/Popup_Image/delete_popup_image/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                           <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div>
                       </td>

@@ -78,7 +78,7 @@ class Attributes extends CI_finecontrol
                         $last_id=$this->base_model->insert_table("tbl_attribute", $data_insert, 1) ;
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                            redirect("dcadmin/Attributes/view_attribute/".$filter_id, "refresh");
+                            redirect("evadmin/Attributes/view_attribute/".$filter_id, "refresh");
                         }
                     }
                     if ($typ==2) {
@@ -99,7 +99,7 @@ class Attributes extends CI_finecontrol
                     }
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data updated successfully');
-                        redirect("dcadmin/Attributes/view_attribute/".base64_encode($filter_id), "refresh");
+                        redirect("evadmin/Attributes/view_attribute/".base64_encode($filter_id), "refresh");
                     } else {
                         $this->session->set_flashdata('emessage', 'Sorry error occurred');
                         redirect($_SERVER['HTTP_REFERER']);

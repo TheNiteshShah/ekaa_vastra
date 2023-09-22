@@ -4,8 +4,8 @@
       View Products
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <!-- <li><a href="<?php echo base_url() ?>dcadmin/Top_ten/view_top_ten_categories"><i class="icon-undo"></i> View Top Ten Categories </a></li> -->
+      <li><a href="<?php echo base_url() ?>evadmin/home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <!-- <li><a href="<?php echo base_url() ?>evadmin/Top_ten/view_top_ten_categories"><i class="icon-undo"></i> View Top Ten Categories </a></li> -->
       <!-- <li class="active">View Top Ten Categories</li> -->
     </ol>
   </section>
@@ -86,9 +86,9 @@
                         <div class="btn-group" id="btns<?php echo $i ?>">
                           <div class="btn-group">
                             <?if (!empty($data->top_ten)) {?>
-                    <button type="button" class="btn btn-default" onclick="window.location.href='<?=base_url()?>dcadmin/Top_ten/remove_top_ten/<?=base64_encode($data->id)?>'">Remove</button>
+                    <button type="button" class="btn btn-default" onclick="window.location.href='<?=base_url()?>evadmin/Top_ten/remove_top_ten/<?=base64_encode($data->id)?>'">Remove</button>
                           <?} else {?>
-                <button type="button" class="btn btn-default" onclick="window.location.href='<?=base_url()?>dcadmin/Top_ten/add_top_ten/<?=$id?>/<?=base64_encode($data->id)?>'">Add</button>
+                <button type="button" class="btn btn-default" onclick="window.location.href='<?=base_url()?>evadmin/Top_ten/add_top_ten/<?=$id?>/<?=base64_encode($data->id)?>'">Add</button>
                 <?} ?>
                           </div>
                         </div>

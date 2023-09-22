@@ -74,7 +74,7 @@ class Payment_requests extends CI_finecontrol
 
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
-                    redirect("dcadmin/Payment_requests/view_payment_requests", "refresh");
+                    redirect("evadmin/Payment_requests/view_payment_requests", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -90,7 +90,7 @@ class Payment_requests extends CI_finecontrol
 
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
-                    redirect("dcadmin/Payment_requests/view_payment_requests", "refresh");
+                    redirect("evadmin/Payment_requests/view_payment_requests", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);

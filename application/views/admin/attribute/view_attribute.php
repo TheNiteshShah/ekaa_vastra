@@ -4,15 +4,15 @@
       Attributes
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Filters/view_filters"><i class="fa fa-undo" aria-hidden="true"></i> View Filters </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Filters/view_filters"><i class="fa fa-undo" aria-hidden="true"></i> View Filters </a></li>
     </ol>
   </section>
   <section class="content">
     <div class="row">
       <div class="col-lg-12">
         <?if($this->session->userdata('position')!='Manager'){?>
-        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Attributes/add_attribute/<?=$id?>" role="button" style="margin-bottom:12px;"> Add attribute</a>
+        <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Attributes/add_attribute/<?=$id?>" role="button" style="margin-bottom:12px;"> Add attribute</a>
 <?}?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -68,12 +68,12 @@
                             <ul class="dropdown-menu" role="menu">
 
                               <?php if ($data->is_active==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Attributes/updateattributeStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Attributes/updateattributeStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                               <?php } else { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Attributes/updateattributeStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                              <li><a href="<?php echo base_url() ?>evadmin/Attributes/updateattributeStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                               <?php		}   ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Attributes/update_attribute/<?php echo base64_encode($data->id) ?>">Edit</a></li>
-                              <!-- <li><a href="<?php echo base_url() ?>dcadmin/Attribute/view_attribute/<?php echo base64_encode($data->id) ?>">Attribute</a></li> -->
+                              <li><a href="<?php echo base_url() ?>evadmin/Attributes/update_attribute/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                              <!-- <li><a href="<?php echo base_url() ?>evadmin/Attribute/view_attribute/<?php echo base64_encode($data->id) ?>">Attribute</a></li> -->
                                 <?if($this->session->userdata('position')=='Super Admin'){?>
                               <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                               <?}?>
@@ -83,7 +83,7 @@
 
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
                           <p> Are you sure delete this </p>
-                          <a href="<?php echo base_url() ?>dcadmin/Attributes/delete_attribute/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                          <a href="<?php echo base_url() ?>evadmin/Attributes/delete_attribute/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                           <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div>
                       </td>

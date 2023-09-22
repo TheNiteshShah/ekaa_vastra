@@ -94,7 +94,7 @@ class Subcategory extends CI_finecontrol
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
 
-                            redirect("dcadmin/Subcategory/view_subcategory", "refresh");
+                            redirect("evadmin/Subcategory/view_subcategory", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -114,7 +114,7 @@ class Subcategory extends CI_finecontrol
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
 
-                            redirect("dcadmin/Subcategory/view_subcategory", "refresh");
+                            redirect("evadmin/Subcategory/view_subcategory", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -212,7 +212,7 @@ class Subcategory extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/Subcategory/view_subcategory", "refresh");
+                    redirect("evadmin/Subcategory/view_subcategory", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -242,7 +242,7 @@ class Subcategory extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/Subcategory/view_subcategory", "refresh");
+                    redirect("evadmin/Subcategory/view_subcategory", "refresh");
                 } else {
                     $data['e']="Error occurred";
                     // exit;

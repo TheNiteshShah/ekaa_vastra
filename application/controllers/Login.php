@@ -12,7 +12,7 @@ function __construct()
 if(!empty($this->session->userdata('admin_data'))){
 
 
-				redirect("dcadmin/home","refresh");
+				redirect("evadmin/home","refresh");
 }
 else{
 		$this->load->view('admin/login/index');
@@ -180,7 +180,7 @@ public function admin_login_process()
 
 
 
-	               redirect("dcadmin/home/view_team","refresh");
+	               redirect("evadmin/home/view_team","refresh");
 
 
 

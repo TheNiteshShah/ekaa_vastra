@@ -4,16 +4,16 @@
 Type
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Product/view_product/<?=base64_encode($subcategory_id)?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
-<!-- <li><a href="<?php echo base_url() ?>dcadmin/Type/view_type"><i class="fa fa-dashboard"></i> view Type </a></li> -->
-<!-- <li><a href="<?php echo base_url() ?>dcadmin/product/view_product"><i class="fa fa-dashboard"></i> view Product </a></li> -->
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Product/view_product/<?=base64_encode($subcategory_id)?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
+<!-- <li><a href="<?php echo base_url() ?>evadmin/Type/view_type"><i class="fa fa-dashboard"></i> view Type </a></li> -->
+<!-- <li><a href="<?php echo base_url() ?>evadmin/product/view_product"><i class="fa fa-dashboard"></i> view Product </a></li> -->
 </section>
 <section class="content">
 <div class="row">
 <div class="col-lg-12">
   <?if($this->session->userdata('position')!='Manager'){?>
-<a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Type/add_type/<?=$id?>" role="button" style="margin-bottom:12px;"> Add Type</a>
+<a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Type/add_type/<?=$id?>" role="button" style="margin-bottom:12px;"> Add Type</a>
 <?}?>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -187,16 +187,16 @@ if(!empty($colour_data)){
     <ul class="dropdown-menu" role="menu">
 
       <?php if ($data->is_active==1) { ?>
-      <li><a href="<?php echo base_url() ?>dcadmin/Type/updatetypeStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Type/updatetypeStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
       <?php } else { ?>
-      <li><a href="<?php echo base_url() ?>dcadmin/Type/updatetypeStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Type/updatetypeStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
       <?php		}   ?>
-      <li><a href="<?php echo base_url() ?>dcadmin/Type/update_type/<?php echo base64_encode($data->id) ?>">Edit</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Type/copy_type/<?php echo base64_encode($data->id) ?>">Copy Type</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Type/update_type/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Type/copy_type/<?php echo base64_encode($data->id) ?>">Copy Type</a></li>
   <?if($this->session->userdata('position')=='Super Admin'){?>
       <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
           <?if($productView==1 || $productView==3){?>
-    <li><a href="<?php echo base_url() ?>dcadmin/Type/print_tag/<?php echo base64_encode($data->id)?>">Print Tag </a></li>
+    <li><a href="<?php echo base_url() ?>evadmin/Type/print_tag/<?php echo base64_encode($data->id)?>">Print Tag </a></li>
     <?}?>
       <?}?>
     </ul>
@@ -206,7 +206,7 @@ if(!empty($colour_data)){
 
 <div style="display:none" id="cnfbox<?php echo $i ?>">
   <p> Are you sure delete this </p>
-  <a href="<?php echo base_url() ?>dcadmin/Type/delete_type/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+  <a href="<?php echo base_url() ?>evadmin/Type/delete_type/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
   <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
 </div>
 </td>

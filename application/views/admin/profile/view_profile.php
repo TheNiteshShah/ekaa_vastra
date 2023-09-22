@@ -5,8 +5,8 @@
             Profile
             </h1>
             <ol class="breadcrumb">
-             <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Home</a></li>
-              <li><a href="<?php echo base_url() ?>dcadmin/System/profile"><i class="fa fa-dashboard"></i> Profile</a></li>
+             <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/System/profile"><i class="fa fa-dashboard"></i> Profile</a></li>
 
             </ol>
           </section>
@@ -98,7 +98,7 @@
                                   </tr>
                           <tr>
     												<td colspan="2" >
-    													<a href="<?=base_url()?>dcadmin/Home"><input type="submit" class="btn btn-default" value="save"></a>
+    													<a href="<?=base_url()?>evadmin/Home"><input type="submit" class="btn btn-default" value="save"></a>
     												</td>
     											</tr>
 
@@ -140,7 +140,7 @@
             // var posting = $.post( url, { s: term } );
             $.ajax({
                        type: "POST",
-                       url: "<?php echo base_url(); ?>dcadmin/System/change_pass",
+                       url: "<?php echo base_url(); ?>evadmin/System/change_pass",
                        data: {
                           'old': old,
                           'new': newpass

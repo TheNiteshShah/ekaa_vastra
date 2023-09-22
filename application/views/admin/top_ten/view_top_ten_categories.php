@@ -4,8 +4,8 @@
     Top Ten Categories
   </h1>
   <ol class="breadcrumb">
-    <li><a href="<?php echo base_url() ?>dcadmin/home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li><a href="<?php echo base_url() ?>dcadmin/Top_ten/view_top_ten_categories"><i class="icon-undo"></i> View Top Ten Categories </a></li>
+    <li><a href="<?php echo base_url() ?>evadmin/home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="<?php echo base_url() ?>evadmin/Top_ten/view_top_ten_categories"><i class="icon-undo"></i> View Top Ten Categories </a></li>
     <!-- <li class="active">View Top Ten Categories</li> -->
   </ol>
 </section>
@@ -60,7 +60,7 @@
                     <td>
                       <div class="btn-group" id="btns<?php echo $i ?>">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-default" onclick="window.location.href='<?=base_url()?>dcadmin/Top_ten/view_top_ten_sub_categories/<?=base64_encode($data->id)?>'"> View Subcategory </button>
+                          <button type="button" class="btn btn-default" onclick="window.location.href='<?=base_url()?>evadmin/Top_ten/view_top_ten_sub_categories/<?=base64_encode($data->id)?>'"> View Subcategory </button>
                         </div>
                       </div>
 

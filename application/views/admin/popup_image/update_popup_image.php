@@ -4,8 +4,8 @@
       Update PopUp Image
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Popup_Image/view_popup_image"><i class="fa fa-undo" aria-hidden="true"></i> View PopUp Image </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Popup_Image/view_popup_image"><i class="fa fa-undo" aria-hidden="true"></i> View PopUp Image </a></li>
 
     </ol>
   </section>
@@ -36,7 +36,7 @@
 
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/Popup_Image/add_popup_image_data/<? echo base64_encode(2); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>evadmin/Popup_Image/add_popup_image_data/<? echo base64_encode(2); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive">
                   <table class="table table-hover">
 

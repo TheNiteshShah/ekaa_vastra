@@ -4,7 +4,7 @@
 Model
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 <!-- <li><a href="<?php echo base_url() ?>admin/college"><i class="fa fa-dashboard"></i> All Model </a></li> -->
 <!-- <li class="active">View Model</li> -->
 </ol>
@@ -13,7 +13,7 @@ Model
 <div class="row">
 <div class="col-lg-12">
   <?if($this->session->userdata('position')!='Manager'){?>
-<a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Model/add_model" role="button" style="margin-bottom:12px;"> Add Model</a>
+<a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Model/add_model" role="button" style="margin-bottom:12px;"> Add Model</a>
   <?}?>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -68,9 +68,9 @@ if(!empty($this->session->flashdata('emessage'))){ ?>
 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
 <ul class="dropdown-menu" role="menu">
 
-<li><a href="<?php echo base_url() ?>dcadmin/Model/view_model_products/<?php echo base64_encode($data->id) ?>">Model Products</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Model/view_model_points/<?php echo base64_encode($data->id) ?>">Points History</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Model/view_points_transaction/<?php echo base64_encode($data->id) ?>">Points Transactions</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Model/view_model_products/<?php echo base64_encode($data->id) ?>">Model Products</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Model/view_model_points/<?php echo base64_encode($data->id) ?>">Points History</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Model/view_points_transaction/<?php echo base64_encode($data->id) ?>">Points Transactions</a></li>
       <?if($this->session->userdata('position')=='Super Admin'){?>
 <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
   <?}?>
@@ -80,7 +80,7 @@ if(!empty($this->session->flashdata('emessage'))){ ?>
 
 <div style="display:none" id="cnfbox<?php echo $i ?>">
 <p> Are you sure delete this </p>
-<a href="<?php echo base_url() ?>dcadmin/Model/delete_model/<?php echo base64_encode($data->id); ?>" class="btn btn-danger" >Yes</a>
+<a href="<?php echo base_url() ?>evadmin/Model/delete_model/<?php echo base64_encode($data->id); ?>" class="btn btn-danger" >Yes</a>
 <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>" >No</a>
 </div>
 </td>

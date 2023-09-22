@@ -4,8 +4,8 @@
 <?=$heading?> Reseller
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Reseller/view_reseller"><i class="fa fa-undo" aria-hidden="true"></i> View Reseller </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Reseller/view_reseller"><i class="fa fa-undo" aria-hidden="true"></i> View Reseller </a></li>
 <!-- <li class="active">View Reseller</li> -->
 </ol>
 </section>
@@ -13,7 +13,7 @@
 <div class="row">
 <div class="col-lg-12">
   <?if($this->session->userdata('position')!='Manager'){?>
-<!-- <a class="btn btn-info cticket" href="<?php echo base_url() ?>dcadmin/home/add_Reseller" role="button" style="margin-bottom:12px;"> Add Reseller</a> -->
+<!-- <a class="btn btn-info cticket" href="<?php echo base_url() ?>evadmin/home/add_Reseller" role="button" style="margin-bottom:12px;"> Add Reseller</a> -->
 <?}?>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -119,15 +119,15 @@
                 <ul class="dropdown-menu" role="menu">
 
                   <?php if ($data->reseller_status==0) { ?>
-                    <li><a href="<?php echo base_url() ?>dcadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/approved">Approved</a></li>
-                    <li><a href="<?php echo base_url() ?>dcadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/rejected">Rejected</a></li>
+                    <li><a href="<?php echo base_url() ?>evadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/approved">Approved</a></li>
+                    <li><a href="<?php echo base_url() ?>evadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/rejected">Rejected</a></li>
                   <?php } elseif ($data->reseller_status==1) {?>
-                    <li><a href="<?php echo base_url() ?>dcadmin/Reseller/update_reseller/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                    <li><a href="<?php echo base_url() ?>evadmin/Reseller/update_reseller/<?php echo base64_encode($data->id) ?>">Edit</a></li>
                     <?if($this->session->userdata('position')=='Super Admin'){?>
                     <?php if ($data->is_active==1) { ?>
-                    <li><a href="<?php echo base_url() ?>dcadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/inactive">Block</a></li>
+                    <li><a href="<?php echo base_url() ?>evadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/inactive">Block</a></li>
                     <?php } else { ?>
-                    <li><a href="<?php echo base_url() ?>dcadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                    <li><a href="<?php echo base_url() ?>evadmin/Reseller/updateresellerStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                     <?php		}   ?>
                 <?php }?>
   <?}?>

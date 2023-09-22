@@ -174,7 +174,7 @@ public function updateresellerStatus($idd,$t){
                $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                if ($zapak!=0) {
-                   // redirect("dcadmin/promocode/view_promocode", "refresh");
+                   // redirect("evadmin/promocode/view_promocode", "refresh");
                    $this->session->set_flashdata('smessage', 'Status updated successfully');
                 redirect($_SERVER['HTTP_REFERER']);;
                } else {
@@ -283,7 +283,7 @@ public function updateresellerStatus($idd,$t){
                            $last_id=$this->db->update('tbl_reseller', $data_insert);
                            if ($last_id!=0) {
                                $this->session->set_flashdata('smessage', 'Data updated successfully');
-                                redirect("dcadmin/Reseller/approved_reseller", "refresh");
+                                redirect("evadmin/Reseller/approved_reseller", "refresh");
                            } else {
                                $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                redirect($_SERVER['HTTP_REFERER']);

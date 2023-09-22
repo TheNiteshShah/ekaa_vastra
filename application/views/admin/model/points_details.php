@@ -4,15 +4,15 @@
               Points Details
             </h1>
             <ol class="breadcrumb">
-              <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-              <li><a href="<?php echo base_url() ?>dcadmin/Model/view_model"><i class="fa fa-undo" aria-hidden="true"></i> View Model </a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li><a href="<?php echo base_url() ?>evadmin/Model/view_model"><i class="fa fa-undo" aria-hidden="true"></i> View Model </a></li>
               <li class="active"></li>
             </ol>
           </section>
           <section class="content">
             <div class="row">
               <div class="col-lg-12">
-                <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/order/add_order" role="button" style="margin-bottom:12px;"></a> -->
+                <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/order/add_order" role="button" style="margin-bottom:12px;"></a> -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Points Details</h3>

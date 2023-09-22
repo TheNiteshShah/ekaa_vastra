@@ -4,8 +4,8 @@
       Replacement Orders
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Replacement_order/view_replacement_order"><i class="fa fa-undo" aria-hidden="true"></i> Replacement Order </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Replacement_order/view_replacement_order"><i class="fa fa-undo" aria-hidden="true"></i> Replacement Order </a></li>
       <!-- <li class="active"></li> -->
     </ol>
   </section>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-lg-12">
         <? if ($this->session->userdata('position') != 'Manager') { ?>
-          <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/order/Add_order" role="button" style="margin-bottom:12px;"></a> -->
+          <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/order/Add_order" role="button" style="margin-bottom:12px;"></a> -->
         <? } ?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -77,7 +77,7 @@
                       <tr>
                         <td><?= $i ?></td>
                         <td>
-                          <a href="<?php echo base_url() ?>dcadmin/order/order_detail/<?php echo base64_encode($data->order1_id) ?>"><?= $data->order1_id ?></a>
+                          <a href="<?php echo base_url() ?>evadmin/order/order_detail/<?php echo base64_encode($data->order1_id) ?>"><?= $data->order1_id ?></a>
                         </td>
                         <td><?= $pro_data[0]->name ? $pro_data[0]->name : ''; ?></td>
                         <td> <? if (!empty($sizeOfType)) {
@@ -161,10 +161,10 @@
                                   <ul class="dropdown-menu" role="menu">
                                     <? if ($this->session->userdata('position') == 'Super Admin') { ?>
                                       <?php if ($data->replace_status == 0) { ?>
-                                        <li><a href="<?php echo base_url() ?>dcadmin/Replacement_order/updatereplacement_orderStatus/<?php echo base64_encode($data->id) ?>/accept">Accept</a></li>
-                                        <li><a href="<?php echo base_url() ?>dcadmin/Replacement_order/updatereplacement_orderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
+                                        <li><a href="<?php echo base_url() ?>evadmin/Replacement_order/updatereplacement_orderStatus/<?php echo base64_encode($data->id) ?>/accept">Accept</a></li>
+                                        <li><a href="<?php echo base_url() ?>evadmin/Replacement_order/updatereplacement_orderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
                                       <? } else if ($data->replace_status == 1) { ?>
-                                        <li><a href="<?php echo base_url() ?>dcadmin/Replacement_order/updatereplacement_orderStatus/<?php echo base64_encode($data->id) ?>/complete">Complete</a></li>
+                                        <li><a href="<?php echo base_url() ?>evadmin/Replacement_order/updatereplacement_orderStatus/<?php echo base64_encode($data->id) ?>/complete">Complete</a></li>
                                     <? }
                                     } ?>
                                   </ul>

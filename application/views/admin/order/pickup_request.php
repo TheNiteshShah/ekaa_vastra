@@ -4,8 +4,8 @@
       Create Pickup Request
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Percentage_off/view_percentage_off"><i class="fa fa-undo" aria-hidden="true"></i> View Orders </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Percentage_off/view_percentage_off"><i class="fa fa-undo" aria-hidden="true"></i> View Orders </a></li>
     </ol>
   </section>
   <section class="content">
@@ -31,7 +31,7 @@
           <?php } ?>
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/Order/createPickup_req/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>evadmin/Order/createPickup_req/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <input type="hidden" name="id" value="<?=$id?>"/>

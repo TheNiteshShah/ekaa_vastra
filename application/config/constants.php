@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 define('SITE_NAME','Ekaa Vastra');
-define('ADMIN_URL','dcadmin');
+define('ADMIN_URL','evadmin');
 
 
 /*

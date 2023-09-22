@@ -98,7 +98,7 @@ class Testimonials extends CI_finecontrol
                         $last_id = $this->base_model->insert_table("tbl_testimonials", $data_insert, 1);
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                            redirect("dcadmin/Testimonials/view_testimonials", "refresh");
+                            redirect("evadmin/Testimonials/view_testimonials", "refresh");
                         }
                     }
                     if ($typ == 2) {
@@ -154,7 +154,7 @@ class Testimonials extends CI_finecontrol
                         }
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
-                            redirect("dcadmin/Testimonials/view_testimonials", "refresh");
+                            redirect("evadmin/Testimonials/view_testimonials", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -201,7 +201,7 @@ class Testimonials extends CI_finecontrol
                 $zapak = $this->db->delete('tbl_testimonials', array('id' => $id));
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Testimonial deleted successfully');
-                    redirect("dcadmin/Testimonials/view_testimonials", "refresh");
+                    redirect("evadmin/Testimonials/view_testimonials", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -232,7 +232,7 @@ class Testimonials extends CI_finecontrol
                 $zapak = $this->db->update('tbl_testimonials', $data_update);
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
-                    redirect("dcadmin/Testimonials/view_testimonials", "refresh");
+                    redirect("evadmin/Testimonials/view_testimonials", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -246,7 +246,7 @@ class Testimonials extends CI_finecontrol
                 $zapak = $this->db->update('tbl_testimonials', $data_update);
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
-                    redirect("dcadmin/Testimonials/view_testimonials", "refresh");
+                    redirect("evadmin/Testimonials/view_testimonials", "refresh");
                 } else {
                     $data['e'] = "Error occurred";
                     // exit;

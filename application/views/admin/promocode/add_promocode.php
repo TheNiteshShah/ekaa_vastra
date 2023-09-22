@@ -4,8 +4,8 @@
 Add New Promocode
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Promocode/view_promocode"><i class="fa fa-undo" aria-hidden="true"></i> View Promocode </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Promocode/view_promocode"><i class="fa fa-undo" aria-hidden="true"></i> View Promocode </a></li>
 
 </ol>
 </section>
@@ -36,7 +36,7 @@ Add New Promocode
 
 <div class="panel-body">
 <div class="col-lg-10">
-<form action="<?php echo base_url() ?>dcadmin/Promocode/add_promocode_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+<form action="<?php echo base_url() ?>evadmin/Promocode/add_promocode_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
 <div class="table-responsive">
 <table class="table table-hover">
 

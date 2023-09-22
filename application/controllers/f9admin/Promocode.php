@@ -115,7 +115,7 @@ $this->form_validation->set_rules('max', 'max', 'required|xss_clean|trim');
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
 
-                            redirect("dcadmin/Promocode/view_promocode", "refresh");
+                            redirect("evadmin/Promocode/view_promocode", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -141,7 +141,7 @@ $this->form_validation->set_rules('max', 'max', 'required|xss_clean|trim');
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
 
-                            redirect("dcadmin/Promocode/view_promocode", "refresh");
+                            redirect("evadmin/Promocode/view_promocode", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -194,14 +194,14 @@ $this->form_validation->set_rules('max', 'max', 'required|xss_clean|trim');
                 $zapak=$this->db->delete('tbl_promocode', array('id' => $id));
                 if ($zapak!=0) {
                       $this->session->set_flashdata('smessage', 'Data deleted successfully');
-                    redirect("dcadmin/Promocode/view_promocode", "refresh");
+                    redirect("evadmin/Promocode/view_promocode", "refresh");
                 } else {
                     echo "Error";
                     exit;
                 }
             } else {
               $this->session->set_flashdata('emessage', "Sorry You Don't Have Permission To Delete Anything");
-              redirect("dcadmin/Promocode/view_promocode", "refresh");
+              redirect("evadmin/Promocode/view_promocode", "refresh");
             }
         } else {
             $this->load->view('admin/login/index');
@@ -228,7 +228,7 @@ $this->form_validation->set_rules('max', 'max', 'required|xss_clean|trim');
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/Promocode/view_promocode", "refresh");
+                    redirect("evadmin/Promocode/view_promocode", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -245,7 +245,7 @@ $this->form_validation->set_rules('max', 'max', 'required|xss_clean|trim');
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/Promocode/view_promocode", "refresh");
+                    redirect("evadmin/Promocode/view_promocode", "refresh");
                 } else {
                     $data['e']="Error occurred";
                     // exit;

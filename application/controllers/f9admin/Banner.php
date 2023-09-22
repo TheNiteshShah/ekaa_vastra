@@ -128,7 +128,7 @@ class Banner extends CI_finecontrol
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
 
-                            redirect("dcadmin/banner/view_banner", "refresh");
+                            redirect("evadmin/banner/view_banner", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -199,7 +199,7 @@ class Banner extends CI_finecontrol
                         $last_id=$this->db->update('tbl_banner', $data_insert);
                         if ($last_id!=0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
-                            redirect("dcadmin/Banner/view_banner", "refresh");
+                            redirect("evadmin/Banner/view_banner", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -270,7 +270,7 @@ class Banner extends CI_finecontrol
                 $zapak=$this->db->delete('tbl_banner', array('id' => $id));
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Data deleted successfully');
-                                      redirect("dcadmin/banner/view_banner", "refresh");
+                                      redirect("evadmin/banner/view_banner", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -305,7 +305,7 @@ class Banner extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Status updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/banner/view_banner", "refresh");
+                    redirect("evadmin/banner/view_banner", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -322,7 +322,7 @@ class Banner extends CI_finecontrol
                 $this->session->set_flashdata('smessage', 'Status updated successfully');
 
                 if ($zapak!=0) {
-                    redirect("dcadmin/banner/view_banner", "refresh");
+                    redirect("evadmin/banner/view_banner", "refresh");
                 } else {
                     $data['e']="Error occurred";
                     // exit;

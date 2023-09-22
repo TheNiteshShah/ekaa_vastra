@@ -97,7 +97,7 @@ class Popup_Image extends CI_finecontrol
                         $last_id = $this->base_model->insert_table("tbl_popup_image", $data_insert, 1);
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                            redirect("dcadmin/Popup_Image/view_popup_image", "refresh");
+                            redirect("evadmin/Popup_Image/view_popup_image", "refresh");
                         }
                     }
                     if ($typ == 2) {
@@ -151,7 +151,7 @@ class Popup_Image extends CI_finecontrol
                         }
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
-                            redirect("dcadmin/Popup_Image/view_popup_image", "refresh");
+                            redirect("evadmin/Popup_Image/view_popup_image", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -198,7 +198,7 @@ class Popup_Image extends CI_finecontrol
                 $zapak = $this->db->delete('tbl_popup_image', array('id' => $id));
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Data deleted successfully');
-                    redirect("dcadmin/Popup_Image/view_popup_image", "refresh");
+                    redirect("evadmin/Popup_Image/view_popup_image", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -225,7 +225,7 @@ class Popup_Image extends CI_finecontrol
                 $zapak = $this->db->update('tbl_popup_image', $data_update);
                 $this->session->set_flashdata('smessage', 'Status updated successfully');
                 if ($zapak != 0) {
-                    redirect("dcadmin/Popup_Image/view_popup_image", "refresh");
+                    redirect("evadmin/Popup_Image/view_popup_image", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -239,7 +239,7 @@ class Popup_Image extends CI_finecontrol
                 $zapak = $this->db->update('tbl_popup_image', $data_update);
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
                 if ($zapak != 0) {
-                    redirect("dcadmin/Popup_Image/view_popup_image", "refresh");
+                    redirect("evadmin/Popup_Image/view_popup_image", "refresh");
                 } else {
                     $data['e'] = "Error occurred";
                     // exit;

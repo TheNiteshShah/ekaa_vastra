@@ -107,7 +107,7 @@ class Offer extends CI_finecontrol
                 $last_id = $this->base_model->insert_table("tbl_offer", $data_insert, 1);
                 if ($last_id != 0) {
                     $this->session->set_flashdata('smessage', 'Offer inserted successfully');
-                    redirect("dcadmin/Offer/view_offer", "refresh");
+                    redirect("evadmin/Offer/view_offer", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -164,7 +164,7 @@ class Offer extends CI_finecontrol
                 $last_id = $this->db->update('tbl_offer', $data_insert);
                 if ($last_id != 0) {
                     $this->session->set_flashdata('smessage', 'Offer updated successfully');
-                    redirect("dcadmin/Offer/view_offer", "refresh");
+                    redirect("evadmin/Offer/view_offer", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -191,7 +191,7 @@ class Offer extends CI_finecontrol
                 $zapak = $this->db->update('tbl_offer', $data_update);
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Offer status updated successfully');
-                    redirect("dcadmin/Offer/view_offer", "refresh");
+                    redirect("evadmin/Offer/view_offer", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -205,7 +205,7 @@ class Offer extends CI_finecontrol
                 $zapak = $this->db->update('tbl_offer', $data_update);
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Offer status updated successfully');
-                    redirect("dcadmin/Offer/view_offer", "refresh");
+                    redirect("evadmin/Offer/view_offer", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -234,7 +234,7 @@ class Offer extends CI_finecontrol
                 $zapak = $this->db->delete('tbl_offer', array('id' => $id));
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Offer image deleted successfully');
-                    redirect("dcadmin/Offer/view_offer", "refresh");
+                    redirect("evadmin/Offer/view_offer", "refresh");
                 } else {
                     $this->session->set_flashdata('emessage', 'Sorry error occurred');
                     redirect($_SERVER['HTTP_REFERER']);

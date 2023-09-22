@@ -4,8 +4,8 @@
       <?=$category_name?>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Subcategory/view_subcategory"><i class="fa fa-undo" aria-hidden="true"></i> View Subcategory </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Subcategory/view_subcategory"><i class="fa fa-undo" aria-hidden="true"></i> View Subcategory </a></li>
       <!-- <li class="active">View Subcategory</li> -->
     </ol>
   </section>
@@ -55,7 +55,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <td><?php echo $i ?> </td>
                       <td><?php echo $data->name ?></td>
                       <td>
-                        <a class="btn btn-default cticket" href="<?php echo base_url() ?>dcadmin/Product/view_product/<?=base64_encode($data->id)?>" role="button" style="margin-bottom:12px;"> View Products</a>
+                        <a class="btn btn-default cticket" href="<?php echo base_url() ?>evadmin/Product/view_product/<?=base64_encode($data->id)?>" role="button" style="margin-bottom:12px;"> View Products</a>
                       </td>
                     </tr>
                     <?php $i++; } ?>

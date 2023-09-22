@@ -4,8 +4,8 @@
 Update Percentage Off
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Percentage_off/view_percentage_off"><i class="fa fa-undo" aria-hidden="true"></i> View Percentage Off </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Percentage_off/view_percentage_off"><i class="fa fa-undo" aria-hidden="true"></i> View Percentage Off </a></li>
 
 </ol>
 </section>
@@ -36,7 +36,7 @@ Update Percentage Off
 
 <div class="panel-body">
 <div class="col-lg-10">
-<form action="<?php echo base_url() ?>dcadmin/Percentage_off/add_percentage_off_data/<?php echo base64_encode(2); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+<form action="<?php echo base_url() ?>evadmin/Percentage_off/add_percentage_off_data/<?php echo base64_encode(2); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
 <div class="table-responsive">
   <table class="table table-hover">
 

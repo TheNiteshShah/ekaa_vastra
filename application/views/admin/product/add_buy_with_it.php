@@ -5,8 +5,8 @@
       Add New Buy with it
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Product/view_buy_with_it/<?=$id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Buy With It </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Product/view_buy_with_it/<?=$id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Buy With It </a></li>
 
     </ol>
   </section>
@@ -35,7 +35,7 @@
           <?php } ?>
             <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/Product/add_buy_with_it_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>evadmin/Product/add_buy_with_it_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive" style="min-height: 20rem;">
                   <table class="table table-hover">
                     <input type="hidden" name="pro_id" value="<?=$id?>" />

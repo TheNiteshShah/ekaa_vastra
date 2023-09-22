@@ -410,7 +410,7 @@ class Order extends CI_finecontrol
                                 $this->db->where('id', $id);
                                 $zapak2 = $this->db->update('tbl_order1', $data_update2);
                                 $this->session->set_flashdata('smessage', 'Order Created Successfully');
-                                redirect("dcadmin/Order/accepted_order", "refresh");
+                                redirect("evadmin/Order/accepted_order", "refresh");
                             } else {
                                 $this->session->set_flashdata('emessage', $create_awb_res->message);
                                 redirect($_SERVER['HTTP_REFERER']);
@@ -480,7 +480,7 @@ class Order extends CI_finecontrol
                         $zapak = $this->db->update('tbl_order1', $data_update);
                         if (!empty($zapak)) {
                             $this->session->set_flashdata('smessage', $create_pickup_res->Message);
-                            redirect("dcadmin/Order/accepted_order", "refresh");
+                            redirect("evadmin/Order/accepted_order", "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Some error occured!');
                             redirect($_SERVER['HTTP_REFERER']);

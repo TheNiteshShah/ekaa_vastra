@@ -34,7 +34,7 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
   <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/order/view_order">
+              <a href="<?=base_url()?>evadmin/order/view_order">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>
@@ -53,7 +53,7 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
               <!-- <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/Product/view_category">
+              <a href="<?=base_url()?>evadmin/Product/view_category">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?> -->
@@ -74,7 +74,7 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/Model/view_model">
+              <a href="<?=base_url()?>evadmin/Model/view_model">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>
@@ -93,12 +93,12 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <!-- <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/contact_us/view_contact_us">
+              <a href="<?=base_url()?>evadmin/contact_us/view_contact_us">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?> -->
                   <? if ($this->load->get_var('position')=="Super Admin") {?>
-                <a href="<?=base_url()?>dcadmin/Home/view_out_stock" style="color:unset">
+                <a href="<?=base_url()?>evadmin/Home/view_out_stock" style="color:unset">
                   <?}else{?>
                     <a href="javascript:void(0);">
                     <?}?>
@@ -120,7 +120,7 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/users/view_users">
+              <a href="<?=base_url()?>evadmin/users/view_users">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>
@@ -138,7 +138,7 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/Reseller/pending_reseller">
+              <a href="<?=base_url()?>evadmin/Reseller/pending_reseller">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>
@@ -156,7 +156,7 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/Reseller/approved_reseller">
+              <a href="<?=base_url()?>evadmin/Reseller/approved_reseller">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>
@@ -174,7 +174,7 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/Reseller/rejected_reseller">
+              <a href="<?=base_url()?>evadmin/Reseller/rejected_reseller">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>
@@ -192,7 +192,7 @@
             </div><!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <? if ($this->load->get_var('position')=="Super Admin") {?>
-              <a href="<?=base_url()?>dcadmin/Order/offline_orders">
+              <a href="<?=base_url()?>evadmin/Order/offline_orders">
                 <?}else{?>
                   <a href="javascript:void(0);">
                   <?}?>

@@ -57,12 +57,12 @@ $route['default_controller'] = 'Home';
 
 
 // ADMIN PANEL
-$route['dcadmin'] = 'login/admin_login';
-$route['dcadmin/(:any)'] = 'f9admin/$1';
-$route['dcadmin/(:any)/(:any)'] = 'f9admin/$1/$2';
-$route['dcadmin/(:any)/(:any)/(:any)'] = 'f9admin/$1/$2/$3';
-$route['dcadmin/(:any)/(:any)/(:any)/(:any)'] = 'f9admin/$1/$2/$3/$4';
-$route['dcadmin/(:any)/(:any)/(:any)/(:any)/(:any)'] = 'f9admin/$1/$2/$3/$5';
+$route['evadmin'] = 'login/admin_login';
+$route['evadmin/(:any)'] = 'f9admin/$1';
+$route['evadmin/(:any)/(:any)'] = 'f9admin/$1/$2';
+$route['evadmin/(:any)/(:any)/(:any)'] = 'f9admin/$1/$2/$3';
+$route['evadmin/(:any)/(:any)/(:any)/(:any)'] = 'f9admin/$1/$2/$3/$4';
+$route['evadmin/(:any)/(:any)/(:any)/(:any)/(:any)'] = 'f9admin/$1/$2/$3/$5';
 
 
 $route['404_override'] = 'Home/error404';

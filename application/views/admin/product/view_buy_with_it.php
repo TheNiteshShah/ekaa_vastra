@@ -4,8 +4,8 @@
       Buy With It
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Product/view_product/<?=base64_encode($subcategory_id)?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Product/view_product/<?=base64_encode($subcategory_id)?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
       <!-- <li class="active"></li> -->
     </ol>
   </section>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-lg-12">
         <?if ($this->session->userdata('position')!='Manager') {?>
-        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Product/add_buy_with_it/<?=$id?>" role="button" style="margin-bottom:12px;"> Add Buy With It</a>
+        <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Product/add_buy_with_it/<?=$id?>" role="button" style="margin-bottom:12px;"> Add Buy With It</a>
         <?}?>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -154,7 +154,7 @@ if ($data->trending==1) {
 
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
                           <p> Are you sure delete this </p>
-                          <a href="<?php echo base_url() ?>dcadmin/Product/remove_buy_with/<?=$id?>/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                          <a href="<?php echo base_url() ?>evadmin/Product/remove_buy_with/<?=$id?>/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                           <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div>
                       </td>

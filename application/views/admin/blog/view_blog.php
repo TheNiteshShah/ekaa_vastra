@@ -4,15 +4,15 @@
 View Blog
 </h1>
 <ol class="breadcrumb">
-  <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-  <li><a href="<?php echo base_url() ?>dcadmin/Blog/view_blog"><i class="fa fa-undo" aria-hidden="true"></i> View Blog </a></li>
+  <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+  <li><a href="<?php echo base_url() ?>evadmin/Blog/view_blog"><i class="fa fa-undo" aria-hidden="true"></i> View Blog </a></li>
 </ol>
 </section>
 <section class="content">
 <div class="row">
 <div class="col-lg-12">
       <?if($this->session->userdata('position')!='Manager'){?>
-<a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Blog/add_blog" role="button" style="margin-bottom:12px;"> Add Blog</a>
+<a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Blog/add_blog" role="button" style="margin-bottom:12px;"> Add Blog</a>
     <?}?>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -121,13 +121,13 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                 Action <span class="caret"></span></button>
               <ul class="dropdown-menu" role="menu">
                 <?php if ($data->is_active==1) { ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/blog/updateblogStatus/<?php echo
+                <li><a href="<?php echo base_url() ?>evadmin/blog/updateblogStatus/<?php echo
 base64_encode($data->id) ?>/inactive">Inactive</a></li>
                 <?php } else { ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/blog/updateblogStatus/<?php echo
+                <li><a href="<?php echo base_url() ?>evadmin/blog/updateblogStatus/<?php echo
 base64_encode($data->id) ?>/active">Active</a></li>
                 <?php } ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/blog/update_blog/<?php echo
+                <li><a href="<?php echo base_url() ?>evadmin/blog/update_blog/<?php echo
 base64_encode($data->id) ?>">Edit</a></li>
   <?if($this->session->userdata('position')=='Super Admin'){?>
                 <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
@@ -139,7 +139,7 @@ base64_encode($data->id) ?>">Edit</a></li>
 
           <div style="display:none" id="cnfbox<?php echo $i ?>">
             <p> Are you sure delete this </p>
-            <a href="<?php echo base_url() ?>dcadmin/blog/delete_blog/<?php echo
+            <a href="<?php echo base_url() ?>evadmin/blog/delete_blog/<?php echo
 base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
             <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
           </div>

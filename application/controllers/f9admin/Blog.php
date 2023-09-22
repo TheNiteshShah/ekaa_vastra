@@ -168,7 +168,7 @@
                                $last_id=$this->base_model->insert_table("tbl_blog", $data_insert, 1) ;
                                if ($last_id!=0) {
                                    $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                                   redirect("dcadmin/Blog/view_blog", "refresh");
+                                   redirect("evadmin/Blog/view_blog", "refresh");
                                }else {
                                    $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                    redirect($_SERVER['HTTP_REFERER']);
@@ -234,7 +234,7 @@
                            }
                            if ($last_id!=0) {
                                $this->session->set_flashdata('smessage', 'Data updated successfully');
-                               redirect("dcadmin/Blog/view_blog", "refresh");
+                               redirect("evadmin/Blog/view_blog", "refresh");
                            } else {
                                $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                redirect($_SERVER['HTTP_REFERER']);
@@ -274,7 +274,7 @@
 
                        if ($zapak!=0) {
                                 $this->session->set_flashdata('smessage', 'Status updated successfully');
-                           redirect("dcadmin/Blog/view_blog", "refresh");
+                           redirect("evadmin/Blog/view_blog", "refresh");
                        } else {
                            $this->session->set_flashdata('emessage', 'Sorry error occurred');
                            redirect($_SERVER['HTTP_REFERER']);
@@ -291,7 +291,7 @@
 
                        if ($zapak!=0) {
                          $this->session->set_flashdata('smessage', 'Status updated successfully');
-                           redirect("dcadmin/Blog/view_blog", "refresh");
+                           redirect("evadmin/Blog/view_blog", "refresh");
 
                        } else {
                            $this->session->set_flashdata('emessage', 'Sorry error occurred');
@@ -319,7 +319,7 @@
                        $zapak=$this->db->delete('tbl_blog', array('id' => $id));
                        if ($zapak!=0) {
                          $this->session->set_flashdata('smessage', 'Blog deleted successfully');
-                           redirect("dcadmin/Blog/view_blog", "refresh");
+                           redirect("evadmin/Blog/view_blog", "refresh");
                        } else {
                            $this->session->set_flashdata('emessage', 'Sorry error occurred');
                            redirect($_SERVER['HTTP_REFERER']);

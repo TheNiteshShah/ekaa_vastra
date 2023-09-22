@@ -4,8 +4,8 @@
       Category
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Category/view_category"><i class="fa fa-undo" aria-hidden="true"></i> View Category </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Category/view_category"><i class="fa fa-undo" aria-hidden="true"></i> View Category </a></li>
       <!-- <li class="active">View Category</li> -->
     </ol>
   </section>
@@ -17,7 +17,7 @@
           $cur_date=date("d-m-Y");?>
         <a href="<?=base_url()?>assets/admin/product_dummy.xlsx" download="Product Dummy (<?=$cur_date?>)"><button type="button" class="btn custom_btn">Download Product Excel</button></a>
         <div style="display:flex;border:1px solid grey;padding:2px">
-          <form method="post" action="<?=base_url()?>dcadmin/Product/import_pro_data" enctype="multipart/form-data" style="display:flex">
+          <form method="post" action="<?=base_url()?>evadmin/Product/import_pro_data" enctype="multipart/form-data" style="display:flex">
           <input type="file" name="uploadFile" class="form-control" required/>
           <button type="submit" class="btn custom_btn">Upload Product</button>
         </form>
@@ -62,7 +62,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <td><?php echo $i ?> </td>
                       <td><?php echo $data->name ?></td>
                       <td>
-                        <a class="btn btn-default cticket" href="<?php echo base_url() ?>dcadmin/Product/view_subcategory/<?=base64_encode($data->id)?>" role="button" style="margin-bottom:12px;"> View Subcategory</a>
+                        <a class="btn btn-default cticket" href="<?php echo base_url() ?>evadmin/Product/view_subcategory/<?=base64_encode($data->id)?>" role="button" style="margin-bottom:12px;"> View Subcategory</a>
                       </td>
                     </tr>
                     <?php $i++; } ?>

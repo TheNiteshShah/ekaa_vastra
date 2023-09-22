@@ -4,8 +4,8 @@
   Add New Slider
 </h1>
 <ol class="breadcrumb">
-  <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-  <li><a href="<?php echo base_url() ?>dcadmin/Slider/view_slider"><i class="fa fa-undo" aria-hidden="true"></i> View Slider </a></li>
+  <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+  <li><a href="<?php echo base_url() ?>evadmin/Slider/view_slider"><i class="fa fa-undo" aria-hidden="true"></i> View Slider </a></li>
 
 </ol>
 </section>
@@ -36,7 +36,7 @@
 
       <div class="panel-body">
         <div class="col-lg-10">
-          <form action="<?php echo base_url() ?>dcadmin/Slider/add_slider_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+          <form action="<?php echo base_url() ?>evadmin/Slider/add_slider_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
             <div class="table-responsive">
               <table class="table table-hover">
 

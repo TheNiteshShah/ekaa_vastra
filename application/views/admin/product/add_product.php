@@ -6,8 +6,8 @@
       Add New Product
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li><a href="<?php echo base_url() ?>dcadmin/Product/view_product/<?=$subcategory_id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a href="<?php echo base_url() ?>evadmin/Product/view_product/<?=$subcategory_id?>"><i class="fa fa-undo" aria-hidden="true"></i> View Product </a></li>
     </ol>
   </section>
   <section class="content">
@@ -37,7 +37,7 @@
 
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/product/add_product_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>evadmin/product/add_product_data/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive">
                   <table class="table table-hover">
 
@@ -238,7 +238,7 @@
         // var opton = "<option value=''>Please Select </option>";
         var opton = '';
         $.ajax({
-          url: base_url + "dcadmin/Product/get_subcategory?cat_id=" + vf,
+          url: base_url + "evadmin/Product/get_subcategory?cat_id=" + vf,
           data: '',
           type: "get",
           success: function(response) {

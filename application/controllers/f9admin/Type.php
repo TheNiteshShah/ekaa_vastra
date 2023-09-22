@@ -400,7 +400,7 @@ class Type extends CI_finecontrol
                             $last_id = $this->base_model->insert_table("tbl_type", $data_insert, 1);
                             if ($last_id != 0) {
                                 $this->session->set_flashdata('smessage', 'Type inserted successfully');
-                                redirect("dcadmin/Type/view_type/" . base64_encode($product_id), "refresh");
+                                redirect("evadmin/Type/view_type/" . base64_encode($product_id), "refresh");
                             } else {
                                 $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                 redirect($_SERVER['HTTP_REFERER']);
@@ -477,7 +477,7 @@ class Type extends CI_finecontrol
                         $last_id = $this->db->update('tbl_type', $data_insert);
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Type updated successfully');
-                            redirect("dcadmin/Type/view_type/" . base64_encode($product_id), "refresh");
+                            redirect("evadmin/Type/view_type/" . base64_encode($product_id), "refresh");
                         } else {
                             $this->session->set_flashdata('emessage', 'Sorry error occurred');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -583,7 +583,7 @@ class Type extends CI_finecontrol
                 $zapak2 = $this->db->delete('tbl_wishlist', array('type_id' => $id));
                 if ($zapak != 0) {
                     $this->session->set_flashdata('smessage', 'Data deleted successfully');
-                    redirect("dcadmin/type/view_type/" . base64_encode($type_data->product_id), "refresh");
+                    redirect("evadmin/type/view_type/" . base64_encode($type_data->product_id), "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -616,7 +616,7 @@ class Type extends CI_finecontrol
                 $zapak1 = $this->db->delete('tbl_cart', array('type_id' => $id));
                 $zapak1 = $this->db->delete('tbl_wishlist', array('type_id' => $id));
                 if ($zapak != 0) {
-                    redirect("dcadmin/type/view_type/" . base64_encode($type_data->product_id), "refresh");
+                    redirect("evadmin/type/view_type/" . base64_encode($type_data->product_id), "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -632,7 +632,7 @@ class Type extends CI_finecontrol
                 $zapak2 = $this->db->delete('tbl_wishlist', array('type_id' => $id));
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
                 if ($zapak != 0) {
-                    redirect("dcadmin/type/view_type/" . base64_encode($type_data->product_id), "refresh");
+                    redirect("evadmin/type/view_type/" . base64_encode($type_data->product_id), "refresh");
                 } else {
                     $data['e'] = "Error occurred";
                     // exit;

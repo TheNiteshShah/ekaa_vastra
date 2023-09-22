@@ -4,7 +4,7 @@
       Team
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li class="active">View Team</li>
     </ol>
   </section>
@@ -13,7 +13,7 @@
       <div class="col-lg-12">
         <?if($this->session->userdata('position')!='Manager'){?>
 <?}?>
-        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/System/add_team" role="button" style="margin-bottom:12px;"> Add Team</a>
+        <a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/System/add_team" role="button" style="margin-bottom:12px;"> Add Team</a>
         <div class="panel panel-default">
           <?php if (!empty($this->session->flashdata('smessage'))) { ?>
           <div class="alert alert-success alert-dismissible">
@@ -117,12 +117,12 @@
                           <ul class="dropdown-menu" role="menu">
 
                             <?php if ($data->is_active==1) { ?>
-                            <li><a href="<?php echo base_url() ?>dcadmin/System/updateteamStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                            <li><a href="<?php echo base_url() ?>evadmin/System/updateteamStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                             <?php } else { ?>
-                            <li><a href="<?php echo base_url() ?>dcadmin/System/updateteamStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                            <li><a href="<?php echo base_url() ?>evadmin/System/updateteamStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                             <?php		}   ?>
                             <?if ($this->load->get_var('position')=="Super Admin"){?>
-                            <li><a href="<?php echo base_url() ?>dcadmin/System/update_team/<?php echo base64_encode($data->id) ?>/active">Edit</a></li>
+                            <li><a href="<?php echo base_url() ?>evadmin/System/update_team/<?php echo base64_encode($data->id) ?>/active">Edit</a></li>
                               <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                               <?}?>
 
@@ -132,7 +132,7 @@
 
                       <div style="display:none" id="cnfbox<?php echo $i ?>">
                         <p> Are you sure delete this </p>
-                        <a href="<?php echo base_url() ?>dcadmin/System/delete_team/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                        <a href="<?php echo base_url() ?>evadmin/System/delete_team/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                         <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                       </div>
                     </td>

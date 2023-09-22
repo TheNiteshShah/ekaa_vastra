@@ -4,8 +4,8 @@
 Add New Model
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Model/view_model"><i class="fa fa-undo" aria-hidden="true"></i> View Model </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Model/view_model"><i class="fa fa-undo" aria-hidden="true"></i> View Model </a></li>
 
 </ol>
 </section>
@@ -36,7 +36,7 @@ if(!empty($this->session->flashdata('emessage'))){ ?>
 
 <div class="panel-body">
 <div class="col-lg-10">
-<form action="<?php echo base_url() ?>dcadmin/Model/add_model_data/<? echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+<form action="<?php echo base_url() ?>evadmin/Model/add_model_data/<? echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
 <div class="table-responsive">
 <table class="table table-hover">
 

@@ -4,15 +4,15 @@
 Filters
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-<!-- <li><a href="<?php echo base_url() ?>dcadmin/filters/view_filters"><i class="fa fa-dashboard"></i> view filters </a></li>
+<li><a href="<?php echo base_url() ?>evadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+<!-- <li><a href="<?php echo base_url() ?>evadmin/filters/view_filters"><i class="fa fa-dashboard"></i> view filters </a></li>
 <!-- <li class="active"></li> -->
 </ol>
 </section><section class="content">
 <div class="row">
 <div class="col-lg-12">
     <?if($this->session->userdata('position')!='Manager'){?>
-<a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Filters/add_filters" role="button" style="margin-bottom:12px;"> Add Filters</a>
+<a class="btn custom_btn" href="<?php echo base_url() ?>evadmin/Filters/add_filters" role="button" style="margin-bottom:12px;"> Add Filters</a>
 <?}?>
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -74,12 +74,12 @@ Filters
               <ul class="dropdown-menu" role="menu">
 
                 <?php if ($data->is_active==1) { ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/Filters/updatefiltersStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/Filters/updatefiltersStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                 <?php } else { ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/Filters/updatefiltersStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/Filters/updatefiltersStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                 <?php		}   ?>
-                <li><a href="<?php echo base_url() ?>dcadmin/Filters/update_filters/<?php echo base64_encode($data->id) ?>">Edit</a></li>
-                <li><a href="<?php echo base_url() ?>dcadmin/Attributes/view_attribute/<?php echo base64_encode($data->id) ?>">Attribute</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/Filters/update_filters/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                <li><a href="<?php echo base_url() ?>evadmin/Attributes/view_attribute/<?php echo base64_encode($data->id) ?>">Attribute</a></li>
     <?if($this->session->userdata('position')=='Super Admin'){?>
                 <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                 <?}?>
@@ -89,7 +89,7 @@ Filters
 
           <div style="display:none" id="cnfbox<?php echo $i ?>">
             <p> Are you sure delete this </p>
-            <a href="<?php echo base_url() ?>dcadmin/Filters/delete_filters/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+            <a href="<?php echo base_url() ?>evadmin/Filters/delete_filters/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
             <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
           </div>
         </td>

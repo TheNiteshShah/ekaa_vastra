@@ -93,7 +93,7 @@
                    $last_id=$this->base_model->insert_table("tbl_percentage",$data_insert,1) ;
                    if($last_id!=0){
                            $this->session->set_flashdata('smessage','Data inserted successfully');
-                           redirect("dcadmin/Percentage_off/view_percentage_off","refresh");
+                           redirect("evadmin/Percentage_off/view_percentage_off","refresh");
                           }
                    }
                    if($typ==2){
@@ -117,7 +117,7 @@
                    }
                                if($last_id!=0){
                                        $this->session->set_flashdata('smessage','Data updated successfully');
-                                       redirect("dcadmin/Percentage_off/view_percentage_off","refresh");
+                                       redirect("evadmin/Percentage_off/view_percentage_off","refresh");
                                       }
                                        else
                                            {
@@ -201,7 +201,7 @@
 
                                if ($zapak!=0) {
                                     $this->session->set_flashdata('smessage', 'Status updated successfully');
-                                   redirect("dcadmin/Percentage_off/view_percentage_off", "refresh");
+                                   redirect("evadmin/Percentage_off/view_percentage_off", "refresh");
                                } else {
                                    $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                    redirect($_SERVER['HTTP_REFERER']);
@@ -218,7 +218,7 @@
 
                                if ($zapak!=0) {
                                    $this->session->set_flashdata('smessage', 'Status updated successfully');
-                                   redirect("dcadmin/Percentage_off/view_percentage_off", "refresh");
+                                   redirect("evadmin/Percentage_off/view_percentage_off", "refresh");
                                } else {
                                    $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                    redirect($_SERVER['HTTP_REFERER']);
@@ -252,7 +252,7 @@
                                    // $path = FCPATH .$img;
                                    //   unlink($path);
                                      $this->session->set_flashdata('smessage', 'Percentage Off deleted successfully');
-                                   redirect("dcadmin/Percentage_off/view_percentage_off", "refresh");
+                                   redirect("evadmin/Percentage_off/view_percentage_off", "refresh");
                                } else {
                                    $this->session->set_flashdata('emessage', 'Sorry error occurred');
                                    redirect($_SERVER['HTTP_REFERER']);
