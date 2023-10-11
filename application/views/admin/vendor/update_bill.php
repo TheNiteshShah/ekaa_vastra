@@ -38,7 +38,7 @@
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <input type="hidden" id="count" value="<?= count($bill_details->result()) ?>" name="count">
-                    <input type="hidden" name="vendor_id" value="<?= $bill_data->vendor_id ?>" />
+                    <input type="hidden" name="vendor_id" value="<?= base64_encode($bill_data->vendor_id) ?>" />
                     <? $detail = $bill_details->row(); ?>
                     <tr>
                       <td> <strong>Date of Invoice </strong><span style="color:red;">*</span></td>

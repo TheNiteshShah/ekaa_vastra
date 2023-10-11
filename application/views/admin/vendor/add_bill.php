@@ -55,14 +55,14 @@
                     <tr>
                       <td> <strong>Date of Invoice </strong><span style="color:red;">*</span></td>
                       <td>
-                        <input type="date" name="invoice_date" class="form-control" placeholder="" value="" required />
+                        <input type="date" name="invoice_date" class="form-control" placeholder=""  required />
                       </td>
                     </tr>
 
                     <tr>
                       <td> <strong>Invoice No.</strong><span style="color:red;">*</span></td>
                       <td>
-                        <input type="text" name="invoice_no" class="form-control" placeholder="" value="" required />
+                        <input type="text" name="invoice_no" class="form-control" readonly placeholder="" value="<?=$invoice_no?>" required />
                       </td>
                     </tr>
                     <tr>

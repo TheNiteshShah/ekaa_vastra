@@ -281,9 +281,20 @@ class Vendor extends CI_finecontrol
             $id = base64_decode($idd);
             $data['id'] = $idd;
             $data['vendor_data'] = $this->db->get_where('tbl_vendor', array('is_active' => 1))->result();
-            $data['products'] = $this->db->get_where('tbl_vendor_products', array('is_active' => 1,'vendor_id'=>$id))->result();
+            $data['products'] = $this->db->get_where('tbl_vendor_products', array('is_active' => 1, 'vendor_id' => $id))->result();
             $vendor = $this->db->get_where('tbl_vendor', array('id' => $id))->row();
+            $bill_data = $this->db->order_by('id', 'desc')->get_where('tbl_bills', array('vendor_id' => $id))->row();
             $data['name'] = $vendor->business_name;
+            date_default_timezone_set("Asia/Calcutta");
+            $current = date("Y");
+            $next = date('y', strtotime('+1 year'));    
+            if (!empty($bill_data)) {
+                $data['invoice_no'] = $current . '-' . $next . '/ GST';
+            } else {
+                $data['invoice_no'] = $current . '-' . $next . '/1/ GST';
+
+            }
+            // echo $data['invoice_no'];die();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/vendor/add_bill');
             $this->load->view('admin/common/footer_view');
@@ -332,7 +343,7 @@ class Vendor extends CI_finecontrol
                     $typ = base64_decode($t);
                     if ($typ == 1) {
                         $data_insert = array(
-                            'vendor_id' => $v_id,
+                            'vendor_id' => base64_decode($v_id),
                             'invoice_no' => $invoice_no,
                             'invoice_date' => $invoice_date,
                             'added_by' => $addedby,
@@ -382,7 +393,7 @@ class Vendor extends CI_finecontrol
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Data inserted successfully');
 
-                            redirect("evadmin/Vendor/view_bill/" . base64_encode($v_id), "refresh");
+                            redirect("evadmin/Vendor/view_bill/" . $v_id, "refresh");
                         } else {
                             $this->session->set_flashdata('smessage', 'Some error found');
                             redirect($_SERVER['HTTP_REFERER']);
@@ -442,7 +453,7 @@ class Vendor extends CI_finecontrol
                         if ($last_id != 0) {
                             $this->session->set_flashdata('smessage', 'Data updated successfully');
 
-                            redirect("evadmin/Vendor/view_bill/" . base64_encode($v_id), "refresh");
+                            redirect("evadmin/Vendor/view_bill/" . $v_id, "refresh");
                         } else {
                             $this->session->set_flashdata('smessage', 'Some error found');
                             redirect($_SERVER['HTTP_REFERER']);
