@@ -252,7 +252,7 @@
     </div>
 
 
-    <header class="header-area header-style-5 header-height-2">
+    <header class="header-area header-style-1 header-height-2">
         <div class="header-top header-top-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="row align-items-center">

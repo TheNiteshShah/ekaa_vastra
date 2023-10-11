@@ -35,7 +35,11 @@
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 	<!-- //web-fonts -->
 </head>
-
+<style>
+body{
+	background: linear-gradient(90deg, #C7C5F4, #776BCC);
+}	
+	</style>
 <body>
 	<div class="video-w3l" data-vide-bg="<? echo base_url() ?>assets/admin/login/images/ekaa.jpg">
 		<!--header-->
@@ -49,9 +53,7 @@
 		<!--//header-->
 		<div class="main-content-agile">
 			<div class="sub-main-w3">
-				<h2>Login Here
-					<i class="fa fa-hand-o-down" aria-hidden="true"></i>
-				</h2>
+				<h2>Login </h2>
 						<? if(!empty($this->session->flashdata('smessage'))){ ?>
 				    <div class="alert alert-success">
 				      <strong><? echo $this->session->flashdata('smessage'); ?></strong>

@@ -6,7 +6,7 @@
             <?php $a = 0;
             foreach ($slider_data as $slide) { ?>
                 <div class="single-hero-slider single-animation-wrap">
-                    <div class="container">
+                    <div class="">
                         <div class="row align-items-center slider-animated-1">
                             <!-- <div class="col-lg-5 col-md-6">
                             <div class="hero-slider-content-2">
